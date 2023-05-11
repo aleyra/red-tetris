@@ -2,10 +2,10 @@ import React from "react";
 import { connect } from "react-redux";
 import { SoloModeButton, MultiModeButton } from "../../components/buttons";
 
-function Select_Mode(){
+export function Select_Mode(){
 	return(
-		<>
-			<div className='Modes-container'>
+		<React.Fragment>
+			{/* <div className='Modes-container'>
 				<div className='Mode-button'>
 					<SoloModeButton
 						variant="contained"
@@ -26,7 +26,8 @@ function Select_Mode(){
 						Multiplayer Mode
 					</MultiModeButton>
 				</div>
-			</div>
-		</>
+			</div> */}
+			<div>test debile</div>
+		</React.Fragment>
 	);
 }
