@@ -3,6 +3,8 @@ Je t'encourage a faire de meme
 
 pour l'installation de red_tetris_boilerplate j'ai fait `npm install --legacy-peer-deps` et il semblerait que ça marche
 
+restart avec vite -> react + javascript only
+
 ## grille d'eval
 * https://github.com/zanninso/42-correction-files/blob/master/red-tetris.pdf
 
