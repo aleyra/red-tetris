@@ -9,6 +9,8 @@ function getKeyPress(ref, playe)
     // listen to keypress
      
     process.stdin.on("keypress", (str, key) => {
+        if(key.name == "q") ref.rotatePiece(-1);
+        if(key.name == "e") ref.rotatePiece(1);
         if(key.name == "a") ref.movePieceHorizontally(-1);
         if(key.name == "d") ref.movePieceHorizontally(1);
         if(key.name == "s") ref.slamPiece();
@@ -65,6 +67,25 @@ function Piece(type, startingX) {
     this.x = startingX;
     this.y = 0;
     this.type = type;
+    this.rotate = (direction) => {
+        for (var y = 0; y < this.shape.length; y++)
+        {
+            for (var x = 0; x < y; x++)
+            {
+                [
+                    this.shape[x][y],
+                    this.shape[y][x] 
+                ] = [
+                    this.shape[y][x],
+                    this.shape[x][y]
+                ]
+            }
+        }
+        if (direction > 0)
+            this.shape.forEach(row => row.reverse());
+        else
+            this.shape.reverse();
+    }
 }
 
 function Player()
@@ -96,6 +117,10 @@ function Grid(player) {
         this.currentPiece.x += direction;
         if (this.checkForCollision())
             this.currentPiece.x -= direction;
+    }
+    this.rotatePiece = (direction) =>
+    {
+        this.currentPiece.rotate(direction);
     }
     this.checkForFullLine = () =>
     {
@@ -143,6 +168,11 @@ function Grid(player) {
         }
         // pick a shape at random
         this.currentPiece = new Piece(tetrominoes[Math.floor(Math.random() * tetrominoes.length)], Math.round(this.width / 2) - 1);
+        // If there is not enough room for the newly generated piece, trigger game over
+        if (this.checkForCollision())
+        {
+            this.gameOver();
+        }
         this.printGrid();
     }
     this.slamPiece = () => {
