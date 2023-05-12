@@ -1,7 +1,7 @@
 const readline = require('readline');
  
 
-function getKeyPress(ref)
+function getKeyPress(ref, playe)
 {
     readline.emitKeypressEvents(process.stdin);
     if (process.stdin.isTTY) process.stdin.setRawMode(true);
@@ -12,7 +12,7 @@ function getKeyPress(ref)
         if(key.name == "a") ref.movePieceHorizontally(-1);
         if(key.name == "d") ref.movePieceHorizontally(1);
         if(key.name == "s") ref.slamPiece();
-        if(key.name == "n") ref.addPlayerMalusNextTurn = true;
+        if(key.name == "n") p.setMalus(true);
         if(key.ctrl && key.name == "c") process.exit(0);
         ref.printGrid();
     });
@@ -34,7 +34,12 @@ function Piece(type) {
 
 function Player()
 {
+    this.score = 0;
     this.hasMalus = false;
+    this.setMalus = (b) =>
+    {
+        this.hasMalus = b; 
+    }
 }
 
 function Game()
@@ -45,22 +50,23 @@ function Game()
 
 
 
-function Grid() {
-    this.boardWidth = 10;
-    this.boardHeight = 20;
-    this.addPlayerMalusNextTurn = false;
+function Grid(player) {
+    this.width = 10;
+    this.height = 20;
+    this.player = player;
     this.currentPiece = new Piece("O");
-    this.grid = Array(this.boardHeight).fill().map(() => Array(this.boardWidth).fill().map(() => "X"));
+    this.grid = Array(this.height).fill().map(() => Array(this.width).fill().map(() => "X"));
     this.movePieceHorizontally = (direction) =>
     {
+        if (this.currentPiece.x > 0 && this.currentPiece < this.height)
         this.currentPiece.x += direction;
     }
     this.checkForFullLine = () =>
     {
-        for (var y = this.boardHeight - 1; y >= 0; y--)
+        for (var y = this.height - 1; y >= 0; y--)
         {
             var lineIsFull = true;
-            for (var x = 0; x < this.boardWidth; x++)
+            for (var x = 0; x < this.width; x++)
             {
                 if (this.grid[y][x] == "X" || this.grid[y][x] == "N")
                 {
@@ -77,7 +83,6 @@ function Grid() {
                 {
                     var tmp = Array.from(this.grid[y2]);
                     this.grid[y2] = previousRow;
-                    // this.grid[y2] = Array(this.boardWidth).fill().map(() => "W");
                     previousRow = Array.from(tmp);
                 }
             }
@@ -87,10 +92,10 @@ function Grid() {
     {
         this.grid[this.currentPiece.y][this.currentPiece.x] = this.currentPiece.type;
         this.checkForFullLine();
-        if (this.addPlayerMalusNextTurn)
+        if (this.player.hasMalus)
         {
             this.addPlayerMalus();
-            this.addPlayerMalusNextTurn = false;
+            this.player.setMalus(false);
         }
         this.currentPiece = new Piece("O");
         this.printGrid();
@@ -98,7 +103,7 @@ function Grid() {
     this.slamPiece = () => {
         var y = this.currentPiece.y;
         var x = this.currentPiece.x;
-        while (y + 1 < this.boardHeight && this.grid[y + 1][x] == "X")
+        while (y + 1 < this.height && this.grid[y + 1][x] == "X")
         {
             y += 1;
         }
@@ -107,36 +112,40 @@ function Grid() {
     }
     this.checkForCollision = () =>
     {
-        if (this.currentPiece.y + 1 >= this.boardHeight
+        if (this.currentPiece.y + 1 >= this.height
             || this.grid[this.currentPiece.y + 1][this.currentPiece.x] != "X")
             return false;
         else
             return true;
     }
+    this.gameOver = () =>
+    {
+        process.exit(0);
+    }
     this.addPlayerMalus = () =>
     {
-        for (var x = 0; x < this.boardWidth; x++)
+        for (var x = 0; x < this.width; x++)
         {
             if (this.grid[0][x] != "X")
                 this.gameOver();
         }
         // move all rows up to insert the null row
-        var previousRow = Array.from(this.grid[this.boardHeight - 1]);
-        for (var y = this.boardHeight - 2; y >= 0; y--)
+        var previousRow = Array.from(this.grid[this.height - 1]);
+        for (var y = this.height - 2; y >= 0; y--)
         {
             var tmp = Array.from(this.grid[y]);
             this.grid[y] = previousRow;
             previousRow = Array.from(tmp);
         }
 
-        this.grid[this.boardHeight - 1] = Array(this.boardWidth).fill().map(() => "N"); 
+        this.grid[this.height - 1] = Array(this.width).fill().map(() => "N"); 
     }
     this.printGrid = () =>
     {
         console.log('\033[2J');
-        for (var y = 0; y < this.boardHeight; y++)
+        for (var y = 0; y < this.height; y++)
         {
-            for (var x = 0; x < this.boardWidth; x++)
+            for (var x = 0; x < this.width; x++)
             {
                 if (this.currentPiece.x == x && this.currentPiece.y == y)
                     process.stdout.write(this.currentPiece.type);
@@ -157,10 +166,11 @@ function Grid() {
     totalGames += 1;
 }
 
+var p = new Player();
 // console.log(totalGames);
-var g = new Grid();
+var g = new Grid(p);
 
-getKeyPress(g);
+getKeyPress(g, p);
 
 function updateGame() {
     g.updateGame()

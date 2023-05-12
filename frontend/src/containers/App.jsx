@@ -1,5 +1,7 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { BrowserRouter as Router, Route, Routes} from 'react-router-dom';
+import socketIOClient from "socket.io-client";
+const ENDPOINT = "http://localhost:4001";
 
 //css
 import './../css/App.css'
@@ -14,6 +16,27 @@ import { Presentation } from './home/Presentation';
 
 
 export function App() {
+
+	useEffect(() => {
+		const socket = socketIOClient(ENDPOINT);
+		const cookieValue = document.cookie.split("; ").find((row) => row.startsWith("playerId="))?.split("=")[1];
+		var id = cookieValue ? cookieValue : Math.floor(Math.random() * 1000000);
+		console.log("Cookie is " + id);
+		document.cookie = "playerId=" + id + "; SameSite=None; Secure";
+		socket.emit("startGame1", id);
+		socket.on("startGame2", data => {
+			console.log("Server answered with data to start game!");
+			console.log(data);
+		});
+		document.addEventListener('keydown', detectKeyDown, true);
+	  }, []);
+
+	const detectKeyDown = (e) => {
+	    const socket = socketIOClient(ENDPOINT);
+	    socket.emit("keydown", e.key);
+		console.log(e.key);
+	}
+
 	return(
 		<React.Fragment>
 			<Router>
