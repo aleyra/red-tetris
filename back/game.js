@@ -20,8 +20,6 @@ function getKeyPress(ref, playe)
     });
 }
 
-console.log("game start");
-
 var totalGames = 0;
 
 var tetrominoes = ["I", "L", "J", "S", "Z", "O", "T"];
@@ -160,7 +158,9 @@ function Grid(player) {
                     this.grid[p.y + y][p.x + x] = p.type;
             }
         }
+
         this.checkForFullLine();
+
         if (this.player.hasMalus)
         {
             this.addPlayerMalus();
@@ -179,9 +179,7 @@ function Grid(player) {
         var y = this.currentPiece.y;
         var x = this.currentPiece.x;
         while (!this.checkForCollision())
-        {
             this.currentPiece.y += 1;
-        }
         this.currentPiece.y -= 1;
         this.placePiece();
     }
@@ -200,11 +198,6 @@ function Grid(player) {
             }
         }
         return false;
-        // if (this.currentPiece.y + 1 >= this.height
-        //     || this.grid[this.currentPiece.y + 1][this.currentPiece.x] != "X")
-        //     return true;
-        // else
-        //     return false;
     }
     this.gameOver = () =>
     {
@@ -250,6 +243,29 @@ function Grid(player) {
             console.log("");
         }
     }
+    this.getJsonGrid = () => {
+        var displayGrid = JSON.parse(JSON.stringify(this.grid));
+
+        var p = this.currentPiece;
+        for (var y = 0; y < p.shape.length; y++)
+        {
+            for (var x = 0; x < p.shape[0].length; x++)
+            {
+                if (p.shape[y][x] == 1)
+                    displayGrid[p.y + y][p.x + x] = p.type;
+            }
+        }
+        var ret = "";
+        for (var y = 0; y < this.height; y++)
+        {
+            for (var x = 0; x < this.width; x++)
+            {
+                    ret += ("" + displayGrid[y][x]);
+            }
+            ret += " ";
+        }
+        return (ret);
+    }
     this.updateGame = () =>
     {
         this.currentPiece.y += 1;
@@ -263,13 +279,21 @@ function Grid(player) {
     totalGames += 1;
 }
 
-var p = new Player();
-// console.log(totalGames);
-var g = new Grid(p);
+// for local debug 
+// var p = new Player();
+// // console.log(totalGames);
+// var g = new Grid(p);
 
-getKeyPress(g, p);
+// getKeyPress(g, p);
 
-function updateGame() {
-    g.updateGame()
-}
-setInterval(updateGame, 1000);
+// function updateGame() {
+//     g.updateGame()
+// }
+// setInterval(updateGame, 1000);
+
+module.exports = {
+    Player,
+    Game,
+    Grid,
+    Piece
+};
