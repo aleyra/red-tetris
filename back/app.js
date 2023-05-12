@@ -46,7 +46,7 @@ let interval;
 let rooms = {};
 
 io.on("connection", (socket) => {
-  // each socket.on("message") defined is a route for a particular socket.emit() on the client side
+  // each socket.on("message") defined is a route for a particular socket.emit() from the client side
   socket.on("startGame1", (playerId) => {
     console.log("got a request to start game from " + playerId);
     var gameId = Date.now();

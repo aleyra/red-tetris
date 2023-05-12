@@ -22,12 +22,47 @@ console.log("game start");
 
 var totalGames = 0;
 
+var tetrominoes = ["I", "L", "J", "S", "Z", "O", "T"];
 var shapes = {
-    "L": [],
+    "I": [
+        [0, 0, 0],
+        [1, 1, 1],
+        [0, 0, 1]
+    ],
+    "L": [
+        [0, 1, 0],
+        [0, 1, 0],
+        [0, 1, 1]
+    ],
+    "J": [
+        [0, 1, 0],
+        [0, 1, 0],
+        [1, 1, 0]
+    ],
+    "S": [
+        [0, 1, 1],
+        [1, 1, 0],
+        [0, 0, 0]
+    ],
+    "Z": [
+        [1, 1, 0],
+        [0, 1, 1],
+        [0, 0, 0]
+    ],
+    "O": [
+        [1, 1, 1],
+        [1, 1, 1],
+        [1, 1, 1]
+    ],
+    "T": [
+        [0, 1, 0],
+        [1, 1, 1],
+        [0, 0, 0]
+    ],
 }
-function Piece(type) {
-    this.shape = [];
-    this.x = 0;
+function Piece(type, startingX) {
+    this.shape = shapes[type];
+    this.x = startingX;
     this.y = 0;
     this.type = type;
 }
@@ -54,12 +89,13 @@ function Grid(player) {
     this.width = 10;
     this.height = 20;
     this.player = player;
-    this.currentPiece = new Piece("O");
+    this.currentPiece = new Piece("L", Math.round(this.width / 2));
     this.grid = Array(this.height).fill().map(() => Array(this.width).fill().map(() => "X"));
     this.movePieceHorizontally = (direction) =>
     {
-        if (this.currentPiece.x > 0 && this.currentPiece < this.height)
         this.currentPiece.x += direction;
+        if (this.checkForCollision())
+            this.currentPiece.x -= direction;
     }
     this.checkForFullLine = () =>
     {
@@ -90,33 +126,55 @@ function Grid(player) {
     }
     this.placePiece = () =>
     {
-        this.grid[this.currentPiece.y][this.currentPiece.x] = this.currentPiece.type;
+        var p = this.currentPiece;
+        for (var y = 0; y < p.shape.length; y++)
+        {
+            for (var x = 0; x < p.shape[0].length; x++)
+            {
+                if (p.shape[y][x] == 1)
+                    this.grid[p.y + y][p.x + x] = p.type;
+            }
+        }
         this.checkForFullLine();
         if (this.player.hasMalus)
         {
             this.addPlayerMalus();
             this.player.setMalus(false);
         }
-        this.currentPiece = new Piece("O");
+        // pick a shape at random
+        this.currentPiece = new Piece(tetrominoes[Math.floor(Math.random() * tetrominoes.length)], Math.round(this.width / 2) - 1);
         this.printGrid();
     }
     this.slamPiece = () => {
         var y = this.currentPiece.y;
         var x = this.currentPiece.x;
-        while (y + 1 < this.height && this.grid[y + 1][x] == "X")
+        while (!this.checkForCollision())
         {
-            y += 1;
+            this.currentPiece.y += 1;
         }
-        this.currentPiece.y = y;
+        this.currentPiece.y -= 1;
         this.placePiece();
     }
     this.checkForCollision = () =>
     {
-        if (this.currentPiece.y + 1 >= this.height
-            || this.grid[this.currentPiece.y + 1][this.currentPiece.x] != "X")
-            return false;
-        else
-            return true;
+        const p = this.currentPiece;
+        for (var y = 0; y < p.shape.length; y++)
+        {
+            for (var x = 0; x < p.shape[0].length; x++)
+            {
+                if (p.shape[y][x] === 1 &&
+                    (!this.grid[y + p.y] || !this.grid[y + p.y][x + p.x] || this.grid[y + p.y][x + p.x] !== "X"))
+                {
+                    return true;
+                }
+            }
+        }
+        return false;
+        // if (this.currentPiece.y + 1 >= this.height
+        //     || this.grid[this.currentPiece.y + 1][this.currentPiece.x] != "X")
+        //     return true;
+        // else
+        //     return false;
     }
     this.gameOver = () =>
     {
@@ -124,12 +182,10 @@ function Grid(player) {
     }
     this.addPlayerMalus = () =>
     {
-        for (var x = 0; x < this.width; x++)
-        {
-            if (this.grid[0][x] != "X")
-                this.gameOver();
-        }
-        // move all rows up to insert the null row
+        // if the top row is not empty, end the game immediately since it will be pushed beyond the limit
+        if (this.grid[0] != Array(this.width).fill().map(() => "X"))
+            this.gameOver();
+        // move all rows up one rank then insert the null row
         var previousRow = Array.from(this.grid[this.height - 1]);
         for (var y = this.height - 2; y >= 0; y--)
         {
@@ -143,24 +199,35 @@ function Grid(player) {
     this.printGrid = () =>
     {
         console.log('\033[2J');
+        // duplicate the grid to add the current piece to it before printing
+        var displayGrid = JSON.parse(JSON.stringify(this.grid));
+
+        var p = this.currentPiece;
+        for (var y = 0; y < p.shape.length; y++)
+        {
+            for (var x = 0; x < p.shape[0].length; x++)
+            {
+                if (p.shape[y][x] == 1)
+                    displayGrid[p.y + y][p.x + x] = p.type;
+            }
+        }
         for (var y = 0; y < this.height; y++)
         {
             for (var x = 0; x < this.width; x++)
             {
-                if (this.currentPiece.x == x && this.currentPiece.y == y)
-                    process.stdout.write(this.currentPiece.type);
-                else
-                    process.stdout.write("" + this.grid[y][x]);
+                    process.stdout.write("" + displayGrid[y][x]);
             }
             console.log("");
         }
     }
     this.updateGame = () =>
     {
+        this.currentPiece.y += 1;
         if (this.checkForCollision())
-            this.currentPiece.y += 1;
-        else
+        {
+            this.currentPiece.y -= 1;
             this.placePiece();
+        }
         this.printGrid();
     }
     totalGames += 1;
