@@ -9,9 +9,11 @@ import './css/App.css'
 // import { router } from '../components/router';
 
 //functions
-import { Select_Mode } from './containers/select_mode/Select_mode';
+import { Home } from './containers/home/Home';
 import { NotFound } from './containers/utils_functions/NotFound';
-import { Presentation } from './containers/home/Home';
+import { Play_solo_demo } from './containers/play/play_solo_demo';
+import { Play_multi_demo } from './containers/play/play_multi_mode';
+import { Select_Mode } from './containers/select_mode/Select_mode';
 
 const ENDPOINT = "http://localhost:4001";
 
@@ -51,29 +53,20 @@ export default function App() {
 		console.log(e.key);
 	}
 
+
 	return(
 		<React.Fragment>
-			{/* <Router>
+			<Router>
 				<div className='Main-div'>
-				<div style={{width: '100px'}}>{grid}</div>
+					<Routes>
+						<Route path="/" element={<Home />} />
+						<Route path="/SelectMode" element={<Select_Mode />} />
+            <Route path="/Demo-Solo" element={<Play_solo_demo />} />
+            <Route path="/Demo-Multi" element={<Play_multi_demo />} />
+						<Route path='*' element={<NotFound />} />
+					</Routes>
 				</div>
-			</Router> */}
-			<div>Bouh</div>
+			</Router>
 		</React.Fragment>
 	);
-
-	// return(
-	// 	<React.Fragment>
-	// 		<Router>
-	// 			<div className='Main-div'>
-	// 				<Routes>
-	// 					<Route path="/SelectMode" element={<Select_Mode />} />
-	// 					<Route path="/" element={<Presentation />} />
-	// 					<Route path='*' element={<NotFound />} />
-	// 				</Routes>
-	// 			</div>
-	// 		</Router>
-	// 		{/* <Select_Mode /> */}
-	// 	</React.Fragment>
-	// );
 }

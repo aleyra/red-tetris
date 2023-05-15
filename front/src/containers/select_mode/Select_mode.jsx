@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from 'react-router-dom';
 
 //css
 import './../../css/Select_mode.css';
@@ -22,24 +23,28 @@ export function Select_Mode(){
 		<React.Fragment>
 			<div className="Menu">
 				<div className="Button">
-					<SoloModeButton
-						variant="contained"
-						disableRipple
-						// onClick={handleClickSolo}
-					>
-						PLAY<br></br>
-						Solo Mode
-					</SoloModeButton>
+					<Link to="/Demo-Solo">
+						<SoloModeButton
+							variant="contained"
+							disableRipple
+							// onClick={handleClickSolo}
+						>
+							PLAY<br></br>
+							Solo Mode
+						</SoloModeButton>
+					</Link>
 				</div>
 				<div className="Button">
-					<MultiModeButton
-						variant="contained"
-						disableRipple
-						// onClick={handleClickMulti}
-					>
-						PLAY<br></br>
-						Multiplayer Mode
-					</MultiModeButton>
+					<Link to="/Demo-Multi">
+						<MultiModeButton
+							variant="contained"
+							disableRipple
+							// onClick={handleClickMulti}
+							>
+							PLAY<br></br>
+							Multiplayer Mode
+						</MultiModeButton>
+					</Link>
 				</div>
 			</div>
 		</React.Fragment>

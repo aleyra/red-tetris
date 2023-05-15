@@ -1,0 +1,174 @@
+:root{
+	--player-grid-height: 800px;
+	--player-grid-width: 400px;
+	--player-square-height: 40px;
+	--player-square-width: 40px;
+	--opponent-grid-height: 400px;
+	--opponent-grid-width: 200px;
+	--opponent-square-height: 20px;
+	--opponent-square-width: 20px;
+	--I-color: #00ffff;
+	--J-color: #0000ff;
+	--L-color: #ffaa00;
+	--O-color: #ffff00;
+	--S-color: #00ff00;
+	--T-color: #9900ff;
+	--Z-color: #ff0000;
+	--square-border-color: #888888;
+	--square-border-style: dotted;
+}
+
+.flex-container{
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: row;
+	align-items: flex-start;
+}
+
+.flex-column-space{
+	width: 20px;
+}
+
+.flex-row-space{
+	height: 20px;
+}
+
+.player-game-grid{
+	display: flex;
+	flex-wrap: nowrap;
+	flex-direction: row;
+	align-items: flex-start;
+	border-style: solid;
+	border-width: 2px;
+	border-color: black;
+	height: var(--player-grid-height);
+	width: var(--player-grid-width);
+}
+
+.game-grid-row{
+	display: flex;
+	flex-wrap: nowrap;
+	flex-direction: column;
+	align-items: flex-start;
+}
+
+.game-grid-column{
+	display: flex;
+	flex-wrap: nowrap;
+}
+
+.game-grid-empty-square{
+	height: var(--player-square-height);
+	width: var(--player-square-width);
+}
+
+.game-grid-tetriminoI{
+	height: var(--player-square-height);
+	width: var(--player-square-width);
+	background-color: var(--I-color);
+	/* border-color: var(--square-border-color);
+	border-style: var(--square-border-style);
+	border-width: 1px; */
+}
+
+.game-grid-tetriminoL{
+	height: var(--player-square-height);
+	width: var(--player-square-width);
+	background-color: var(--L-color);
+}
+
+.game-grid-tetriminoJ{
+	height: var(--player-square-height);
+	width: var(--player-square-width);
+	background-color: var(--J-color);
+}
+
+.game-grid-tetriminoO{
+	height: var(--player-square-height);
+	width: var(--player-square-width);
+	background-color: var(--O-color);
+}
+
+.game-grid-tetriminoS{
+	height: var(--player-square-height);
+	width: var(--player-square-width);
+	background-color: var(--S-color);
+}
+
+.game-grid-tetriminoT{
+	height: var(--player-square-height);
+	width: var(--player-square-width);
+	background-color: var(--T-color);
+}
+
+.game-grid-tetriminoZ{
+	height: var(--player-square-height);
+	width: var(--player-square-width);
+	background-color: var(--Z-color);
+}
+
+.opponent-game-grid{
+	display: flex;
+	flex-wrap: nowrap;
+	flex-direction: row;
+	align-items: flex-start;
+	border-style: solid;
+	border-width: 2px;
+	border-color: black;
+	height: var(--opponent-grid-height);
+	width: var(--opponent-grid-width);
+}
+
+.opponent-game-grid-empty-square{
+	height: var(--opponent-square-height);
+	width: var(--opponent-square-width);
+}
+
+.opponent-game-grid-tetriminoI{
+	height: var(--opponent-square-height);
+	width: var(--opponent-square-width);
+	background-color: var(--I-color);
+}
+
+.opponent-game-grid-tetriminoL{
+	height: var(--opponent-square-height);
+	width: var(--opponent-square-width);
+	background-color: var(--L-color);
+}
+
+.opponent-game-grid-tetriminoJ{
+	height: var(--opponent-square-height);
+	width: var(--opponent-square-width);
+	background-color: var(--J-color);
+}
+
+.opponent-game-grid-tetriminoO{
+	height: var(--opponent-square-height);
+	width: var(--opponent-square-width);
+	background-color: var(--O-color);
+}
+
+.opponent-game-grid-tetriminoS{
+	height: var(--opponent-square-height);
+	width: var(--opponent-square-width);
+	background-color: var(--S-color);
+}
+
+.opponent-game-grid-tetriminoT{
+	height: var(--opponent-square-height);
+	width: var(--opponent-square-width);
+	background-color: var(--T-color);
+}
+
+.opponent-game-grid-tetriminoZ{
+	height: var(--opponent-square-height);
+	width: var(--opponent-square-width);
+	background-color: var(--Z-color);
+}
+
+.info-game-lvl0{
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: column;
+	align-items: flex-start;
+}
