@@ -5,6 +5,8 @@ pour l'installation de red_tetris_boilerplate j'ai fait `npm install --legacy-pe
 
 restart avec vite -> react + javascript only
 
+restart avec JUSTE react... `npx create-react-app my-app`
+
 ## grille d'eval
 * https://github.com/zanninso/42-correction-files/blob/master/red-tetris.pdf
 
