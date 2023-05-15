@@ -11,3 +11,6 @@ restart avec vite -> react + javascript only
 ## sources
 * https://tetris.wiki/Tetromino
 * qu'est ce un test unitaire : https://fr.yeeply.com/blog/test-unitaire-comment-sy-prendre/
+* pour socket io en general : https://www.valentinog.com/blog/socket-react/
+* qui detaille comment communiquer serveur -> client et vice-versa : https://socket.io/docs/v4/emitting-events
+* Parce que avec la nouvelle version de socket io ils te forcent a parametrer des choses par rapport aux cors (quand tu fais des requetes vers d'autres sites) : https://stackoverflow.com/questions/65566462/how-to-fix-this-cors-issue-in-socket-io
