@@ -16,3 +16,4 @@ restart avec JUSTE react... `npx create-react-app my-app`
 * pour socket io en general : https://www.valentinog.com/blog/socket-react/
 * qui detaille comment communiquer serveur -> client et vice-versa : https://socket.io/docs/v4/emitting-events
 * Parce que avec la nouvelle version de socket io ils te forcent a parametrer des choses par rapport aux cors (quand tu fais des requetes vers d'autres sites) : https://stackoverflow.com/questions/65566462/how-to-fix-this-cors-issue-in-socket-io
+* varaibles en CSS : https://developer.mozilla.org/fr/docs/Web/CSS/Using_CSS_custom_properties
