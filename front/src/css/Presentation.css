@@ -30,3 +30,32 @@
 	width: 100px;
 	object-fit: cover;
 }
+
+.techno-used{
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+	/* margin: 10px; */
+}
+
+.one-techno{
+	display: flex;
+	flex-direction: column;
+	/* justify-content: flex-start; */
+	/* align-items: flex-start; */
+}
+
+.presentation-logo{
+	height: 50px;
+	width: 50px;
+}
+
+.presentation-logo:hover{
+	filter: drop-shadow(0 0 2em #646cffaa);
+}
+
+.presentation-logo.react:hover {
+	filter: drop-shadow(0 0 2em #61dafbaa);
+}
