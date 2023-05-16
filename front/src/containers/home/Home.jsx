@@ -20,7 +20,7 @@ export function Home() {
 							disableRipple
 							// sx={{ color: 'black'}}
 						>
-							Select mode to play
+							Play
 						</PurpleColoredButton>
 					</Link>
 				</div>
@@ -36,11 +36,6 @@ export function Home() {
 					{/* </Link> */}
 				</div>
 
-			</div>
-			<div>
-				{/* <Link to={""}> */}
-					Ranking
-				{/* </Link> */}
 			</div>
 			<div>
 				<Presentation />
