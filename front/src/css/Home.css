@@ -1,0 +1,10 @@
+.Menu{
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: row;
+	justify-content: center;
+}
+
+.button{
+	margin: 5px;
+}
