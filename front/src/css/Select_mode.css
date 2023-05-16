@@ -1,0 +1,23 @@
+.Select-mode-menu{
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
+}
+
+.Select-mode-button{
+	margin: 10px;
+}
+
+.Select-mode-alias{
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
+}
+
+.Select-mode-alias-tf{
+	margin: 10px;
+}

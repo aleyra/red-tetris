@@ -7,10 +7,14 @@ import './../../css/Select_mode.css';
 //const
 import { SoloModeButton } from "../../components/buttons";
 import { MultiModeButton } from "../../components/buttons";
+import { AliasTextField } from "../../components/text-field";
 
 export function Select_Mode(){
+	const [newAlias, setNewAlias] = React.useState("");
 
 	//suggestion pour gérer le type de partie demandé en back...
+	//L'idée est de set newAlias au moment où on clique sur un bouton
+	//par défaut je propose qu'on mettent "Anonymous" comme alias ou un truc du genre par contre j'ai essayé de le set en front et react a boudé
 	// const handleClickSolo = () => {
 	// 	socket.emit('queue', { type: 'Solo' });
 	// };
@@ -19,10 +23,36 @@ export function Select_Mode(){
 	// 	socket.emit('queue', { type: 'Multi' });
 	// };
 
+
+	const handleInputAlias = (e) => {
+		setNewAlias(e.target.value);
+	};
+
 	return(
 		<React.Fragment>
-			<div className="Menu">
-				<div className="Button">
+			<div className="Select-mode-alias">
+				<div className="Select-mode-alias-tf">
+					Please enter an alias :
+				</div>
+				<div className="Select-mode-alias-tf">
+					<AliasTextField
+						label="Player name"
+						InputLabelProps={{
+							sx:{
+								color:"black",
+								// textAlign:"center"
+								justifyContent:"center"
+							}
+						}}
+						variant="outlined"
+						sx={{ input: { color: 'black' } }}
+						id="outlined-basic"
+						onChange={handleInputAlias}
+					/>
+				</div>
+			</div>				
+			<div className="Select-mode-menu">
+				<div className="Select-mode-button">
 					<Link to="/Demo-Solo">
 						<SoloModeButton
 							variant="contained"
@@ -34,7 +64,7 @@ export function Select_Mode(){
 						</SoloModeButton>
 					</Link>
 				</div>
-				<div className="Button">
+				<div className="Select-mode-button">
 					<Link to="/Demo-Multi">
 						<MultiModeButton
 							variant="contained"
