@@ -8,8 +8,8 @@ export function Opponent_grid_demo(){
 		<React.Fragment>
 			ceci est la grille de l'adversaire
 			<div className="opponnent-game-grid">
-				<div className="game-grid-row">
-					<div className="game-grid-column">
+				<div className="grid-row">
+					<div className="grid-column">
 						ceci est 1 case
 					</div>
 				</div>

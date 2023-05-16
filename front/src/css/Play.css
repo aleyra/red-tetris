@@ -14,8 +14,10 @@
 	--S-color: #00ff00;
 	--T-color: #9900ff;
 	--Z-color: #ff0000;
+	--indestructible-color: #444444;
 	--square-border-color: #888888;
 	--square-border-style: dotted;
+	--next-tetrimino-grid-size: 160px;
 }
 
 .flex-container{
@@ -45,68 +47,6 @@
 	width: var(--player-grid-width);
 }
 
-.game-grid-row{
-	display: flex;
-	flex-wrap: nowrap;
-	flex-direction: column;
-	align-items: flex-start;
-}
-
-.game-grid-column{
-	display: flex;
-	flex-wrap: nowrap;
-}
-
-.game-grid-empty-square{
-	height: var(--player-square-height);
-	width: var(--player-square-width);
-}
-
-.game-grid-tetriminoI{
-	height: var(--player-square-height);
-	width: var(--player-square-width);
-	background-color: var(--I-color);
-	/* border-color: var(--square-border-color);
-	border-style: var(--square-border-style);
-	border-width: 1px; */
-}
-
-.game-grid-tetriminoL{
-	height: var(--player-square-height);
-	width: var(--player-square-width);
-	background-color: var(--L-color);
-}
-
-.game-grid-tetriminoJ{
-	height: var(--player-square-height);
-	width: var(--player-square-width);
-	background-color: var(--J-color);
-}
-
-.game-grid-tetriminoO{
-	height: var(--player-square-height);
-	width: var(--player-square-width);
-	background-color: var(--O-color);
-}
-
-.game-grid-tetriminoS{
-	height: var(--player-square-height);
-	width: var(--player-square-width);
-	background-color: var(--S-color);
-}
-
-.game-grid-tetriminoT{
-	height: var(--player-square-height);
-	width: var(--player-square-width);
-	background-color: var(--T-color);
-}
-
-.game-grid-tetriminoZ{
-	height: var(--player-square-height);
-	width: var(--player-square-width);
-	background-color: var(--Z-color);
-}
-
 .opponent-game-grid{
 	display: flex;
 	flex-wrap: nowrap;
@@ -117,6 +57,86 @@
 	border-color: black;
 	height: var(--opponent-grid-height);
 	width: var(--opponent-grid-width);
+}
+
+.next-tetrimino-grid{
+	display: flex;
+	flex-wrap: nowrap;
+	flex-direction: row;
+	align-items: flex-start;
+	border-style: solid;
+	border-width: 2px;
+	border-color: black;
+	height: var(--next-tetrimino-grid-size);
+	width: var(--next-tetrimino-grid-size);
+}
+
+.grid-row{
+	display: flex;
+	flex-wrap: nowrap;
+	flex-direction: column;
+	align-items: flex-start;
+}
+
+.grid-column{
+	display: flex;
+	flex-wrap: nowrap;
+}
+
+.grid-empty-square{
+	height: var(--player-square-height);
+	width: var(--player-square-width);
+}
+
+.grid-tetriminoI{
+	height: var(--player-square-height);
+	width: var(--player-square-width);
+	background-color: var(--I-color);
+	/* border-color: var(--square-border-color);
+	border-style: var(--square-border-style);
+	border-width: 1px; */
+}
+
+.grid-tetriminoL{
+	height: var(--player-square-height);
+	width: var(--player-square-width);
+	background-color: var(--L-color);
+}
+
+.grid-tetriminoJ{
+	height: var(--player-square-height);
+	width: var(--player-square-width);
+	background-color: var(--J-color);
+}
+
+.grid-tetriminoO{
+	height: var(--player-square-height);
+	width: var(--player-square-width);
+	background-color: var(--O-color);
+}
+
+.grid-tetriminoS{
+	height: var(--player-square-height);
+	width: var(--player-square-width);
+	background-color: var(--S-color);
+}
+
+.grid-tetriminoT{
+	height: var(--player-square-height);
+	width: var(--player-square-width);
+	background-color: var(--T-color);
+}
+
+.grid-tetriminoZ{
+	height: var(--player-square-height);
+	width: var(--player-square-width);
+	background-color: var(--Z-color);
+}
+
+.grid-indestructible{
+	height: var(--player-square-height);
+	width: var(--player-square-width);
+	background-color: var(--indestructible-color);
 }
 
 .opponent-game-grid-empty-square{
@@ -166,9 +186,24 @@
 	background-color: var(--Z-color);
 }
 
+.opponent-game-grid-indestructible{
+	height: var(--opponent-square-height);
+	width: var(--opponent-square-width);
+	background-color: var(--indestructible-color);
+}
+
 .info-game-lvl0{
 	display: flex;
 	flex-wrap: wrap;
 	flex-direction: column;
 	align-items: flex-start;
 }
+
+.info-game-lvl1{
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: row;
+	align-items: flex-start;
+}
+
+

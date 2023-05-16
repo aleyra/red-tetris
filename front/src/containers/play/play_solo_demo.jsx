@@ -5,6 +5,7 @@ import './../../css/Play.css';
 
 //functions
 import { Player_grid_demo } from "./player_grid_demo";
+import { Next_tetrimino_demo } from "./next_tetrimino";
 
 export function Play_solo_demo(){
 	return(
@@ -14,10 +15,10 @@ export function Play_solo_demo(){
 				<div className="flex-column-space"></div>
 				<div className="info-game-lvl0">
 					<div className="info-game-lvl1">
-						la y'a une info
+						<b>Next tetrimino</b> :
 					</div>
 					<div className="info-game-lvl1">
-						la y'en a une autre
+						<Next_tetrimino_demo />
 					</div>
 				</div>
 			</div>
