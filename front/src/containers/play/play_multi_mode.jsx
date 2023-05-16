@@ -4,7 +4,7 @@ import React from "react";
 import './../../css/Play.css';
 import { Player_grid_demo } from "./player_grid_demo";
 import { Opponent_grid_demo } from "./opponent_grid_demo";
-import { Next_tetrimino_demo } from "./next_tetrimino";
+import { Next_tetrimino_demo } from "./next_tetrimino_demo";
 
 export function Play_multi_demo(){
 	return(

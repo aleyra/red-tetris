@@ -5,7 +5,7 @@ import './../../css/Play.css';
 
 //functions
 import { Player_grid_demo } from "./player_grid_demo";
-import { Next_tetrimino_demo } from "./next_tetrimino";
+import { Next_tetrimino_demo } from "./next_tetrimino_demo";
 
 export function Play_solo_demo(){
 	return(
