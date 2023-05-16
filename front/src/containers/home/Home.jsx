@@ -12,8 +12,8 @@ import { OrangeColoredButton, PurpleColoredButton } from "../../components/butto
 export function Home() {
 	return(
 		<React.Fragment>
-			<div className="Menu">
-				<div className="button">
+			<div className="Home-Menu">
+				<div className="Home-Button">
 					<Link to={"/SelectMode"}>
 						<PurpleColoredButton
 							variant="contained"
@@ -24,7 +24,7 @@ export function Home() {
 						</PurpleColoredButton>
 					</Link>
 				</div>
-				<div className="button">
+				<div className="Home-Button">
 					{/* <Link to={"/Ranking"}> */}
 						<OrangeColoredButton
 							variant="contained"

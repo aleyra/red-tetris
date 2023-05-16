@@ -1,10 +1,10 @@
-.Menu{
+.Home-Menu{
 	display: flex;
 	flex-wrap: wrap;
 	flex-direction: row;
 	justify-content: center;
 }
 
-.button{
+.Home-Button{
 	margin: 5px;
 }
