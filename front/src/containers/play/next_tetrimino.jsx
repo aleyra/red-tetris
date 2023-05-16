@@ -267,7 +267,7 @@ function CaseDefault(){
 	);
 }
 
-//comment appeler Next_tetrimino avec un paramètre... ?
+//cf play_solo_demo.jsx L23 pour savoir comment appeler ;)
 export function Next_tetrimino(next_one){
 	if (next_one == "I")
 		return (
