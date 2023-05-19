@@ -4,14 +4,14 @@ import React from "react";
 import './../../css/Play.css';
 
 //functions
-import { Player_grid_demo } from "./player_grid_demo";
-import { Next_tetrimino } from "./next_tetrimino";
+import { PlayreGridDemo } from "./player_grid_demo";
+import { NextTetrimino } from "./next_tetrimino";
 
-export function Play_soloE_demo(){
+export function PlaySoloEDemo(){
 	return(
 		<React.Fragment>
 			<div className="flex-container">
-				<Player_grid_demo />
+				<PlayreGridDemo />
 				<div className="flex-column-space"></div>
 				<div className="info-game-column">
 					<div className="info-game-row">
@@ -21,7 +21,7 @@ export function Play_soloE_demo(){
 						You can swap this one with the current by pressing SPACE
 					</div>
 					<div className="info-game-row">
-						{Next_tetrimino("T")}
+						{NextTetrimino("T")}
 					</div>
 					<div className="info-game-row">
 						<b>Your Score</b> :

@@ -4,21 +4,21 @@ import React from "react";
 import './../../css/Play.css';
 
 //functions
-import { Player_grid_demo } from "./player_grid_demo";
-import { Next_tetrimino } from "./next_tetrimino";
+import { PlayreGridDemo } from "./player_grid_demo";
+import { NextTetrimino } from "./next_tetrimino";
 
-export function Play_soloN_demo(){
+export function PlaySoloNDemo(){
 	return(
 		<React.Fragment>
 			<div className="flex-container">
-				<Player_grid_demo />
+				<PlayreGridDemo />
 				<div className="flex-column-space"></div>
 				<div className="info-game-column">
 					<div className="info-game-row">
 						<b>Next tetrimino</b> :
 					</div>
 					<div className="info-game-row">
-						{Next_tetrimino("T")}
+						{NextTetrimino("T")}
 					</div>
 					<div className="info-game-row">
 						<b>Your Score</b> :

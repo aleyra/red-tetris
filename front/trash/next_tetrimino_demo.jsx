@@ -3,7 +3,7 @@ import React from "react";
 //css
 import './../../css/Play.css'
 
-export function Next_tetrimino_demo(){
+export function NextTetrimino_demo(){
 	return(
 		<div className="next-tetrimino-grid">
 			<div className="grid-row">

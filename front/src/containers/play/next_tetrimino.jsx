@@ -4,35 +4,35 @@ import React from "react";
 import './../../css/Play.css'
 
 //function
-import { Coloring_player_cell } from "./coloring_cell";
+import { ColoringPlayerCell } from "./coloring_cell";
 
 function CaseI(){
 	return(
 		<div className="next-tetrimino-grid">
 			<div className="grid-row">
 				<div className="grid-column">
-					{Coloring_player_cell("")}
-					{Coloring_player_cell("")}
-					{Coloring_player_cell("")}
-					{Coloring_player_cell("")}
+					{ColoringPlayerCell("")}
+					{ColoringPlayerCell("")}
+					{ColoringPlayerCell("")}
+					{ColoringPlayerCell("")}
 				</div>
 				<div className="grid-column">
-					{Coloring_player_cell("I")}
-					{Coloring_player_cell("I")}
-					{Coloring_player_cell("I")}
-					{Coloring_player_cell("I")}
+					{ColoringPlayerCell("I")}
+					{ColoringPlayerCell("I")}
+					{ColoringPlayerCell("I")}
+					{ColoringPlayerCell("I")}
 				</div>
 				<div className="grid-column">
-					{Coloring_player_cell("")}
-					{Coloring_player_cell("")}
-					{Coloring_player_cell("")}
-					{Coloring_player_cell("")}
+					{ColoringPlayerCell("")}
+					{ColoringPlayerCell("")}
+					{ColoringPlayerCell("")}
+					{ColoringPlayerCell("")}
 				</div>
 				<div className="grid-column">
-					{Coloring_player_cell("")}
-					{Coloring_player_cell("")}
-					{Coloring_player_cell("")}
-					{Coloring_player_cell("")}
+					{ColoringPlayerCell("")}
+					{ColoringPlayerCell("")}
+					{ColoringPlayerCell("")}
+					{ColoringPlayerCell("")}
 				</div>
 			</div>
 		</div>
@@ -44,28 +44,28 @@ function CaseJ(){
 		<div className="next-tetrimino-grid">
 			<div className="grid-row">
 				<div className="grid-column">
-					{Coloring_player_cell("")}
-					{Coloring_player_cell("")}
-					{Coloring_player_cell("")}
-					{Coloring_player_cell("")}
+					{ColoringPlayerCell("")}
+					{ColoringPlayerCell("")}
+					{ColoringPlayerCell("")}
+					{ColoringPlayerCell("")}
 				</div>
 				<div className="grid-column">
-					{Coloring_player_cell("")}
-					{Coloring_player_cell("")}
-					{Coloring_player_cell("J")}
-					{Coloring_player_cell("")}
+					{ColoringPlayerCell("")}
+					{ColoringPlayerCell("")}
+					{ColoringPlayerCell("J")}
+					{ColoringPlayerCell("")}
 				</div>
 				<div className="grid-column">
-					{Coloring_player_cell("")}
-					{Coloring_player_cell("")}
-					{Coloring_player_cell("J")}
-					{Coloring_player_cell("")}
+					{ColoringPlayerCell("")}
+					{ColoringPlayerCell("")}
+					{ColoringPlayerCell("J")}
+					{ColoringPlayerCell("")}
 				</div>
 				<div className="grid-column">
-					{Coloring_player_cell("")}
-					{Coloring_player_cell("J")}
-					{Coloring_player_cell("J")}
-					{Coloring_player_cell("")}
+					{ColoringPlayerCell("")}
+					{ColoringPlayerCell("J")}
+					{ColoringPlayerCell("J")}
+					{ColoringPlayerCell("")}
 				</div>
 			</div>
 		</div>
@@ -77,28 +77,28 @@ function CaseL(){
 		<div className="next-tetrimino-grid">
 			<div className="grid-row">
 				<div className="grid-column">
-					{Coloring_player_cell("")}
-					{Coloring_player_cell("")}
-					{Coloring_player_cell("")}
-					{Coloring_player_cell("")}
+					{ColoringPlayerCell("")}
+					{ColoringPlayerCell("")}
+					{ColoringPlayerCell("")}
+					{ColoringPlayerCell("")}
 				</div>
 				<div className="grid-column">
-					{Coloring_player_cell("")}
-					{Coloring_player_cell("L")}
-					{Coloring_player_cell("")}
-					{Coloring_player_cell("")}
+					{ColoringPlayerCell("")}
+					{ColoringPlayerCell("L")}
+					{ColoringPlayerCell("")}
+					{ColoringPlayerCell("")}
 				</div>
 				<div className="grid-column">
-					{Coloring_player_cell("")}
-					{Coloring_player_cell("L")}
-					{Coloring_player_cell("")}
-					{Coloring_player_cell("")}
+					{ColoringPlayerCell("")}
+					{ColoringPlayerCell("L")}
+					{ColoringPlayerCell("")}
+					{ColoringPlayerCell("")}
 				</div>
 				<div className="grid-column">
-					{Coloring_player_cell("")}
-					{Coloring_player_cell("L")}
-					{Coloring_player_cell("L")}
-					{Coloring_player_cell("")}
+					{ColoringPlayerCell("")}
+					{ColoringPlayerCell("L")}
+					{ColoringPlayerCell("L")}
+					{ColoringPlayerCell("")}
 				</div>
 			</div>
 		</div>
@@ -110,28 +110,28 @@ function CaseO(){
 		<div className="next-tetrimino-grid">
 			<div className="grid-row">
 				<div className="grid-column">
-					{Coloring_player_cell("")}
-					{Coloring_player_cell("")}
-					{Coloring_player_cell("")}
-					{Coloring_player_cell("")}
+					{ColoringPlayerCell("")}
+					{ColoringPlayerCell("")}
+					{ColoringPlayerCell("")}
+					{ColoringPlayerCell("")}
 				</div>
 				<div className="grid-column">
-					{Coloring_player_cell("")}
-					{Coloring_player_cell("O")}
-					{Coloring_player_cell("O")}
-					{Coloring_player_cell("")}
+					{ColoringPlayerCell("")}
+					{ColoringPlayerCell("O")}
+					{ColoringPlayerCell("O")}
+					{ColoringPlayerCell("")}
 				</div>
 				<div className="grid-column">
-					{Coloring_player_cell("")}
-					{Coloring_player_cell("O")}
-					{Coloring_player_cell("O")}
-					{Coloring_player_cell("")}
+					{ColoringPlayerCell("")}
+					{ColoringPlayerCell("O")}
+					{ColoringPlayerCell("O")}
+					{ColoringPlayerCell("")}
 				</div>
 				<div className="grid-column">
-					{Coloring_player_cell("")}
-					{Coloring_player_cell("")}
-					{Coloring_player_cell("")}
-					{Coloring_player_cell("")}
+					{ColoringPlayerCell("")}
+					{ColoringPlayerCell("")}
+					{ColoringPlayerCell("")}
+					{ColoringPlayerCell("")}
 				</div>
 			</div>
 		</div>
@@ -143,28 +143,28 @@ function CaseS(){
 		<div className="next-tetrimino-grid">
 			<div className="grid-row">
 				<div className="grid-column">
-					{Coloring_player_cell("")}
-					{Coloring_player_cell("")}
-					{Coloring_player_cell("")}
-					{Coloring_player_cell("")}
+					{ColoringPlayerCell("")}
+					{ColoringPlayerCell("")}
+					{ColoringPlayerCell("")}
+					{ColoringPlayerCell("")}
 				</div>
 				<div className="grid-column">
-					{Coloring_player_cell("")}
-					{Coloring_player_cell("S")}
-					{Coloring_player_cell("S")}
-					{Coloring_player_cell("")}
+					{ColoringPlayerCell("")}
+					{ColoringPlayerCell("S")}
+					{ColoringPlayerCell("S")}
+					{ColoringPlayerCell("")}
 				</div>
 				<div className="grid-column">
-					{Coloring_player_cell("S")}
-					{Coloring_player_cell("S")}
-					{Coloring_player_cell("")}
-					{Coloring_player_cell("")}
+					{ColoringPlayerCell("S")}
+					{ColoringPlayerCell("S")}
+					{ColoringPlayerCell("")}
+					{ColoringPlayerCell("")}
 				</div>
 				<div className="grid-column">
-					{Coloring_player_cell("")}
-					{Coloring_player_cell("")}
-					{Coloring_player_cell("")}
-					{Coloring_player_cell("")}
+					{ColoringPlayerCell("")}
+					{ColoringPlayerCell("")}
+					{ColoringPlayerCell("")}
+					{ColoringPlayerCell("")}
 				</div>
 			</div>
 		</div>
@@ -176,28 +176,28 @@ function CaseT(){
 		<div className="next-tetrimino-grid">
 			<div className="grid-row">
 				<div className="grid-column">
-					{Coloring_player_cell("")}
-					{Coloring_player_cell("")}
-					{Coloring_player_cell("")}
-					{Coloring_player_cell("")}
+					{ColoringPlayerCell("")}
+					{ColoringPlayerCell("")}
+					{ColoringPlayerCell("")}
+					{ColoringPlayerCell("")}
 				</div>
 				<div className="grid-column">
-					{Coloring_player_cell("")}
-					{Coloring_player_cell("")}
-					{Coloring_player_cell("T")}
-					{Coloring_player_cell("")}
+					{ColoringPlayerCell("")}
+					{ColoringPlayerCell("")}
+					{ColoringPlayerCell("T")}
+					{ColoringPlayerCell("")}
 				</div>
 				<div className="grid-column">
-					{Coloring_player_cell("")}
-					{Coloring_player_cell("T")}
-					{Coloring_player_cell("T")}
-					{Coloring_player_cell("T")}
+					{ColoringPlayerCell("")}
+					{ColoringPlayerCell("T")}
+					{ColoringPlayerCell("T")}
+					{ColoringPlayerCell("T")}
 				</div>
 				<div className="grid-column">
-					{Coloring_player_cell("")}
-					{Coloring_player_cell("")}
-					{Coloring_player_cell("")}
-					{Coloring_player_cell("")}
+					{ColoringPlayerCell("")}
+					{ColoringPlayerCell("")}
+					{ColoringPlayerCell("")}
+					{ColoringPlayerCell("")}
 				</div>
 			</div>
 		</div>
@@ -209,28 +209,28 @@ function CaseZ(){
 		<div className="next-tetrimino-grid">
 			<div className="grid-row">
 				<div className="grid-column">
-					{Coloring_player_cell("")}
-					{Coloring_player_cell("")}
-					{Coloring_player_cell("")}
-					{Coloring_player_cell("")}
+					{ColoringPlayerCell("")}
+					{ColoringPlayerCell("")}
+					{ColoringPlayerCell("")}
+					{ColoringPlayerCell("")}
 				</div>
 				<div className="grid-column">
-					{Coloring_player_cell("Z")}
-					{Coloring_player_cell("Z")}
-					{Coloring_player_cell("")}
-					{Coloring_player_cell("")}
+					{ColoringPlayerCell("Z")}
+					{ColoringPlayerCell("Z")}
+					{ColoringPlayerCell("")}
+					{ColoringPlayerCell("")}
 				</div>
 				<div className="grid-column">
-					{Coloring_player_cell("")}
-					{Coloring_player_cell("Z")}
-					{Coloring_player_cell("Z")}
-					{Coloring_player_cell("")}
+					{ColoringPlayerCell("")}
+					{ColoringPlayerCell("Z")}
+					{ColoringPlayerCell("Z")}
+					{ColoringPlayerCell("")}
 				</div>
 				<div className="grid-column">
-					{Coloring_player_cell("")}
-					{Coloring_player_cell("")}
-					{Coloring_player_cell("")}
-					{Coloring_player_cell("")}
+					{ColoringPlayerCell("")}
+					{ColoringPlayerCell("")}
+					{ColoringPlayerCell("")}
+					{ColoringPlayerCell("")}
 				</div>
 			</div>
 		</div>
@@ -242,28 +242,28 @@ function CaseDefault(){
 		<div className="next-tetrimino-grid">
 			<div className="grid-row">
 				<div className="grid-column">
-					{Coloring_player_cell("")}
-					{Coloring_player_cell("")}
-					{Coloring_player_cell("")}
-					{Coloring_player_cell("")}
+					{ColoringPlayerCell("")}
+					{ColoringPlayerCell("")}
+					{ColoringPlayerCell("")}
+					{ColoringPlayerCell("")}
 				</div>
 				<div className="grid-column">
-					{Coloring_player_cell("")}
-					{Coloring_player_cell("")}
-					{Coloring_player_cell("")}
-					{Coloring_player_cell("")}
+					{ColoringPlayerCell("")}
+					{ColoringPlayerCell("")}
+					{ColoringPlayerCell("")}
+					{ColoringPlayerCell("")}
 				</div>
 				<div className="grid-column">
-					{Coloring_player_cell("")}
-					{Coloring_player_cell("")}
-					{Coloring_player_cell("")}
-					{Coloring_player_cell("")}
+					{ColoringPlayerCell("")}
+					{ColoringPlayerCell("")}
+					{ColoringPlayerCell("")}
+					{ColoringPlayerCell("")}
 				</div>
 				<div className="grid-column">
-					{Coloring_player_cell("")}
-					{Coloring_player_cell("")}
-					{Coloring_player_cell("")}
-					{Coloring_player_cell("")}
+					{ColoringPlayerCell("")}
+					{ColoringPlayerCell("")}
+					{ColoringPlayerCell("")}
+					{ColoringPlayerCell("")}
 				</div>
 			</div>
 		</div>
@@ -271,7 +271,7 @@ function CaseDefault(){
 }
 
 //cf play_solo_demo.jsx L23 pour savoir comment appeler ;)
-export function Next_tetrimino(next_one){
+export function NextTetrimino(next_one){
 	if (next_one === "I")
 		return (
 			<CaseI />

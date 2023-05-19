@@ -57,7 +57,7 @@ function PCaseIndestructible(){
 	);
 }
 
-export function Coloring_player_cell(cell){
+export function ColoringPlayerCell(cell){
 	if (cell === "I")
 		return (
 			<PCaseI />
@@ -150,7 +150,7 @@ function OCaseIndestructible(){
 	);
 }
 
-export function Coloring_opponent_cell(cell){
+export function ColoringOpponentCell(cell){
 	if (cell === "I")
 		return (
 			<OCaseI />

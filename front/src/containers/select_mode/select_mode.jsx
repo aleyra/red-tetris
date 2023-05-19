@@ -9,7 +9,7 @@ import { FriendModeButton, SoloEasyModeButton, SoloHardModeButton, SoloNormalMod
 import { MultiModeButton } from "../../components/buttons";
 import { AliasTextField, PassWordTextField } from "../../components/text-field";
 
-export function Select_Mode(){
+export function SelectMode(){
 	const [newAlias, setNewAlias] = React.useState("");
 	const [newPwd, setNewPwd] = React.useState("");
 
