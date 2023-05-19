@@ -10,7 +10,7 @@
 	margin: 10px;
 }
 
-.Select-mode-alias{
+.Select-mode-tf-lvl0{
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
@@ -18,6 +18,6 @@
 	justify-content: center;
 }
 
-.Select-mode-alias-tf{
+.Select-mode-tf-lvl1{
 	margin: 10px;
 }

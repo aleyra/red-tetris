@@ -32,7 +32,7 @@
 }
 
 .flex-row-space{
-	height: 195px;
+	height: 95px;
 }
 
 .player-game-grid{
@@ -192,18 +192,18 @@
 	background-color: var(--indestructible-color);
 }
 
-.info-game-lvl0{
-	display: flex;
-	flex-wrap: wrap;
-	flex-direction: column;
-	align-items: flex-start;
-}
-
-.info-game-lvl1{
+.info-game-row{
 	display: flex;
 	flex-wrap: wrap;
 	flex-direction: row;
 	align-items: flex-start;
 }
 
+.info-game-column{
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: column;
+	margin-right: 10px;
+	align-items: flex-start;
+}
 

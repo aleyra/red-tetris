@@ -6,7 +6,7 @@ import '../../css/Home.css'
 //const
 
 //function
-import { Presentation } from "./Presentation";
+import { Presentation } from "./presentation";
 import { OrangeColoredButton, PurpleColoredButton } from "../../components/buttons";
 
 export function Home() {
