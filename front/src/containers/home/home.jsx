@@ -18,22 +18,20 @@ export function Home() {
 						<PurpleColoredButton
 							variant="contained"
 							disableRipple
-							// sx={{ color: 'black'}}
 						>
 							Play
 						</PurpleColoredButton>
 					</Link>
 				</div>
 				<div className="Home-Button">
-					{/* <Link to={"/Ranking"}> */}
+					<Link to={"/Ranking"}>
 						<OrangeColoredButton
 							variant="contained"
 							disableRipple
-							// sx={{ color: 'black'}}
 						>
 							Ranking
 						</OrangeColoredButton>
-					{/* </Link> */}
+					</Link>
 				</div>
 
 			</div>

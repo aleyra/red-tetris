@@ -13,6 +13,12 @@ import { PlaySoloEDemo } from './containers/play/play_soloE_demo';
 import { PlaySoloHDemo } from './containers/play/play_soloH_demo';
 import { PlaySoloNDemo } from './containers/play/play_soloN_demo';
 import { PlayMultiDemo } from './containers/play/play_multi_mode';
+import { Ranking } from './containers/Ranking/ranking';
+// import { RankingFriend } from './containers/Ranking/ranking';
+// import { RankingMulti } from './containers/Ranking/ranking';
+// import { RankingSoloEasy } from './containers/Ranking/ranking';
+// import { RankingSoloNormal } from './containers/Ranking/ranking';
+// import { RankingSoloHard } from './containers/Ranking/ranking';
 import { SelectMode } from './containers/select_mode/select_mode';
 
 const ENDPOINT = "http://localhost:4001";
@@ -66,6 +72,7 @@ export default function App() {
 						<Route path="/Demo-SoloH" element={<PlaySoloHDemo />} />
 						<Route path="/Demo-Multi" element={<PlayMultiDemo />} />
 						<Route path="/Demo-Friend" element={<PlayFriendDemo />} />
+						<Route path='/Ranking' element={<Ranking />} />
 						<Route path='*' element={<NotFound />} />
 					</Routes>
 				</div>
