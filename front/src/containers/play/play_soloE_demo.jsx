@@ -21,7 +21,7 @@ export function PlaySoloEDemo(){
 						You can swap this one with the current by pressing SPACE
 					</div>
 					<div className="info-game-row">
-						{NextTetrimino("T")}
+						{NextTetrimino("S")}
 					</div>
 					<div className="info-game-row">
 						<b>Your Score</b> :
