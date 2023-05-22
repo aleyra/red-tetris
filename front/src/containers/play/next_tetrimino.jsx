@@ -272,36 +272,38 @@ function CaseDefault(){
 
 //cf play_solo_demo.jsx L23 pour savoir comment appeler ;)
 export function NextTetrimino(next_one){
-	if (next_one === "I")
-		return (
-			<CaseI />
-		);
-	else if (next_one === "J")
-		return (
-			<CaseJ />
-		);
-	else if (next_one === "L")
-		return (
-			<CaseL />
-		);
-	else if (next_one === "O")
-		return (
-			<CaseO />
-		);
-	else if (next_one === "S")
-		return (
-			<CaseS />
-		);
-	else if (next_one === "T")
-		return (
-			<CaseT />
-		);
-	else if (next_one === "Z")
-		return (
-			<CaseZ />
-		);
-	else
-		return(
-			<CaseDefault />
-		);
+	switch(next_one){
+		case "I":
+			return (
+				<CaseI />
+			);
+		case "J":
+			return (
+				<CaseJ />
+			);
+		case "L":
+			return (
+				<CaseL />
+			);
+		case "O":
+			return (
+				<CaseO />
+			);
+		case "S":
+			return (
+				<CaseS />
+			);
+		case "T":
+			return (
+				<CaseT />
+			);
+		case "Z":
+			return (
+				<CaseZ />
+			);
+		default:
+			return(
+				<CaseDefault />
+			);
+	}
 }
