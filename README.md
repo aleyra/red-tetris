@@ -18,3 +18,4 @@ restart avec JUSTE react... `npx create-react-app my-app`
 * Parce que avec la nouvelle version de socket io ils te forcent a parametrer des choses par rapport aux cors (quand tu fais des requetes vers d'autres sites) : https://stackoverflow.com/questions/65566462/how-to-fix-this-cors-issue-in-socket-io
 * varaibles en CSS : https://developer.mozilla.org/fr/docs/Web/CSS/Using_CSS_custom_properties
 * https://react-redux.js.org/introduction/getting-started
+* toaster https://react-hot-toast.com/
