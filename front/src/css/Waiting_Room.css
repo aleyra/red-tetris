@@ -1,0 +1,14 @@
+.WR_TFs{
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: row;
+	justify-content: center;
+}
+
+.WR_TF{
+	margin: 10px;
+}
+
+.WR_button{
+	margin: 10px;
+}

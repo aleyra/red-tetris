@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 //css
 import './../../css/Select_mode.css';
@@ -8,42 +8,74 @@ import './../../css/Select_mode.css';
 import { FriendModeButton, SoloEasyModeButton, SoloHardModeButton, SoloNormalModeButton } from "../../components/buttons";
 import { MultiModeButton } from "../../components/buttons";
 import { AliasTextField, PassWordTextField } from "../../components/text-field";
+import { Notification } from "../../components/notifications";
 
 export function SelectMode(){
-	const [newAlias, setNewAlias] = React.useState("");
-	const [newPwd, setNewPwd] = React.useState("");
+	const [alias, setAlias] = React.useState("");
+	const [password, setPassword] = React.useState("");
+
+	const navigate = useNavigate();
 
 	//suggestion pour gérer le type de partie demandé en back...
 	//L'idée est de set newAlias au moment où on clique sur un bouton
 	//par défaut je propose qu'on mettent "Anonymous" comme alias ou un truc du genre par contre j'ai essayé de le set en front et react a boudé
 	//Idem pour newPwd
-	// const handleClickSoloNormal = () => {
+	const handleClickSoloNormal = () => {
 	// 	socket.emit('queue', { type: 'SoloNormal' });
-	// };
+	};
 
-	// const handleClickSoloEasy = () => {
+	const handleClickSoloEasy = () => {
 	// 	socket.emit('queue', { type: 'SoloEasy' });
-	// };
+	};
 
-	// const handleClickSoloHard = () => {
+	const handleClickSoloHard = () => {
 	// 	socket.emit('queue', { type: 'SoloHard' });
-	// };
+	};
 
-	// const handleClickMulti = () => {
+	const handleClickMulti = () => {
 	// 	socket.emit('queue', { type: 'Multi' });
-	// };
+	};
 
-	// const handleClickFriend = () => {
-	// 	socket.emit('queue', { type: 'Friend' });
+	const handleClickFriend = async () => {
+		//voir pour envoyer une erreur si le password est inexixtant
+		const body = password.length === 0 ? {alias} : {alias, password};
+		//changer l'adresse du fetch
+		// await fetch(`${process.env.REACT_APP_NESTJS_HOSTNAME}/api/channels/`, {
+		// 	method: "POST",
+		// 	credentials: "include",
+		// 	headers: {
+		// 		'Accept': 'application/json',
+		// 		'Content-Type': 'application/json'
+		// 	},
+		// 	body: JSON.stringify(body)
+		// })
+		// .then(response => {
+		// 	if (!response.ok)
+		// 		return response;
+		// 	else {
+		// 		socket.emit('queue', { type: 'Friend' });
+		// 		//remplacer 0 par le bon numéro de room, mais comment l'avoir ?
+				navigate('/Waiting-Room/0');
+		// 	}
+		// })
+		// .then(data => {
+		// 	if (data !== undefined) {
+		//		Notification(data);
+		// 	}
+		// });
+	};
+	
+	// = () => {
+	// 	
 	// };
 
 
 	const handleInputAlias = (e) => {
-		setNewAlias(e.target.value);
+		setAlias(e.target.value);
 	};
 
 	const handleInputPassword = (e) => {
-		setNewPwd(e.target.value);
+		setPassword(e.target.value);
 	};
 
 	return(
@@ -75,7 +107,7 @@ export function SelectMode(){
 							variant="contained"
 							disableRipple
 							sx={{ color: 'black'}}
-							// onClick={handleClickSoloNormal}
+							onClick={handleClickSoloNormal}
 						>
 							PLAY<br></br>
 							Solo Normal Mode
@@ -87,7 +119,7 @@ export function SelectMode(){
 						<SoloEasyModeButton
 							variant="contained"
 							disableRipple
-							// onClick={handleClickSoloEasy}
+							onClick={handleClickSoloEasy}
 						>
 							PLAY<br></br>
 							Solo Easy Mode
@@ -100,7 +132,7 @@ export function SelectMode(){
 							variant="contained"
 							disableRipple
 							sx={{ color: 'black'}}
-							// onClick={handleClickSoloHard}
+							onClick={handleClickSoloHard}
 						>
 							PLAY<br></br>
 							Solo Hard Mode
@@ -112,7 +144,7 @@ export function SelectMode(){
 						<MultiModeButton
 							variant="contained"
 							disableRipple
-							// onClick={handleClickMulti}
+							onClick={handleClickMulti}
 						>
 							PLAY<br></br>
 							Multiplayer Mode<br></br>
@@ -121,16 +153,15 @@ export function SelectMode(){
 					</Link>
 				</div>
 				<div className="Select-mode-button">
-					<Link to="/Demo-Friend">
 						<FriendModeButton
 							variant="contained"
 							disableRipple
 							sx={{ color: 'black'}}
-							// onClick={handleClickFriend}
+							onClick={handleClickFriend}
 						>
 							PLAY<br></br>
-							Multiplayer Mode with a Friend						</FriendModeButton>
-					</Link>
+							Multiplayer Mode with a Friend
+						</FriendModeButton>
 				</div>
 			</div>
 			<div className="Select-mode-tf-lvl0">
