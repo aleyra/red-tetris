@@ -19,3 +19,4 @@ restart avec JUSTE react... `npx create-react-app my-app`
 * varaibles en CSS : https://developer.mozilla.org/fr/docs/Web/CSS/Using_CSS_custom_properties
 * https://react-redux.js.org/introduction/getting-started
 * toaster https://react-hot-toast.com/
+* Hash-based url : 

@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 //css
 import './../../css/Select_mode.css';
@@ -21,19 +21,27 @@ export function SelectMode(){
 	//par défaut je propose qu'on mettent "Anonymous" comme alias ou un truc du genre par contre j'ai essayé de le set en front et react a boudé
 	//Idem pour newPwd
 	const handleClickSoloNormal = () => {
-	// 	socket.emit('queue', { type: 'SoloNormal' });
+		// socket.emit('queue', { type: 'SoloNormal' });
+		//il faut recup le numero de la partie, creer un url avec ce numéro et mettre cet url dans navigate
+		navigate('/1');
 	};
 
 	const handleClickSoloEasy = () => {
-	// 	socket.emit('queue', { type: 'SoloEasy' });
+		// socket.emit('queue', { type: 'SoloEasy' });
+		//il faut recup le numero de la partie, creer un url avec ce numéro et mettre cet url dans navigate
+		navigate('/2');
 	};
 
 	const handleClickSoloHard = () => {
-	// 	socket.emit('queue', { type: 'SoloHard' });
+		// socket.emit('queue', { type: 'SoloHard' });
+		//il faut recup le numero de la partie, creer un url avec ce numéro et mettre cet url dans navigate
+		navigate('/3');
 	};
 
 	const handleClickMulti = () => {
-	// 	socket.emit('queue', { type: 'Multi' });
+		// socket.emit('queue', { type: 'Multi' });
+		//il faut recup le numero de la partie, creer un url avec ce numéro et mettre cet url dans navigate
+		navigate('/4');
 	};
 
 	const handleClickFriend = async () => {
@@ -54,8 +62,8 @@ export function SelectMode(){
 		// 		return response;
 		// 	else {
 		// 		socket.emit('queue', { type: 'Friend' });
-		// 		//remplacer 0 par le bon numéro de room, mais comment l'avoir ?
-				navigate('/Waiting-Room/0');
+		// 		//il faut recup le numero de la partie, creer un url avec ce numéro et mettre cet url dans navigate
+				navigate('/5');
 		// 	}
 		// })
 		// .then(data => {
@@ -102,7 +110,7 @@ export function SelectMode(){
 			</div>
 			<div className="Select-mode-menu">
 				<div className="Select-mode-button">
-					<Link to="/Demo-SoloN">
+					{/* <Link to="/Demo-SoloN"> */}
 						<SoloNormalModeButton
 							variant="contained"
 							disableRipple
@@ -112,10 +120,10 @@ export function SelectMode(){
 							PLAY<br></br>
 							Solo Normal Mode
 						</SoloNormalModeButton>
-					</Link>
+					{/* </Link> */}
 				</div>
 				<div className="Select-mode-button">
-					<Link to="/Demo-SoloE">
+					{/* <Link to="/Demo-SoloE"> */}
 						<SoloEasyModeButton
 							variant="contained"
 							disableRipple
@@ -124,10 +132,10 @@ export function SelectMode(){
 							PLAY<br></br>
 							Solo Easy Mode
 						</SoloEasyModeButton>
-					</Link>
+					{/* </Link> */}
 				</div>
 				<div className="Select-mode-button">
-					<Link to="/Demo-SoloH">
+					{/* <Link to="/Demo-SoloH"> */}
 						<SoloHardModeButton
 							variant="contained"
 							disableRipple
@@ -137,10 +145,10 @@ export function SelectMode(){
 							PLAY<br></br>
 							Solo Hard Mode
 						</SoloHardModeButton>
-					</Link>
+					{/* </Link> */}
 				</div>
 				<div className="Select-mode-button">
-					<Link to="/Demo-Multi">
+					{/* <Link to="/Demo-Multi"> */}
 						<MultiModeButton
 							variant="contained"
 							disableRipple
@@ -150,7 +158,7 @@ export function SelectMode(){
 							Multiplayer Mode<br></br>
 							4 Players
 						</MultiModeButton>
-					</Link>
+					{/* </Link> */}
 				</div>
 				<div className="Select-mode-button">
 						<FriendModeButton

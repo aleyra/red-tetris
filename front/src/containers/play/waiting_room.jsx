@@ -8,7 +8,7 @@ import '../../css/Waiting_Room.css'
 import { AliasTextField, PassWordTextField } from "../../components/text-field";
 import { GreenColoredButton } from "../../components/buttons";
 
-export function WaitingRoom(){
+export function WaitingRoom(mode){
 	let { wrid } = useParams();
 
 	const [alias, setAlias] = React.useState("");
@@ -21,6 +21,8 @@ export function WaitingRoom(){
 	const handleInputPassword = (e) => {
 		setPassword(e.target.value);
 	};
+
+	//recup le nom du user qui a cree la room
 
 	const handleClickJoin = async (event) => {
 		//changer l'adresse du fetch
@@ -42,21 +44,28 @@ export function WaitingRoom(){
 		// .then(data => {if (data !== undefined) Notification(data);});
 	}
 
-	/* si user == celui qui a cree la room */
-		// return(
-		// 	<React.Fragment>
-		// 		<h1>
-		// 			Waiting for your friend to connect...
-		// 		</h1>
-		// 		<div>
-		// 			Please send this address to your friend so they can connect to your room...
-		// 		</div>
-		// 		<h2>
-		// 			http://address_host/Waiting-Room/{wrid}
-		// 		</h2>
-		// 	</React.Fragment>
-		// );
-	//else
+	if (mode === "Multi")
+		return(
+			<React.Fragment>
+				<h1>Welcome to the waiting room</h1>
+				<div>You have to wait for x player(s) on 4 to connect...</div>
+			</React.Fragment>
+		);
+	// else if (mode === "Friend" /* &&& user === celui qui a creer a room */)
+	// 	return(
+	// 		<React.Fragment>
+	// 			<h1>
+	// 				Waiting for your friend to connect...
+	// 			</h1>
+	// 			<div>
+	// 				Please send this address to your friend so they can connect to your room...
+	// 			</div>
+	// 			<h2>
+	// 				http://address_host/#/{wrid}
+	// 			</h2>
+	// 		</React.Fragment>
+	// 	);
+	else
 		return(
 			<React.Fragment>
 				<h1>
