@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { BrowserRouter as Router, Route, Routes, HashRouter, Switch} from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, HashRouter, Link} from 'react-router-dom';
 import socketIOClient from "socket.io-client";
 
 //css
@@ -109,8 +109,12 @@ export default function App() {
 						</Route>
 							{/* <Route path=':gid'  element={<Test />} /> */}
 						<Route path='/test' element={<Test2 />} />
+						<Route path=':gid' element={<Test />} />
 						<Route element={<NotFound />} />
 					</Routes>
+				</div>
+				<div>
+					<Link to='1'>bouh</Link>
 				</div>
 			</HashRouter>
 		</React.Fragment>
