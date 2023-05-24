@@ -1,9 +1,11 @@
 import React from "react";
-import { PlaySoloNDemo } from "./play_soloN_demo";
-import { SelectMode } from "../select_mode/select_mode";
 import { useParams } from "react-router-dom";
+
+//functions
+import { PlaySoloNDemo } from "./play_soloN_demo";
 import { PlaySoloHDemo } from "./play_soloH_demo";
 import { PlaySoloEDemo } from "./play_soloE_demo";
+import { SelectMode } from "../select_mode/select_mode";
 import { WaitingRoom } from "./waiting_room";
 
 export function Play(){
