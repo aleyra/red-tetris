@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { BrowserRouter as Router, Route, Routes} from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, HashRouter, Switch} from 'react-router-dom';
 import socketIOClient from "socket.io-client";
 
 //css
@@ -16,13 +16,18 @@ import { PlayMultiDemo } from './containers/play/play_multi_mode';
 import { Ranking } from './containers/Ranking/ranking';
 import { SelectMode } from './containers/select_mode/select_mode';
 import { WaitingRoom } from './containers/play/waiting_room';
+import { Test, Test2 } from './test';
+
 
 const ENDPOINT = "http://localhost:4001";
 
 export default function App() {
 
+	/*
 	const[grid, setGrid] = useState("");
+	*/
 
+	/*
 	useEffect(() => {
 		const socket = socketIOClient(ENDPOINT);
 		socket.emit("startGame");
@@ -32,7 +37,8 @@ export default function App() {
 			console.log(data);
 		});
 		document.addEventListener('keydown', detectKeyDown, true);
-	  }, []);
+	}, []);
+	*/
 
 	// more advanced version with id handling, still WIP
 	// useEffect(() => {
@@ -49,19 +55,21 @@ export default function App() {
 	// 	document.addEventListener('keydown', detectKeyDown, true);
 	//   }, []);
 
+	/*
 	const detectKeyDown = (e) => {
-	    const socket = socketIOClient(ENDPOINT);
-	    socket.emit("keydown", e.key);
+		const socket = socketIOClient(ENDPOINT);
+		socket.emit("keydown", e.key);
 		console.log(e.key);
 	}
+	*/
 
 
 	return(
 		<React.Fragment>
-			<Router>
+			{/* <Router>
 				<div className='Main-div'>
 					<Routes>
-						<Route path="/" element={<Home />} />
+						<Route exact path="/" element={<Home />} />
 						<Route path="/SelectMode" element={<SelectMode />} />
 						<Route path="/Demo-SoloN" element={<PlaySoloNDemo />} />
 						<Route path="/Demo-SoloE" element={<PlaySoloEDemo />} />
@@ -73,9 +81,38 @@ export default function App() {
 							<Route path=':wrid' element={<WaitingRoom />} />
 						</Route>
 						<Route path='*' element={<NotFound />} />
+						<Route path='/test'>
+							<Route path=':gid'  element={<Test />} />
+						</Route>
 					</Routes>
 				</div>
-			</Router>
+			</Router> */}
+			{/* <HashRouter
+				basename='/'
+				hashType="noslash"
+			>
+				<Test />
+			</HashRouter> */}
+			<HashRouter>
+				<div className='Main-div'>
+					<Routes>
+						<Route exact path="/" element={<Home />} />
+						<Route path="/SelectMode" element={<SelectMode />} />
+						<Route path="/Demo-SoloN" element={<PlaySoloNDemo />} />
+						<Route path="/Demo-SoloE" element={<PlaySoloEDemo />} />
+						<Route path="/Demo-SoloH" element={<PlaySoloHDemo />} />
+						<Route path="/Demo-Multi" element={<PlayMultiDemo />} />
+						<Route path="/Demo-Friend" element={<PlayFriendDemo />} />
+						<Route path='/Ranking' element={<Ranking />} />
+						<Route path='/Waiting-Room'>
+							<Route path=':wrid' element={<WaitingRoom />} />
+						</Route>
+							{/* <Route path=':gid'  element={<Test />} /> */}
+						<Route path='/test' element={<Test2 />} />
+						<Route element={<NotFound />} />
+					</Routes>
+				</div>
+			</HashRouter>
 		</React.Fragment>
 	);
 }
