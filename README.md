@@ -19,4 +19,5 @@ restart avec JUSTE react... `npx create-react-app my-app`
 * varaibles en CSS : https://developer.mozilla.org/fr/docs/Web/CSS/Using_CSS_custom_properties
 * https://react-redux.js.org/introduction/getting-started
 * toaster https://react-hot-toast.com/
-* Hash-based url : 
+* Hash-based url : https://upmostly.com/tutorials/what-is-hash-routing
+* pourquoi on garde le / après le # : https://stackoverflow.com/questions/71398624/hashrouter-no-slash-with-react-router-dom-v6 
