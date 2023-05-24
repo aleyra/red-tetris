@@ -108,13 +108,13 @@ export default function App() {
 							<Route path=':wrid' element={<WaitingRoom />} />
 						</Route>
 							{/* <Route path=':gid'  element={<Test />} /> */}
-						<Route path='/test' element={<Test2 />} />
+						{/* <Route path='/test' element={<Test2 />} /> */}
 						<Route path=':gid' element={<Test />} />
 						<Route element={<NotFound />} />
 					</Routes>
 				</div>
 				<div>
-					<Link to='1'>bouh</Link>
+					<Link to="/1">bouh</Link>
 				</div>
 			</HashRouter>
 		</React.Fragment>
