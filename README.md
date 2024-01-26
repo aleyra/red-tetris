@@ -7,10 +7,18 @@ restart avec vite -> react + javascript only
 
 restart avec JUSTE react... `npx create-react-app my-app`
 
+## idées pour les bonus
+* la mise en place d'un score en mode solo avec un ranking
+* un autre mode solo ou on peut echanger la pièce en cours et la future piece (existe sur le tetris 99)
+* un mode solo plus hard où on a pas de preview de la future piece
+* une room avec mdp pour que des amis puissent jouer ensemble
+* un ranking
+
+
 ## grille d'eval
 * https://github.com/zanninso/42-correction-files/blob/master/red-tetris.pdf
 
-## sources
+## liens utiles
 * https://tetris.wiki/Tetromino
 * qu'est ce un test unitaire : https://fr.yeeply.com/blog/test-unitaire-comment-sy-prendre/
 * pour socket io en general : https://www.valentinog.com/blog/socket-react/
@@ -21,3 +29,4 @@ restart avec JUSTE react... `npx create-react-app my-app`
 * toaster https://react-hot-toast.com/
 * Hash-based url : https://upmostly.com/tutorials/what-is-hash-routing
 * pourquoi on garde le / après le # : https://stackoverflow.com/questions/71398624/hashrouter-no-slash-with-react-router-dom-v6 
+
