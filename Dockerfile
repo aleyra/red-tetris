@@ -1,8 +1,11 @@
 FROM node:latest
 
-WORKDIR /dev/app
+WORKDIR /app
 
-EXPOSE 8000
+COPY ./front/package.json ./front/package-lock.json ./
 
-# faire un script pour exe de daemon
-CMD [ "sh", "run_our_script.sh" ]
+RUN npm install
+
+EXPOSE 3000
+
+CMD [ "npm", "run", "start" ]

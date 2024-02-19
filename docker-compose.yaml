@@ -4,28 +4,30 @@ services:
     image: front-img
     container_name: front-container
     ports:
-      - '8000:8000'
+      - 3000:3000
     networks:
       - red-tetris-network
     volumes:
-      - ./front:/dev/app
-    env_file:
-      - .env
+      - ./front:/app
+    # env_file:
+    #   - .env
     restart: always
-    build: ./front
-  back:
-    image: back-img
-    container_name: back-container
-    ports:
-      - '8000:8000'
-    networks:
-      - red-tetris-network
-    volumes:
-      - ./back:/dev/app
-    env_file:
-      - .env
-    restart: always
-    build: ./back
+    #build: ./front # move this docker file to /front and uncomment this line
+    build: .
+
+  # back:
+  #   image: back-img
+  #   container_name: back-container
+  #   ports:
+  #     - 8000:8000
+  #   networks:
+  #     - red-tetris-network
+  #   volumes:
+  #     - ./back:/dev/app
+  #   env_file:
+  #     - .env
+  #   restart: always
+  #   build: ./back
 
 networks:
   red-tetris-network:
