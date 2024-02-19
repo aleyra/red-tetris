@@ -15,19 +15,20 @@ services:
     #   - .env
     restart: always
 
-  # back:
-  #   image: back-img
-  #   container_name: back-container
-  #   ports:
-  #     - 8000:8000
-  #   networks:
-  #     - red-tetris-network
-  #   volumes:
-  #     - ./back:/dev/app
-  #   env_file:
-  #     - .env
-  #   restart: always
-  #   build: ./back
+  server:
+    image: server-img
+    container_name: server-container
+    build: ./server
+    ports:
+      - 8000:8000
+    networks:
+      - red-tetris-network
+    volumes:
+      - ./server:/api
+      - /api/node_modules
+    # env_file:
+    #   - .env
+    restart: always
 
 networks:
   red-tetris-network:
