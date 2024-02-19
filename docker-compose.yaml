@@ -1,0 +1,32 @@
+version: '3.3'
+services:
+  front:
+    image: front-img
+    container_name: front-container
+    ports:
+      - '8000:8000'
+    networks:
+      - red-tetris-network
+    volumes:
+      - ./front:/dev/app
+    env_file:
+      - .env
+    restart: always
+    build: ./front
+  back:
+    image: back-img
+    container_name: back-container
+    ports:
+      - '8000:8000'
+    networks:
+      - red-tetris-network
+    volumes:
+      - ./back:/dev/app
+    env_file:
+      - .env
+    restart: always
+    build: ./back
+
+networks:
+  red-tetris-network:
+    driver: bridge
