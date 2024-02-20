@@ -1,18 +1,14 @@
-const express = require('express');
-const { createServer } = require('node:http');
-const { Server } = require('socket.io');
+import express from 'express';
+import { createServer } from 'node:http';
 
 const app = express();
 const server = createServer(app);
-const io = new Server(server);
+const port = 8000;
 
-io.on('connection', (socket) => {
-	console.log('a user connected');
-	socket.on('disconnect', () => {
-	  console.log('user disconnected');
-	});
-  });
+app.get('/', (req, res) => {
+  res.send('<h1>Hello world</h1>');
+});
 
-server.listen(8000, () => {
-  console.log('server running at http://localhost:8000');
+server.listen(port, () => {
+  console.log(`server running at http://localhost:${port}`);
 });
