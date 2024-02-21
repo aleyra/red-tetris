@@ -1,18 +1,16 @@
 import express from 'express';
 import { createServer } from 'node:http';
-import { fileURLToPath } from 'node:url';
-import { dirname, join } from 'node:path';
 import { Server } from 'socket.io';
+import config from './config.js';
 
 const app = express();
 const server = createServer(app);
 const io = new Server(server);
-const port = 8000;
 
-const __dirname = dirname(fileURLToPath(import.meta.url));
+app.use(express.static(config.DIR_PATH));
 
 app.get('/', (req, res) => {
-  res.sendFile(join(__dirname, 'index.html'));
+  res.sendFile(config.FILE_PATH);
 });
 
 io.on('connection', (socket) => {
@@ -22,6 +20,6 @@ io.on('connection', (socket) => {
   });
 });
 
-server.listen(port, () => {
-  console.log(`server running at http://localhost:${port}`);
+server.listen(config.PORT, () => {
+  console.log(`server running at http://localhost:${config.PORT}`);
 });
