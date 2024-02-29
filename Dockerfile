@@ -27,12 +27,12 @@ COPY server/package.json server/package-lock.json ./
 RUN npm install
 
 # Stage 3: Create the final image
-FROM node:latest
+FROM node:latest as final
 
 WORKDIR /app/server
 
-COPY --from=front-builder /app/front/build /app/front/public
-COPY --from=server-builder /app/server .
+COPY --from=front-builder /app/front/build ../front/build
+COPY --from=server-builder /app/server/node_modules ./node_modules
 
 EXPOSE 8000
 
