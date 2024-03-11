@@ -40,4 +40,6 @@ http://localhost:3000
 
 # commandes utiles venant du tuto redux
 * `npm instal redux` a lancer au tout debut dans le container
-* `run node index` pour lancer les tests dans un terminal (dans le container)
+* run `node index` pour lancer les tests dans un terminal du fichier index.js (dans le container)
+* `node bouh` pour lancer les tests dans un terminal du fichier bouh.js
+* `npm install redux-logger` dans le container pour installer la lin redux-logger

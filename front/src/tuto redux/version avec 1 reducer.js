@@ -42,7 +42,7 @@ const reducer = (state = initialState, action) => {
 
 const store = createStore(reducer) // create a store
 console.log('Initial state', store.getState())
-const unsubscribe = store.subscribe(() => console.log('Update state', store.getState()) // set up a listener
+const unsubscribe = store.subscribe(() => console.log('Update state', store.getState())) // set up a listener
 store.dispatch(buyCake())
 store.dispatch(buyCake())
 store.dispatch(buyCake())
