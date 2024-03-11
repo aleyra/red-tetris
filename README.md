@@ -29,10 +29,15 @@ restart avec JUSTE react... `npx create-react-app my-app`
 * toaster https://react-hot-toast.com/
 * Hash-based url : https://upmostly.com/tutorials/what-is-hash-routing
 * pourquoi on garde le / après le # : https://stackoverflow.com/questions/71398624/hashrouter-no-slash-with-react-router-dom-v6
-
+* React Redux Tutorial : https://www.youtube.com/watch?v=9boMnm5X9ak&list=PLC3y8-rFHvwheJHvseC3I0HuYI2f46oAK&pp=iAQB
 # Lancer
 
 ```
 docker compose up --build
 ```
 http://localhost:3000
+
+
+# commandes utiles venant du tuto redux
+* `npm instal redux` a lancer au tout debut dans le container
+* `run node index` pour lancer les tests dans un terminal (dans le container)

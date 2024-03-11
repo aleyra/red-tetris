@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Route, Routes, HashRouter } from 'react-router-dom';
+import redux from 'redux'
 import socketIOClient from "socket.io-client";
 
 //css
