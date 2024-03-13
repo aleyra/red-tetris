@@ -4,7 +4,8 @@ services:
   app:
     image: red-tetris-img
     container_name: red-tetris-container
-    build: .
+    build:
+      dockerfile: Dockerfile.prod
     ports:
       - 8000:8000
     volumes:
