@@ -29,11 +29,11 @@ RUN npm install
 # Stage 3: Create the final image
 FROM node:latest as final
 
-WORKDIR /app/server
+COPY --from=front-builder /app/front/build /app/front/build
+COPY --from=server-builder /app/server/node_modules /app/server/node_modules
 
-COPY --from=front-builder /app/front/build ../front/build
-COPY --from=server-builder /app/server/node_modules ./node_modules
+WORKDIR /app/server
 
 EXPOSE 8000
 
-CMD ["npm", "start"]
+CMD ["npm", "run"]

@@ -1,17 +1,35 @@
 version: '3.3'
-
 services:
-  app:
-    image: red-tetris-img
-    container_name: red-tetris-container
-    build: .
+  front:
+    image: front-img
+    container_name: front-container
+    build:
+      context: ./front
+      dockerfile: Dockerfile.dev
+    ports:
+      - 3000:3000
+    networks:
+      - red-tetris-network
+    volumes:
+      - ./front:/front
+      - /front/node_modules
+    restart: always
+
+  server:
+    image: server-img
+    container_name: server-container
+    build:
+      context: ./server
+      dockerfile: Dockerfile.dev
     ports:
       - 8000:8000
+    networks:
+      - red-tetris-network
     volumes:
-      - ./front:/app/front
-      - ./server:/app/server
-      - /app/front/node_modules
-      - /app/server/node_modules
-    # env_file:
-    #   - .env
+      - ./server:/server
+      - /server/node_modules
     restart: always
+
+networks:
+  red-tetris-network:
+    driver: bridge
