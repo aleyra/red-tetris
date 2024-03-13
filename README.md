@@ -42,4 +42,5 @@ http://localhost:3000
 * `npm instal redux` a lancer au tout debut dans le container
 * run `node index` pour lancer les tests dans un terminal du fichier index.js (dans le container)
 * `node bouh` pour lancer les tests dans un terminal du fichier bouh.js
-* `npm install redux-logger` dans le container pour installer la lin redux-logger
+* `npm install redux-logger` dans le container pour installer la lib redux-logger
+* `npm install axios, redux-thunk` dans le container pour installer axios et redux-thunk
