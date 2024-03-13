@@ -13,7 +13,7 @@ import { SelectMode } from './containers/select_mode/select_mode';
 import { Play } from './containers/play/play';
 
 
-const ENDPOINT = "http://localhost:4001";
+const ENDPOINT = "http://localhost:8000";
 
 export default function App() {
 

@@ -1,9 +1,10 @@
 FROM node:latest
 
-WORKDIR /app
+WORKDIR /front
 
 COPY package.json package-lock.json ./
 
+RUN npm config set registry https://registry.npmjs.org/ --timeout=120000
 RUN npm install
 
 EXPOSE 3000

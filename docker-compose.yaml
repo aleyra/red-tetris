@@ -3,31 +3,32 @@ services:
   front:
     image: front-img
     container_name: front-container
-    build: ./front
+    build:
+      context: ./front
+      dockerfile: Dockerfile.dev
     ports:
       - 3000:3000
     networks:
       - red-tetris-network
     volumes:
-      - ./front:/app
-      - /app/node_modules
-    # env_file:
-    #   - .env
+      - ./front:/front
+      - /front/node_modules
     restart: always
 
-  # back:
-  #   image: back-img
-  #   container_name: back-container
-  #   ports:
-  #     - 8000:8000
-  #   networks:
-  #     - red-tetris-network
-  #   volumes:
-  #     - ./back:/dev/app
-  #   env_file:
-  #     - .env
-  #   restart: always
-  #   build: ./back
+  server:
+    image: server-img
+    container_name: server-container
+    build:
+      context: ./server
+      dockerfile: Dockerfile.dev
+    ports:
+      - 8000:8000
+    networks:
+      - red-tetris-network
+    volumes:
+      - ./server:/server
+      - /server/node_modules
+    restart: always
 
 networks:
   red-tetris-network:
