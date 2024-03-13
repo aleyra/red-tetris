@@ -36,4 +36,4 @@ WORKDIR /app/server
 
 EXPOSE 8000
 
-CMD ["npm", "run"]
+CMD ["npm", "run", "start"]
