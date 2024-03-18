@@ -1,9 +1,15 @@
-import { SubscribeMessage, WebSocketGateway } from '@nestjs/websockets';
+import { SubscribeMessage, WebSocketGateway, WebSocketServer } from '@nestjs/websockets';
 
-@WebSocketGateway()
+@WebSocketGateway({cors: '*'})
 export class GameGateway {
-  @SubscribeMessage('message')
+
+  handleConnection() {
+    console.log('Client connected');
+  }
+
+  @SubscribeMessage('gameStart')
   handleMessage(client: any, payload: any): string {
-    return 'Hello world!';
+    console.log('gameStart called')
+    return 'Let the game begin!'
   }
 }
