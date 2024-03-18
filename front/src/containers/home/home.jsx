@@ -38,6 +38,18 @@ export function Home() {
 			<div>
 				<Presentation />
 			</div>
+			{/* React Redux Tutorial block begin */}
+			<div className="Home-Button">
+				<Link to={"/CakeShop"}>
+					<OrangeColoredButton
+						variant="contained"
+						disableRipple
+					>
+						CakeShop From React Redux Tutorial
+					</OrangeColoredButton>
+				</Link>
+			</div>
+			{/* React Redux Tutorial block end */}
 		</React.Fragment>
 	);
 }
