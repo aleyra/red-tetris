@@ -1,0 +1,32 @@
+// devcontainer.json
+{
+	"name": "Node.js",
+
+	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
+	"image": "node:latest",
+
+	// Features to add to the dev container. More info: https://containers.dev/features.
+	// "features": {},
+	"shutdownAction": "none",
+
+	"customizations": {
+	  "vscode": {
+		"settings": {},
+		"terminal.integrated.defaultProfile.linux": "zsh",
+		"extensions": ["streetsidesoftware.code-spell-checker"]
+	  }
+	},
+
+// 	"forwardPorts": [3000, 8000],
+
+// 	// "portsAttributes": {
+// 	//   "3000": {
+// 	// 	"label": "Hello Remote World",
+// 	// 	"onAutoForward": "notify"
+// 	//   }
+// 	// },
+
+// 	// "postCreateCommand": "npm install",
+
+// 	// "remoteUser": "root"
+  }
