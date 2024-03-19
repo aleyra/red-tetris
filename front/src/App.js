@@ -16,6 +16,7 @@ import { Play } from './containers/play/play';
 import { Provider } from 'react-redux';
 import CakeContainer from './components/tuto_react_redux/CakeContainer';
 import store from './redux/store'
+import HooksCakeContainer from './components/tuto_react_redux/HooksCakeContainer';
 
 const ENDPOINT = "http://localhost:4001";
 
@@ -67,7 +68,7 @@ export default function App() {
 							<Route path=':gid' element={<Play />} />
 							<Route element={<NotFound />} />
 							{/* React Redux Tutorial block begin */}
-							<Route path='/CakeShop' element={<CakeContainer />} />
+							<Route path='/CakeShop' element={<HooksCakeContainer />} />
 							{/* React Redux Tutorial block end */}
 						</Routes>
 					</div>
