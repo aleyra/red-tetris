@@ -14,23 +14,25 @@ import { Play } from './containers/play/play';
 
 //React Redux Tutorial
 import TutoShop from './tuto_shop';
+import store from './redux/store';
+import { Provider } from 'react-redux';
 
-const ENDPOINT = "http://localhost:4001";
+// const ENDPOINT = "http://localhost:4001";
 
 export default function App() {
 
-	const[grid, setGrid] = useState("");
+// 	const[grid, setGrid] = useState("");
 
-	useEffect(() => {
-		const socket = socketIOClient(ENDPOINT);
-		socket.emit("startGame");
-		socket.on("gameData", data => {
-			console.log("Server answered with data to start game!");
-			setGrid(data);
-			console.log(data);
-		});
-		document.addEventListener('keydown', detectKeyDown, true);
-	}, []);
+// 	useEffect(() => {
+// 		const socket = socketIOClient(ENDPOINT);
+// 		socket.emit("startGame");
+// 		socket.on("gameData", data => {
+// 			console.log("Server answered with data to start game!");
+// 			setGrid(data);
+// 			console.log(data);
+// 		});
+// 		document.addEventListener('keydown', detectKeyDown, true);
+// 	}, []);
 
 	// more advanced version with id handling, still WIP
 	// useEffect(() => {
@@ -47,28 +49,30 @@ export default function App() {
 	// 	document.addEventListener('keydown', detectKeyDown, true);
 	//   }, []);
 
-	const detectKeyDown = (e) => {
-		const socket = socketIOClient(ENDPOINT);
-		socket.emit("keydown", e.key);
-		console.log(e.key);
-	}
+	// const detectKeyDown = (e) => {
+	// 	const socket = socketIOClient(ENDPOINT);
+	// 	socket.emit("keydown", e.key);
+	// 	console.log(e.key);
+	// }
 
 	return(
 		<React.Fragment>
-			<HashRouter>
-				<div className='Main-div'>
-					<Routes>
-						<Route exact path="/" element={<Home />} />
-						<Route path="/SelectMode" element={<SelectMode />} />
-						<Route path='/Ranking' element={<Ranking />} />
-						<Route path=':gid' element={<Play />} />
-						<Route element={<NotFound />} />
-						{/* React Redux Tutorial block begin */}
-						<Route path='/CakeShop' element={<TutoShop />} />
-						{/* React Redux Tutorial block end */}
-					</Routes>
-				</div>
-			</HashRouter>
+			<Provider store={store}>
+				<HashRouter>
+					<div className='Main-div'>
+						<Routes>
+							<Route exact path="/" element={<Home />} />
+							<Route path="/SelectMode" element={<SelectMode />} />
+							<Route path='/Ranking' element={<Ranking />} />
+							<Route path=':gid' element={<Play />} />
+							<Route element={<NotFound />} />
+							{/* React Redux Tutorial block begin */}
+							<Route path='/CakeShop' element={<TutoShop />} />
+							{/* React Redux Tutorial block end */}
+						</Routes>
+					</div>
+				</HashRouter>
+			</Provider>
 		</React.Fragment>
 	);
 }
