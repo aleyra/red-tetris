@@ -13,10 +13,7 @@ import { SelectMode } from './containers/select_mode/select_mode';
 import { Play } from './containers/play/play';
 
 //React Redux Tutorial
-import { Provider } from 'react-redux';
-import CakeContainer from './components/tuto_react_redux/CakeContainer';
-import store from './redux/store'
-import HooksCakeContainer from './components/tuto_react_redux/HooksCakeContainer';
+import TutoShop from './tuto_shop';
 
 const ENDPOINT = "http://localhost:4001";
 
@@ -59,20 +56,18 @@ export default function App() {
 	return(
 		<React.Fragment>
 			<HashRouter>
-				<Provider store={store}>
-					<div className='Main-div'>
-						<Routes>
-							<Route exact path="/" element={<Home />} />
-							<Route path="/SelectMode" element={<SelectMode />} />
-							<Route path='/Ranking' element={<Ranking />} />
-							<Route path=':gid' element={<Play />} />
-							<Route element={<NotFound />} />
-							{/* React Redux Tutorial block begin */}
-							<Route path='/CakeShop' element={<HooksCakeContainer />} />
-							{/* React Redux Tutorial block end */}
-						</Routes>
-					</div>
-				</Provider>
+				<div className='Main-div'>
+					<Routes>
+						<Route exact path="/" element={<Home />} />
+						<Route path="/SelectMode" element={<SelectMode />} />
+						<Route path='/Ranking' element={<Ranking />} />
+						<Route path=':gid' element={<Play />} />
+						<Route element={<NotFound />} />
+						{/* React Redux Tutorial block begin */}
+						<Route path='/CakeShop' element={<TutoShop />} />
+						{/* React Redux Tutorial block end */}
+					</Routes>
+				</div>
 			</HashRouter>
 		</React.Fragment>
 	);
