@@ -13,26 +13,29 @@ import { SelectMode } from './containers/select_mode/select_mode';
 import { Play } from './containers/play/play';
 
 //React Redux Tutorial
+import { Provider } from 'react-redux';
 import TutoShop from './tuto_shop';
-// import store from './redux/store';
-// import { Provider } from 'react-redux';
+import store from './redux/store';
 
+/* from ex-teammate block begin */
 // const ENDPOINT = "http://localhost:4001";
+/* from ex-teammate block end */
 
 export default function App() {
 
-// 	const[grid, setGrid] = useState("");
+	/* from ex-teammate block begin */
+	// const[grid, setGrid] = useState("");
 
-// 	useEffect(() => {
-// 		const socket = socketIOClient(ENDPOINT);
-// 		socket.emit("startGame");
-// 		socket.on("gameData", data => {
-// 			console.log("Server answered with data to start game!");
-// 			setGrid(data);
-// 			console.log(data);
-// 		});
-// 		document.addEventListener('keydown', detectKeyDown, true);
-// 	}, []);
+	// useEffect(() => {
+	// 	const socket = socketIOClient(ENDPOINT);
+	// 	socket.emit("startGame");
+	// 	socket.on("gameData", data => {
+	// 		console.log("Server answered with data to start game!");
+	// 		setGrid(data);
+	// 		console.log(data);
+	// 	});
+	// 	document.addEventListener('keydown', detectKeyDown, true);
+	// }, []);
 
 	// more advanced version with id handling, still WIP
 	// useEffect(() => {
@@ -54,10 +57,11 @@ export default function App() {
 	// 	socket.emit("keydown", e.key);
 	// 	console.log(e.key);
 	// }
+	/* from ex-teammate block end */
 
 	return(
 		<React.Fragment>
-			{/* <Provider store={store}> */}
+			<Provider store={store}>
 				<HashRouter>
 					<div className='Main-div'>
 						<Routes>
@@ -72,7 +76,7 @@ export default function App() {
 						</Routes>
 					</div>
 				</HashRouter>
-			{/* </Provider> */}
+			</Provider>
 		</React.Fragment>
 	);
 }
