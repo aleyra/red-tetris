@@ -14,8 +14,8 @@ import { Play } from './containers/play/play';
 
 //React Redux Tutorial
 import TutoShop from './tuto_shop';
-import store from './redux/store';
-import { Provider } from 'react-redux';
+// import store from './redux/store';
+// import { Provider } from 'react-redux';
 
 // const ENDPOINT = "http://localhost:4001";
 
@@ -57,7 +57,7 @@ export default function App() {
 
 	return(
 		<React.Fragment>
-			<Provider store={store}>
+			{/* <Provider store={store}> */}
 				<HashRouter>
 					<div className='Main-div'>
 						<Routes>
@@ -72,7 +72,7 @@ export default function App() {
 						</Routes>
 					</div>
 				</HashRouter>
-			</Provider>
+			{/* </Provider> */}
 		</React.Fragment>
 	);
 }
