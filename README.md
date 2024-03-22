@@ -30,6 +30,7 @@ restart avec JUSTE react... `npx create-react-app my-app`
 * Hash-based url : https://upmostly.com/tutorials/what-is-hash-routing
 * pourquoi on garde le / après le # : https://stackoverflow.com/questions/71398624/hashrouter-no-slash-with-react-router-dom-v6
 * React Redux Tutorial : https://www.youtube.com/watch?v=9boMnm5X9ak&list=PLC3y8-rFHvwheJHvseC3I0HuYI2f46oAK&pp=iAQB
+* Redux devtool : module à mettre sur Firefox ou chrome
 # Lancer
 
 ```
