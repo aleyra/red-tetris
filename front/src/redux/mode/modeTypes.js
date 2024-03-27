@@ -1,0 +1,1 @@
+export const SELECT_MODE = 'SELECT_MODE'
