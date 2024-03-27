@@ -19,15 +19,15 @@ export function Presentation(){
 				</div>
 				<div className='Presentation-container'>
 					<div className='Presentation-container-div'>
-						<a href='https://profile.intra.42.fr/users/tmilon'>
+						<a href='https://profile.intra.42.fr/users/mfunyu'>
 							<div>
 								<img
-									src="https://cdn.intra.42.fr/users/0db64d827e57902861c104f0955ae742/tmilon.jpg"
-									alt={"tlafay's avatar"}
+									src="https://cdn.intra.42.fr/users/8001a577e4bf55b9657b6ba129854c77/mfunyu.jpeg"
+									alt={"mfunyu's avatar"}
 									className='Presentation-avatar'></img>
 							</div>
 							<div className='Presentation-Name-status'>
-								<div className='Presentation-name'>tmilon</div>
+								<div className='Presentation-name'>mfunyu</div>
 							</div>
 						</a>
 					</div>
