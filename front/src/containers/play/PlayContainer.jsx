@@ -6,7 +6,7 @@ import { PlaySoloNormalDemoContainer } from "./demo/PlaySoloNormalDemoContainer"
 import { PlaySoloHardDemoContainer } from "./demo/PlaySoloHardDemoContainer";
 import { PlaySoloEasyDemoContainer } from "./demo/PlaySoloEasyDemoContainer";
 import { PlayMultiDemoContainer } from "./demo/PlayMultiDemoContainer";
-import { SelectMode } from "../select_mode/select_mode";
+import { SelectModeContainer } from "../select_mode/SelectModeContainer";
 import { WaitingRoomContainer } from "./WaitingRoomContainer";
 
 export function PlayContainer(){
@@ -47,7 +47,7 @@ export function PlayContainer(){
 			);
 		default:
 			return(
-				<SelectMode />
+				<SelectModeContainer />
 			);
 	}
 }

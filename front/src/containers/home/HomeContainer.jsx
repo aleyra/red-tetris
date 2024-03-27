@@ -14,7 +14,7 @@ export function HomeContainer() {
 		<React.Fragment>
 			<div className="Home-Menu">
 				<div className="Home-Button">
-					<Link to={"/SelectMode"}>
+					<Link to={"/SelectModeContainer"}>
 						<PurpleColoredButton
 							variant="contained"
 							disableRipple

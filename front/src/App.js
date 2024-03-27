@@ -7,9 +7,9 @@ import './css/App.css'
 
 //functions
 import { HomeContainer } from './containers/home/HomeContainer';
-import { NotFound } from './containers/utils_functions/not_found';
+import { NotFoundContainer } from './containers/utils_functions/NotFoundContainer';
 import { RankingContainer } from './containers/ranking/RankingContainer';
-import { SelectMode } from './containers/select_mode/select_mode';
+import { SelectModeContainer } from './containers/select_mode/SelectModeContainer';
 import { PlayContainer } from './containers/play/PlayContainer';
 
 //React Redux Tutorial
@@ -66,10 +66,10 @@ export default function App() {
 					<div className='Main-div'>
 						<Routes>
 							<Route exact path="/" element={<HomeContainer />} />
-							<Route path="/SelectMode" element={<SelectMode />} />
+							<Route path="/SelectModeContainer" element={<SelectModeContainer />} />
 							<Route path='/Ranking' element={<RankingContainer />} />
 							<Route path=':gid' element={<PlayContainer />} />
-							<Route element={<NotFound />} />
+							<Route element={<NotFoundContainer />} />
 							{/* React Redux Tutorial block begin */}
 							{/* <Route path='/CakeShop' element={<TutoShop />} /> */}
 							{/* React Redux Tutorial block end */}

@@ -57,7 +57,7 @@ export function RankingContainer(){
 	};
 
 	
-	function RankingSelectMode(){
+	function RankingSelectModeContainer(){
 		return(
 			<React.Fragment>
 				<h1>Ranking</h1>
@@ -116,7 +116,7 @@ export function RankingContainer(){
 
 	return(
 		<React.Fragment>
-			<RankingSelectMode />
+			<RankingSelectModeContainer />
 			<RankingDisplayDemoContainer />
 			{/* {RankingDisplay(newMode)} */}
 		</React.Fragment>

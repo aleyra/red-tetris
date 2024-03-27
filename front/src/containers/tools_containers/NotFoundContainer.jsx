@@ -1,6 +1,6 @@
 import React from 'react'
 
-export function NotFound(){
+export function NotFoundContainer(){
 	return(
 		<React.Fragment>
 			<h1>Oops! You seem to be lost.</h1>
