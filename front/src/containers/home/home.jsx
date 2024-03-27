@@ -39,7 +39,7 @@ export function Home() {
 				<Presentation />
 			</div>
 			{/* React Redux Tutorial block begin */}
-			<div className="Home-Button">
+			{/* <div className="Home-Button">
 				<Link to={"/CakeShop"}>
 					<OrangeColoredButton
 						variant="contained"
@@ -48,7 +48,7 @@ export function Home() {
 						CakeShop From React Redux Tutorial
 					</OrangeColoredButton>
 				</Link>
-			</div>
+			</div> */}
 			{/* React Redux Tutorial block end */}
 		</React.Fragment>
 	);

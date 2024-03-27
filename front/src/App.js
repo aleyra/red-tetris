@@ -71,7 +71,7 @@ export default function App() {
 							<Route path=':gid' element={<Play />} />
 							<Route element={<NotFound />} />
 							{/* React Redux Tutorial block begin */}
-							<Route path='/CakeShop' element={<TutoShop />} />
+							{/* <Route path='/CakeShop' element={<TutoShop />} /> */}
 							{/* React Redux Tutorial block end */}
 						</Routes>
 					</div>
