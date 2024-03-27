@@ -4,8 +4,8 @@ import { Injectable } from '@nestjs/common';
 export class GameService {
   board: any[20][10];
   gameStartTimestamp: number;
-  pieces: ["I", "J", "L", "S", "Z", "O"]
-  rest: string[]
+  pieces: ['I', 'J', 'L', 'S', 'Z', 'O'];
+  rest: string[];
 
   constructor() {
     this.board = new Array(20).fill(new Array(10).fill(' '));
@@ -19,14 +19,12 @@ export class GameService {
   }
 
   createBoard(): string {
-    console.log(this.board)
+    console.log(this.board);
     return 'Board created!';
   }
 
   updateBoard(): string {
-
     console.log('Board updated');
-    if ()
     return 'Board updated!';
   }
 
@@ -39,7 +37,7 @@ export class GameService {
     this.rest.splice(randomIndex, 1);
 
     console.log('New piece generated:', newPiece);
-    console.log('rest', this.rest)
+    console.log('rest', this.rest);
     return newPiece;
   }
 }
