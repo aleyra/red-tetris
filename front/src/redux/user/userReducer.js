@@ -31,6 +31,8 @@ const userReducer = (state = initalState, action) => {
                 users: [],
                 error: action.payload
             }
+        
+        default: return state;// J'oublie souvent le default case
     }
 }
 
