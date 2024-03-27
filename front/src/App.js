@@ -7,7 +7,7 @@ import './css/App.css'
 
 //functions
 import { HomeContainer } from './containers/home/HomeContainer';
-import { NotFoundContainer } from './containers/utils_functions/NotFoundContainer';
+import { NotFoundContainer } from './containers/tools_containers/NotFoundContainer';
 import { RankingContainer } from './containers/ranking/RankingContainer';
 import { SelectModeContainer } from './containers/select_mode/SelectModeContainer';
 import { PlayContainer } from './containers/play/PlayContainer';
