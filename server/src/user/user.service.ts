@@ -1,12 +1,15 @@
 import { Injectable } from '@nestjs/common';
+import { User } from './user.model';
+import { v4 as uuidv4 } from 'uuid';
 
 @Injectable()
 export class UserService {
-  userId: string;
-  userName: string;
+  private users: User[] = [];
 
-  constructor(userId: string, userName: string) {
-    this.userId = userId;
-    this.userName = userName;
+  createUser(userName: string) {
+    const user: User = { userId: uuidv4(), userName };
+
+    this.users.push(user);
+    return user;
   }
 }
