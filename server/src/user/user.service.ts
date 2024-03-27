@@ -2,7 +2,6 @@ import { Injectable } from '@nestjs/common';
 
 @Injectable()
 export class UserService {
-
   userId: string;
   userName: string;
 

@@ -2,5 +2,5 @@ import { Controller } from '@nestjs/common';
 
 @Controller('user')
 export class UserController {
-	constructor(private userController: UserController) {}
+  constructor(private userController: UserController) {}
 }

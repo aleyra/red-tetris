@@ -1,7 +1,7 @@
-import { SubscribeMessage, WebSocketGateway, WebSocketServer } from '@nestjs/websockets';
+import { SubscribeMessage, WebSocketGateway } from '@nestjs/websockets';
 import { GameService } from './game.service';
 
-@WebSocketGateway({cors: '*'})
+@WebSocketGateway({ cors: '*' })
 export class GameGateway {
   gameService: GameService;
 
@@ -11,9 +11,9 @@ export class GameGateway {
   }
 
   @SubscribeMessage('startGame')
-  handleMessage(client: any, payload: any): string {
-    console.log('gameStart called')
+  startGame(): string {
+    console.log('gameStart called');
     this.gameService.gameStart();
-    return 'Let the game begin!'
+    return 'Let the game begin!';
   }
 }
