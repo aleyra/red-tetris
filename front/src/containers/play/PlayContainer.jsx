@@ -2,14 +2,14 @@ import React from "react";
 import { useParams } from "react-router-dom";
 
 //functions
-import { PlaySoloNDemo } from "./play_soloN_demo";
-import { PlaySoloHDemo } from "./play_soloH_demo";
-import { PlaySoloEDemo } from "./play_soloE_demo";
-import { PlayMultiDemo } from "./play_multi_mode";
+import { PlaySoloNormalDemoContainer } from "./demo/PlaySoloNormalDemoContainer";
+import { PlaySoloHardDemoContainer } from "./demo/PlaySoloHardDemoContainer";
+import { PlaySoloEasyDemoContainer } from "./demo/PlaySoloEasyDemoContainer";
+import { PlayMultiDemoContainer } from "./demo/PlayMultiDemoContainer";
 import { SelectMode } from "../select_mode/select_mode";
-import { WaitingRoom } from "./waiting_room";
+import { WaitingRoomContainer } from "./WaitingRoomContainer";
 
-export function Play(){
+export function PlayContainer(){
 	let { gid } = useParams();
 
 	// const [mode, setMode] = React.useState("");
@@ -20,29 +20,29 @@ export function Play(){
 	switch(mode){
 		case "SoloNormal":
 			return(
-				<PlaySoloNDemo />
+				<PlaySoloNormalDemoContainer />
 			);
 		case "SoloHard":
 			return(
-				<PlaySoloHDemo />
+				<PlaySoloHardDemoContainer />
 			);
 		case "SoloEasy":
 			return(
-				<PlaySoloEDemo />
+				<PlaySoloEasyDemoContainer />
 			);
 		case "Multi":
 			// return(
 			// 	<React.Fragment>
-			// 		{WaitingRoom("Multi")}
+			// 		{WaitingRoomContainer("Multi")}
 			// 	</React.Fragment>
 			// );
 			return(
-				<PlayMultiDemo />
+				<PlayMultiDemoContainer />
 			);
 		case "Friend":
 			return(
 				<React.Fragment>
-					{WaitingRoom("Friend")}
+					{WaitingRoomContainer("Friend")}
 				</React.Fragment>
 			);
 		default:

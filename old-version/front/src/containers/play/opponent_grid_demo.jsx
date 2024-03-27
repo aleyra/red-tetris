@@ -6,7 +6,7 @@ import './../../css/Play.css'
 //function
 import { ColoringOpponentCell } from "./coloring_cell";
 
-export function OpponentGridDemo(){
+export function OpponentGridDemoContainer(){
 	return(
 		<React.Fragment>
 			<div className="opponent-game-grid">

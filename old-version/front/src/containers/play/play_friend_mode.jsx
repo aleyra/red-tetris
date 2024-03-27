@@ -2,16 +2,16 @@ import React from "react";
 
 //css
 import './../../css/Play.css';
-import { PlayreGridDemo } from "./player_grid_demo";
-import { OpponentGridDemo } from "./opponent_grid_demo";
+import { PlayerGridDemoContainer } from "./player_grid_demo";
+import { OpponentGridDemoContainer } from "./opponent_grid_demo";
 import { NextTetrimino } from "./next_tetrimino";
 
 //à la place de "Your opponent" mettre le pseudo du joueur adverse
-export function PlayFriendDemo(){
+export function PlayFriendDemoContainer(){
 	return(
 		<React.Fragment>
 			<div className="flex-container">
-				<PlayreGridDemo />
+				<PlayerGridDemoContainer />
 				<div className="flex-column-space"></div>
 				<div className="info-game-column">
 					<div className="info-game-row">
@@ -32,7 +32,7 @@ export function PlayFriendDemo(){
 							<b>Your opponent's game</b> :
 						</div>
 						<div className="info-game-row">
-							<OpponentGridDemo />
+							<OpponentGridDemoContainer />
 						</div>
 					</div>
 				</div>

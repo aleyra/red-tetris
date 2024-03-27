@@ -4,7 +4,7 @@ import React from "react";
 import './../../css/Play.css'
 
 //function
-import { ColoringPlayerCell } from "../../components/game/coloring_cell";
+import { ColoringPlayerCell } from "./ColoringCell";
 
 function CaseI(){
 	return(

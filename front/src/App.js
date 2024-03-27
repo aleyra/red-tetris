@@ -8,14 +8,14 @@ import './css/App.css'
 //functions
 import { HomeContainer } from './containers/home/HomeContainer';
 import { NotFound } from './containers/utils_functions/not_found';
-import { Ranking } from './containers/Ranking/ranking';
+import { RankingContainer } from './containers/ranking/RankingContainer';
 import { SelectMode } from './containers/select_mode/select_mode';
-import { Play } from './containers/play/play';
+import { PlayContainer } from './containers/play/PlayContainer';
 
 //React Redux Tutorial
 import { Provider } from 'react-redux';
 import TutoShop from './tuto_shop';
-import store from './redux/store';
+import store from './redux/tuto/store';
 
 /* from ex-teammate block begin */
 // const ENDPOINT = "http://localhost:4001";
@@ -67,8 +67,8 @@ export default function App() {
 						<Routes>
 							<Route exact path="/" element={<HomeContainer />} />
 							<Route path="/SelectMode" element={<SelectMode />} />
-							<Route path='/Ranking' element={<Ranking />} />
-							<Route path=':gid' element={<Play />} />
+							<Route path='/Ranking' element={<RankingContainer />} />
+							<Route path=':gid' element={<PlayContainer />} />
 							<Route element={<NotFound />} />
 							{/* React Redux Tutorial block begin */}
 							{/* <Route path='/CakeShop' element={<TutoShop />} /> */}

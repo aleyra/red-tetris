@@ -1,24 +1,27 @@
 import React from "react";
 
 //css
-import './../../css/Play.css';
+import './../../../css/Play.css';
 
 //functions
-import { PlayreGridDemo } from "./player_grid_demo";
-import { NextTetrimino } from "./next_tetrimino";
+import { PlayerGridDemoContainer } from "./PlayerGridDemoContainer";
+import { NextTetrimino } from "../../../components/game/NextTetrimino";
 
-export function PlaySoloNDemo(){
+export function PlaySoloEasyDemoContainer(){
 	return(
 		<React.Fragment>
 			<div className="flex-container">
-				<PlayreGridDemo />
+				<PlayerGridDemoContainer />
 				<div className="flex-column-space"></div>
 				<div className="info-game-column">
 					<div className="info-game-row">
 						<b>Next tetrimino</b> :
 					</div>
 					<div className="info-game-row">
-						{NextTetrimino("T")}
+						You can swap this one with the current by pressing SPACE
+					</div>
+					<div className="info-game-row">
+						{NextTetrimino("S")}
 					</div>
 					<div className="info-game-row">
 						<b>Your Score</b> :

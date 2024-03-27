@@ -6,7 +6,7 @@ import './../../css/Play.css'
 //function
 import { ColoringPlayerCell } from "./coloring_cell";
 
-export function PlayreGridDemo(){
+export function PlayerGridDemoContainer(){
 	return(
 		<React.Fragment>
 			<div className="player-game-grid">

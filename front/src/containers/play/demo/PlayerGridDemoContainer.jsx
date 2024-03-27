@@ -1,12 +1,12 @@
 import React from "react";
 
 //css
-import './../../css/Play.css'
+import './../../../css/Play.css'
 
 //function
-import { ColoringPlayerCell } from "../../components/game/coloring_cell";
+import { ColoringPlayerCell } from "../../../components/game/ColoringCell";
 
-export function PlayreGridDemo(){
+export function PlayerGridDemoContainer(){
 	return(
 		<React.Fragment>
 			<div className="player-game-grid">

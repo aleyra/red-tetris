@@ -5,10 +5,10 @@ import { useNavigate } from 'react-router-dom';
 import './../../css/Select_mode.css';
 
 //const
-import { FriendModeButton, SoloEasyModeButton, SoloHardModeButton, SoloNormalModeButton } from "../../components/buttons";
-import { MultiModeButton } from "../../components/buttons";
-import { AliasTextField, PassWordTextField } from "../../components/text-field";
-import { Notification } from "../../components/notifications";
+import { FriendModeButton, SoloEasyModeButton, SoloHardModeButton, SoloNormalModeButton } from "../../components/Buttons";
+import { MultiModeButton } from "../../components/Buttons";
+import { AliasTextField, PassWordTextField } from "../../components/TextFields";
+import { Notification } from "../../components/Notifications";
 
 export function SelectMode(){
 	const [alias, setAlias] = React.useState("");

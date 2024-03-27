@@ -82,7 +82,7 @@ function OneRawRanking(position, name, score){
 		);
 }
 
-function RankingDisplayDemo(){
+function RankingDisplayDemoContainer(){
 	return(
 		<React.Fragment>
 			<div className="Ranking_list">
@@ -198,7 +198,7 @@ export function Ranking(){
 	return(
 		<React.Fragment>
 			<RankingSelectMode />
-			<RankingDisplayDemo />
+			<RankingDisplayDemoContainer />
 			{/* {RankingDisplay(newMode)} */}
 		</React.Fragment>
 	);

@@ -5,10 +5,10 @@ import { useParams } from "react-router-dom";
 import '../../css/Waiting_Room.css'
 
 //const
-import { AliasTextField, PassWordTextField } from "../../components/text-field";
-import { GreenColoredButton } from "../../components/buttons";
+import { AliasTextField, PassWordTextField } from "../../components/TextFields";
+import { GreenColoredButton } from "../../components/Buttons";
 
-export function WaitingRoom(mode){
+export function WaitingRoomContainer(mode){
 	let { wrid } = useParams();
 
 	const [alias, setAlias] = React.useState("");

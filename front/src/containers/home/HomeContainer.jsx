@@ -7,7 +7,7 @@ import '../../css/Home.css'
 
 //function
 import { StudPresentationContainer } from "./StudPresentationContainer";
-import { OrangeColoredButton, PurpleColoredButton } from "../../components/buttons";
+import { OrangeColoredButton, PurpleColoredButton } from "../../components/Buttons";
 
 export function HomeContainer() {
 	return(

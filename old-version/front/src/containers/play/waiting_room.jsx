@@ -8,7 +8,7 @@ import '../../css/Waiting_Room.css'
 import { AliasTextField, PassWordTextField } from "../../components/text-field";
 import { GreenColoredButton } from "../../components/buttons";
 
-export function WaitingRoom(mode){
+export function WaitingRoomContainer(mode){
 	let { wrid } = useParams();
 
 	const [alias, setAlias] = React.useState("");

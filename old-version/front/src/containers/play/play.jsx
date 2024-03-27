@@ -2,11 +2,11 @@ import React from "react";
 import { useParams } from "react-router-dom";
 
 //functions
-import { PlaySoloNDemo } from "./play_soloN_demo";
-import { PlaySoloHDemo } from "./play_soloH_demo";
-import { PlaySoloEDemo } from "./play_soloE_demo";
+import { PlaySoloNormalDemoContainer } from "./play_soloN_demo";
+import { PlaySoloHardDemo } from "./play_soloH_demo";
+import { PlaySoloEasyDemo } from "./play_soloE_demo";
 import { SelectMode } from "../select_mode/select_mode";
-import { WaitingRoom } from "./waiting_room";
+import { WaitingRoomContainer } from "./waiting_room";
 
 export function Play(){
 	let { gid } = useParams();
@@ -19,26 +19,26 @@ export function Play(){
 	switch(mode){
 		case "SoloNormal":
 			return(
-				<PlaySoloNDemo />
+				<PlaySoloNormalDemoContainer />
 			);
 		case "SoloHard":
 			return(
-				<PlaySoloHDemo />
+				<PlaySoloHardDemo />
 			);
 		case "SoloEasy":
 			return(
-				<PlaySoloEDemo />
+				<PlaySoloEasyDemo />
 			);
 		case "Multi":
 			return(
 				<React.Fragment>
-					{WaitingRoom("Multi")}
+					{WaitingRoomContainer("Multi")}
 				</React.Fragment>
 			);
 		case "Friend":
 			return(
 				<React.Fragment>
-					{WaitingRoom("Friend")}
+					{WaitingRoomContainer("Friend")}
 				</React.Fragment>
 			);
 		default:

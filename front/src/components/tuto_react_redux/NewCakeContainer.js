@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
-import { buyCake } from '../../redux'
+import { buyCake } from '../../redux/tuto'
 
 function NewCakeContainer(props) {
 	const [number, setNumber] = useState(1)

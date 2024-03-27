@@ -1,16 +1,16 @@
 import React from "react";
 
 //css
-import './../../css/Play.css';
+import './../../../css/Play.css';
 
 //functions
-import { PlayreGridDemo } from "./player_grid_demo";
+import { PlayerGridDemoContainer } from "./PlayerGridDemoContainer";
 
-export function PlaySoloHDemo(){
+export function PlaySoloHardDemoContainer(){
 	return(
 		<React.Fragment>
 			<div className="flex-container">
-				<PlayreGridDemo />
+				<PlayerGridDemoContainer />
 				<div className="flex-column-space"></div>
 				<div className="info-game-column">
 					<div className="info-game-row">

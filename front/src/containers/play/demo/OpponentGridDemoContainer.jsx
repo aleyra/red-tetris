@@ -1,12 +1,12 @@
 import React from "react";
 
 //css
-import './../../css/Play.css'
+import './../../../css/Play.css'
 
 //function
-import { ColoringOpponentCell } from "../../components/game/coloring_cell";
+import { ColoringOpponentCell } from "../../../components/game/ColoringCell";
 
-export function OpponentGridDemo(){
+export function OpponentGridDemoContainer(){
 	return(
 		<React.Fragment>
 			<div className="opponent-game-grid">
