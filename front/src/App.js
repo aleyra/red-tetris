@@ -14,7 +14,7 @@ import { PlayContainer } from './containers/play/PlayContainer';
 
 //React Redux Tutorial
 import { Provider } from 'react-redux';
-import TutoShop from './tuto_shop';
+// import TutoShop from './tuto_shop';
 import store from './redux/tuto/store';
 
 /* from ex-teammate block begin */
