@@ -24,3 +24,6 @@ fclean: dir_clean
 re	:
 	$(MAKE) fclean
 	$(MAKE) dev
+
+setup	:
+	cp .github/hooks/pre-commit .git/hooks/pre-commit
