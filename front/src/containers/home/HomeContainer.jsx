@@ -6,10 +6,10 @@ import '../../css/Home.css'
 //const
 
 //function
-import { Presentation } from "./presentation";
+import { StudPresentationContainer } from "./StudPresentationContainer";
 import { OrangeColoredButton, PurpleColoredButton } from "../../components/buttons";
 
-export function Home() {
+export function HomeContainer() {
 	return(
 		<React.Fragment>
 			<div className="Home-Menu">
@@ -36,7 +36,7 @@ export function Home() {
 
 			</div>
 			<div>
-				<Presentation />
+				<StudPresentationContainer />
 			</div>
 			{/* React Redux Tutorial block begin */}
 			{/* <div className="Home-Button">

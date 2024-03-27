@@ -4,7 +4,7 @@ import React from "react";
 import './../../css/Play.css'
 
 //function
-import { ColoringOpponentCell } from "./coloring_cell";
+import { ColoringOpponentCell } from "../../components/game/coloring_cell";
 
 export function OpponentGridDemo(){
 	return(

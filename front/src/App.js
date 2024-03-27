@@ -6,7 +6,7 @@ import socketIOClient from "socket.io-client";
 import './css/App.css'
 
 //functions
-import { Home } from './containers/home/home';
+import { HomeContainer } from './containers/home/HomeContainer';
 import { NotFound } from './containers/utils_functions/not_found';
 import { Ranking } from './containers/Ranking/ranking';
 import { SelectMode } from './containers/select_mode/select_mode';
@@ -65,7 +65,7 @@ export default function App() {
 				<HashRouter>
 					<div className='Main-div'>
 						<Routes>
-							<Route exact path="/" element={<Home />} />
+							<Route exact path="/" element={<HomeContainer />} />
 							<Route path="/SelectMode" element={<SelectMode />} />
 							<Route path='/Ranking' element={<Ranking />} />
 							<Route path=':gid' element={<Play />} />

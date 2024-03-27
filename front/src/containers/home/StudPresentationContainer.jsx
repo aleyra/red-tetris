@@ -7,7 +7,7 @@ import './../../css/Presentation.css';
 import ReactLogo from '../../images/react.png';
 import ReduxLogo from '../../images/redux.png';
 
-export function Presentation(){
+export function StudPresentationContainer(){
 	return(
 		<div>
 			<div className='Presentation'>
