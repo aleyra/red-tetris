@@ -1,36 +1,45 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+// import { useParams } from "react-router-dom";
+import { connect } from 'react-redux'
 
 //functions
 import { PlaySoloNormalDemoContainer } from "./demo/PlaySoloNormalDemoContainer";
 import { PlaySoloHardDemoContainer } from "./demo/PlaySoloHardDemoContainer";
 import { PlaySoloEasyDemoContainer } from "./demo/PlaySoloEasyDemoContainer";
 import { PlayMultiDemoContainer } from "./demo/PlayMultiDemoContainer";
-import { SelectModeContainer } from "../select_mode/SelectModeContainer";
+import SelectModeToPlayContainer from "./SelectModeToPlayContainer";
 import { WaitingRoomContainer } from "./WaitingRoomContainer";
 
-export function PlayContainer(){
-	let { gid } = useParams();
+//const
+import { 
+    SOLO_EASY,
+    SOLO_HARD,
+    SOLO_NORMAL,
+    MULTI,
+	FRIEND
+} from '../../components/ConstString';
+
+
+function PlayContainer(props){
+	// let { gid } = useParams();
 
 	// const [mode, setMode] = React.useState("");
 	// on recup le mode à partir du gid dans le back
-	
-	let mode = "Multi";
 
-	switch(mode){
-		case "SoloNormal":
+	switch(props.modeSelected){
+		case SOLO_NORMAL:
 			return(
 				<PlaySoloNormalDemoContainer />
 			);
-		case "SoloHard":
+		case SOLO_HARD:
 			return(
 				<PlaySoloHardDemoContainer />
 			);
-		case "SoloEasy":
+		case SOLO_EASY:
 			return(
 				<PlaySoloEasyDemoContainer />
 			);
-		case "Multi":
+		case MULTI:
 			// return(
 			// 	<React.Fragment>
 			// 		{WaitingRoomContainer("Multi")}
@@ -39,7 +48,7 @@ export function PlayContainer(){
 			return(
 				<PlayMultiDemoContainer />
 			);
-		case "Friend":
+		case FRIEND:
 			return(
 				<React.Fragment>
 					{WaitingRoomContainer("Friend")}
@@ -47,7 +56,18 @@ export function PlayContainer(){
 			);
 		default:
 			return(
-				<SelectModeContainer />
+				<SelectModeToPlayContainer />
 			);
 	}
 }
+
+const mapStateToProps = state => {
+	console.log(state.selectMode.modeSelected)
+    return {
+        modeSelected: state.selectMode.modeSelected
+    }
+}
+
+export default connect (
+	mapStateToProps
+)(PlayContainer)

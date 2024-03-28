@@ -1,18 +1,16 @@
-import { createStore, applyMiddleware } from 'redux'
 import { configureStore } from '@reduxjs/toolkit'
-import {thunk} from 'redux-thunk'
-import { composeWithDevTools } from '@redux-devtools/extension';
-// import logger from 'redux-logger'
+// import { composeWithDevTools } from '@redux-devtools/extension';
 
-// const
-import rootReducer from './rootReducer'
+import rankingSoloNormalReducer from "./ranking/solo_normal_mode/rankingSoloNormalReducer";
+import modeReducer from "./mode/modeReducer";
 
-const middleWare = [thunk]
-
-const store = configureStore({
-	rootReducer,
-	// preLoadedState,
-	middleWare
-})
-
-export default store
+export function setupStore() {
+	return configureStore({
+		reducer: {
+			//ranking
+			// rankingSoloNormal: rankingSoloNormalReducer,
+			//selectMode
+			selectMode: modeReducer
+		}
+	});
+}

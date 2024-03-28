@@ -1,0 +1,5 @@
+export const SOLO_NORMAL = 'SOLO_NORMAL'
+export const SOLO_HARD = 'SOLO_HARD'
+export const SOLO_EASY = 'SOLO_EASY'
+export const MULTI = 'MULTI'
+export const FRIEND = 'FRIEND'
