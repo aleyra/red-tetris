@@ -1,7 +1,7 @@
 import express from 'express';
 import { createServer } from 'node:http';
 import { Server as SocketIoServer } from 'socket.io';
-import config from './config.js';
+import config from './config';
 
 if (config.NODE_ENV == 'production') {
   const app = express();
