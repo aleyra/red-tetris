@@ -1,12 +1,12 @@
 import express from 'express';
-import { createServer } from 'node:http';
-import { Server as SocketIoServer } from 'socket.io';
+import { Server as HttpServer, createServer } from 'node:http';
+import { SocketServer } from './src/socket-server';
 import config from './config';
 
-class SocketServer {
+class AppServer {
   private is_production: boolean;
-  private readonly server;
-  private readonly io: SocketIoServer;
+  private readonly httpServer: HttpServer;
+  private readonly socketServer: SocketServer;
 
   constructor() {
     if (config.NODE_ENV == 'production') {
@@ -14,33 +14,25 @@ class SocketServer {
     } else {
       this.is_production = false;
     }
+
     if (this.is_production) {
-      const app = express();
+      const app: express.Express = express();
       app.use(express.static(config.DIR_PATH));
       app.get('/', (req, res) => {
         res.sendFile(config.FILE_PATH);
       });
-      this.server = createServer(app);
-      this.io = new SocketIoServer(this.server);
+      this.httpServer = createServer(app);
     } else {
-      this.server = createServer();
-      this.io = new SocketIoServer(this.server, {
-        cors: {
-          origin: 'http://localhost:3000',
-          methods: ['GET', 'POST']
-        }
-      });
+      this.httpServer = createServer();
     }
+
+    this.socketServer = new SocketServer(this.httpServer, this.is_production);
   }
 
-  startListening() {
-    this.io.on('connection', (socket) => {
-      console.log('a user connected');
-      socket.on('disconnect', () => {
-        console.log('user disconnected');
-      });
-    });
-    this.server.listen(config.PORT, () => {
+  startServer() {
+    this.socketServer.startListening();
+
+    this.httpServer.listen(config.PORT, () => {
       if (this.is_production)
         console.log(`production server running at http://localhost:${config.PORT}`);
       else
@@ -50,5 +42,5 @@ class SocketServer {
 }
 
 
-const socketServer = new SocketServer();
-socketServer.startListening();
+const appServer = new AppServer ();
+appServer.startServer();
