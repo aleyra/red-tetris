@@ -1,18 +1,15 @@
-import express from 'express';
-import { Server as HttpServer, createServer } from 'node:http';
-import SocketServer from './socket-server';
-import config from './config';
-import Room from './room';
+import express from "express";
+import { Server as HttpServer, createServer } from "node:http";
+import SocketServer from "./socket-server";
+import config from "./config";
 
 export class AppServer {
   private is_production: boolean;
   private readonly httpServer: HttpServer;
   private readonly socketServer: SocketServer;
 
-  private rooms: Room[];
-
   constructor() {
-    if (config.NODE_ENV == 'production') {
+    if (config.NODE_ENV == "production") {
       this.is_production = true;
     } else {
       this.is_production = false;
@@ -21,7 +18,7 @@ export class AppServer {
     if (this.is_production) {
       const app: express.Express = express();
       app.use(express.static(config.DIR_PATH));
-      app.get('/', (req, res) => {
+      app.get("/", (req, res) => {
         res.sendFile(config.FILE_PATH);
       });
       this.httpServer = createServer(app);
@@ -30,7 +27,6 @@ export class AppServer {
     }
 
     this.socketServer = new SocketServer(this.httpServer, this.is_production);
-    this.rooms = [];
   }
 
   startServer() {
