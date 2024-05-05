@@ -19,20 +19,20 @@
     "rules": {
         "@typescript-eslint/no-unused-vars": ["warn"],
         "indent": [
-            "warn",
+            "error",
             2
         ],
-        "object-curly-spacing": ["warn", "always"],
+        "object-curly-spacing": ["error", "always"],
         "linebreak-style": [
-            "warn",
+            "error",
             "unix"
         ],
         "quotes": [
-            "warn",
+            "error",
             "double"
         ],
         "semi": [
-            "warn",
+            "error",
             "always"
         ]
     }

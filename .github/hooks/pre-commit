@@ -16,7 +16,11 @@ PASS="${THICK}[ ${GREEN}PASS${RESET}${THICK} ]${RESET}"
 cd server
 npm run lint
 if [ "$?" != 0 ]; then
-	printf "$FAIL Linter failed, and commit not allowed. Please fix errors.\n"
+	printf "$FAIL Linter check failed, commit not allowed.\n"
+	npm run lint:fix
+	if [ "$?" != 0 ]; then
+	printf "Please fix errors mannually.\n"
+	fi
 	printf "Quitting...\n"
 	exit 1
 fi
