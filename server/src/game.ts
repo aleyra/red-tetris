@@ -4,6 +4,21 @@ export interface Game {
   members: User[];
 }
 
+interface Player {
+  user: User;
+  board: number[][];
+}
+
+class PlayerClass {
+  user: User;
+  board: number[][];
+
+  constructor(user: User) {
+    this.user = user;
+    this.board = Array(10).fill(0);
+  }
+}
+
 export class GameClass {
   players: User[];
   members: User[];
@@ -31,7 +46,12 @@ export class GameClass {
   startGame() {
     this.state = "playing";
     console.log(this.players);
-    //this.players.forEach((player) => { player.socket.emit('startGame', this.players); });
+    //initMap
+    this.runGame();
+    this.players.forEach((player) => { player.socket.emit("gameData", this.players); });
   }
 
+  runGame() {
+
+  }
 }

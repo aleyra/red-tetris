@@ -1,20 +1,21 @@
 import { v4 as uuid } from "uuid";
+import { Socket } from "socket.io";
 
 export interface User {
 	name: string;
 	id: string;
-	socketId: string;
+	socket: Socket;
 }
 
 export class UserAccount {
   name: string;
   readonly id: string;
-  readonly socketId: string;
+  readonly socket;
 
-  constructor(name: string, socketId: string) {
+  constructor(name: string, socket: Socket) {
     this.name = name;
     this.id = uuid();
-    this.socketId = socketId;
+    this.socket = socket;
   }
 }
 
@@ -25,8 +26,8 @@ export class UserController {
     this.users = [];
   }
 
-  findOrCreateUser(username: string, socketId: string) {
-    const match = this.users.find((u) => (u.name === username && u.socketId === socketId));
+  findOrCreateUser(username: string, socket: Socket) {
+    const match = this.users.find((u) => (u.name === username && u.socket.id === socket.id));
     if (match) {
       return match;
     }
@@ -34,7 +35,7 @@ export class UserController {
     while (this.users.find((u) => u.name === username)) {
       username = `${username}(${Math.floor(Math.random() * 1000)})`;
     }
-    const user = new UserAccount(username, socketId);
+    const user = new UserAccount(username, socket);
     this.users.push(user);
     return user;
   }
@@ -47,13 +48,7 @@ export class UserController {
     return user;
   }
 
-  removeUser(socketId: string) {
-    this.users = this.users.filter((user) => user.socketId !== socketId);
-  }
-
-  getUser(socketId: string) {
-    return this.users.find((user) => user.socketId === socketId);
-  }
+ 
 }
 
 export default UserAccount;
