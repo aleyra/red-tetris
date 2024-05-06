@@ -1,7 +1,9 @@
 import { User } from "./user";
 
 export interface Game {
-  members: User[];
+  viewers: User[];
+  players: User[];
+  state: "waiting" | "playing" | "finished";
 }
 
 interface Player {
@@ -21,26 +23,28 @@ class PlayerClass {
 
 export class GameClass {
   players: User[];
-  members: User[];
+  viewers: User[];
   state: "waiting" | "playing" | "finished";
 
   constructor(user: User[]) {
-    this.members = user;
+    this.viewers = user;
     this.players = user;
     this.state = "waiting";
   }
 
   addUser(user: User) {
-    if (this.players.find((u) => u.name === user.name)) {
-      return ;
-    }
-    if (this.state !== "waiting") {
+    if (this.state !== "playing") {
+      if (this.players.find((u) => u.name === user.name)) {
+        return ;
+      }
       this.players.push(user);
+    } else {
+      if (this.players.find((u) => u.name === user.name) ||
+       this.viewers.find((u) => u.name === user.name)) {
+        return ;
+      }
+      this.viewers.push(user);
     }
-    if (this.members.find((u) => u.name === user.name)) {
-      return ;
-    }
-    this.members.push(user);
   }
 
   startGame() {
