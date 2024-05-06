@@ -69,7 +69,7 @@ export class PieceClass {
         newShape[i][j] = this.shape[size - 1 - j][i];
       }
     }
-    this.shape = newShape;
+    return newShape;
   }
 
   turnLeft() {
@@ -81,18 +81,42 @@ export class PieceClass {
         newShape[i][j] = this.shape[i][size - 1 - i];
       }
     }
-    this.shape = newShape;
+    return newShape;
   }
 
   turn(direction: "right" | "left") {
     if (direction === "left") {
-      this.turnLeft();
-    } else {
-      this.turnRight();
+      return this.turnLeft();
     }
+    return this.turnRight();
   }
 
-  setCoord(x: number, y: number) {
-    this.coord = { x, y };
+  shiftRight() {
+    return { x: this.coord.x + 1, y: this.coord.y };
+  }
+
+  shiftLeft() {
+    return { x: this.coord.x - 1, y: this.coord.y };
+  }
+
+  shiftDown() {
+    return { x: this.coord.x, y: this.coord.y + 1 };
+  }
+
+  shift(direction: "right" | "left" | "down") {
+    if (direction === "right") {
+      return this.shiftRight();
+    } else if (direction === "left") {
+      return this.shiftLeft();
+    }
+    return this.shiftDown();
+  }
+
+  setShape(shape: number[][]) {
+    this.shape = shape;
+  }
+
+  setCoord(newCoord: coordinate) {
+    this.coord = newCoord;
   }
 }
