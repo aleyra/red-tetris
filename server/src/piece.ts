@@ -2,19 +2,25 @@ type types = "O" | "S" | "Z" | "T" | "J" | "L" | "I";
 
 type coordinate = { "x": number, "y": number };
 
+const boardSizeX = 10;
+const boardSizeY = 20;
+
 export interface Piece {
-  type: types;
+  pieceType: types;
   coord: coordinate;
+  shape: number[][];
 }
 
 export class PieceClass {
-  private readonly type: types;
+  private readonly pieceType: types;
   private coord: coordinate;
   private shape: number[][];
 
-  constructor(type: types) {
-    this.type = type;
-    switch (type) {
+  static pieces: types[] = ["O", "S", "Z", "T", "J", "L", "I"];
+
+  constructor(pieceType: types) {
+    this.pieceType = pieceType;
+    switch (pieceType) {
     case "O":
       this.shape =
         [[1, 1],
@@ -58,9 +64,11 @@ export class PieceClass {
           [0, 0, 0, 0]];
       break;
     }
+    this.coord.x = Math.floor((boardSizeX - this.shape.length) / 2);
+    this.coord.y = 0;
   }
 
-  turnRight() {
+  private turnRight() {
     const newShape: number[][] = [];
     const size: number = this.shape.length;
     for (let i = 0; i < size; i++) {
@@ -72,7 +80,7 @@ export class PieceClass {
     return newShape;
   }
 
-  turnLeft() {
+  private turnLeft() {
     const newShape: number[][] = [];
     const size: number = this.shape.length;
     for (let i = 0; i < size; i++) {
@@ -85,31 +93,56 @@ export class PieceClass {
   }
 
   turn(direction: "right" | "left") {
+    const newPiece = new PieceClass(this.pieceType);
+    newPiece.coord = this.coord;
     if (direction === "left") {
-      return this.turnLeft();
+      newPiece.shape = this.turnLeft();
+    } else {
+      newPiece.shape = this.turnRight();
     }
-    return this.turnRight();
+    return newPiece;
   }
 
-  shiftRight() {
+  private shiftRight() {
+    if (this.coord.x + this.shape.length + 1 === boardSizeX) {
+      throw new RangeError("Piece will be out of bounds");
+    }
     return { x: this.coord.x + 1, y: this.coord.y };
   }
 
-  shiftLeft() {
+  private shiftLeft() {
+    if (this.coord.x === 0) {
+      throw new RangeError("Piece will be out of bounds");
+    }
     return { x: this.coord.x - 1, y: this.coord.y };
   }
 
-  shiftDown() {
+  private shiftDown() {
+    if (this.coord.y + this.shape.length + 1 === boardSizeY) {
+      throw new RangeError("Piece will be out of bounds");
+    }
     return { x: this.coord.x, y: this.coord.y + 1 };
   }
 
   shift(direction: "right" | "left" | "down") {
-    if (direction === "right") {
-      return this.shiftRight();
-    } else if (direction === "left") {
-      return this.shiftLeft();
+    const newPiece = new PieceClass(this.pieceType);
+    newPiece.shape = this.shape;
+    try {
+      if (direction === "right") {
+        newPiece.coord = this.shiftRight();
+      } else if (direction === "left") {
+        newPiece.coord = this.shiftLeft();
+      } else {
+        newPiece.coord = this.shiftDown();
+      }
+    } catch (error) {
+      if (error instanceof RangeError) {
+        return;
+      } else {
+        console.log(error);
+      }
     }
-    return this.shiftDown();
+    return newPiece;
   }
 
   setShape(shape: number[][]) {
@@ -118,5 +151,20 @@ export class PieceClass {
 
   setCoord(newCoord: coordinate) {
     this.coord = newCoord;
+  }
+
+  setPiece(newPiece: Piece) {
+    this.coord = newPiece.coord;
+    this.shape = newPiece.shape;
+  }
+
+  static generateNewPiece() {
+    if (this.pieces.length === 0) {
+      this.pieces = ["O", "S", "Z", "T", "J", "L", "I"];
+    }
+    const randomIndex = Math.floor(Math.random() * this.pieces.length);
+    const randomType = this.pieces[randomIndex];
+    this.pieces.splice(randomIndex, 1);
+    return randomType;
   }
 }
