@@ -1,6 +1,6 @@
-type types = "O" | "S" | "Z" | "T" | "J" | "L" | "I";
+export type types = "O" | "S" | "Z" | "T" | "J" | "L" | "I" | "-";
 
-type coordinate = { "x": number, "y": number };
+export type coordinate = { "x": number, "y": number };
 
 const boardSizeX = 10;
 const boardSizeY = 20;
