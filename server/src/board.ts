@@ -21,13 +21,13 @@ export class BoardClass {
     this.grid = new Array(boardSizeY).fill(new Array(boardSizeX).fill("-"));
   }
 
-  isInside(coord: coordinate, piece: Piece) {
-    const shapeSize = piece.shape.length;
-    if (coord.x < 0 || coord.x + shapeSize >= boardSizeX || coord.y + shapeSize >= boardSizeY) {
-      return false;
-    }
-    return true;
-  }
+  // isInside(coord: coordinate, piece: Piece) {
+  //   const shapeSize = piece.shape.length;
+  //   if (coord.x < 0 || coord.x + shapeSize >= boardSizeX || coord.y + shapeSize >= boardSizeY) {
+  //     return false;
+  //   }
+  //   return true;
+  // }
 
   isEmpty(coord: coordinate) {
     return this.grid[coord.x][coord.y] === "-";
@@ -36,13 +36,10 @@ export class BoardClass {
   isNoCollision(newPiece: Piece) {
     const { coord, shape } = newPiece;
     const shapeSize = shape.length;
-    if (!this.isInside(coord, newPiece)) {
-      return false;
-    }
     for (let y = 0; y < shapeSize; y++) {
       for (let x = 0; x < shapeSize; x++) {
         if (shape[y][x]) {
-          if (!this.isEmpty({ x: coord.x + x, y: coord.y + y })) {
+          if (!this.isEmpty(new coordinate(coord.x + x, coord.y + y))) {
             return false;
           }
         }
@@ -64,10 +61,8 @@ export class BoardClass {
   }
 
   movePiece() {
-    const newCoord = { x: this.current.coord.x, y: this.current.coord.y + 1 };
-    // const newPiece = this.current.shift("down");
-    if (this.isInside(newCoord, this.current)) {
-      this.current.coord.y++;
+    const isShifted = this.current.shift("down");
+    if (isShifted) {
       return;
     }
     this.addPieceToGrid();

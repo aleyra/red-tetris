@@ -1,6 +1,58 @@
 export type types = "O" | "S" | "Z" | "T" | "J" | "L" | "I" | "-";
 
-export type coordinate = { "x": number, "y": number };
+export class coordinate {
+  private _x: number;
+  private _y: number;
+
+  constructor(x: number, y: number) {
+    this._x = x;
+    this._y = y;
+  }
+
+  isShiftOutOfBounds(direction: "right" | "left" | "down") {
+    if (direction === "right") {
+      return this._x + 1 >= boardSizeX;
+    } else if (direction === "left") {
+      return this._x - 1 < 0;
+    } else if (direction === "down") {
+      return this._y + 1 >= boardSizeY;
+    }
+    return true;
+  }
+
+  shiftRight() {
+    if (this.isShiftOutOfBounds("right")) {
+      return false;
+    }
+    this._x += 1;
+    return true;
+  }
+
+  shiftLeft() {
+    if (this.isShiftOutOfBounds("left")) {
+      return false;
+    }
+    this._x -= 1;
+    return true;
+  }
+
+  shiftDown() {
+    if (this.isShiftOutOfBounds("down")) {
+      return false;
+    }
+    this._y += 1;
+    return true;
+  }
+
+
+  get x() {
+    return this._x;
+  }
+
+  get y() {
+    return this._y;
+  }
+}
 
 const boardSizeX = 10;
 const boardSizeY = 20;
@@ -97,46 +149,14 @@ export class Piece {
     return newPiece;
   }
 
-  private shiftRight() {
-    if (this._coord.x + this._shape.length + 1 === boardSizeX) {
-      throw new RangeError("Piece will be out of bounds");
-    }
-    return { x: this._coord.x + 1, y: this._coord.y };
-  }
-
-  private shiftLeft() {
-    if (this._coord.x === 0) {
-      throw new RangeError("Piece will be out of bounds");
-    }
-    return { x: this._coord.x - 1, y: this._coord.y };
-  }
-
-  private shiftDown() {
-    if (this._coord.y + this._shape.length + 1 === boardSizeY) {
-      throw new RangeError("Piece will be out of bounds");
-    }
-    return { x: this._coord.x, y: this._coord.y + 1 };
-  }
-
   shift(direction: "right" | "left" | "down") {
-    const newPiece = new Piece(this._pieceType);
-    newPiece._shape = this._shape;
-    try {
-      if (direction === "right") {
-        newPiece._coord = this.shiftRight();
-      } else if (direction === "left") {
-        newPiece._coord = this.shiftLeft();
-      } else {
-        newPiece._coord = this.shiftDown();
-      }
-    } catch (error) {
-      if (error instanceof RangeError) {
-        return;
-      } else {
-        console.log(error);
-      }
+    if (direction === "right") {
+      return this.coord.shiftRight();
+    } else if (direction === "left") {
+      return this.coord.shiftLeft();
+    } else {
+      return this.coord.shiftDown();
     }
-    return newPiece;
   }
 
   get pieceType() {
