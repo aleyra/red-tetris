@@ -9,7 +9,7 @@ export class coordinate {
     this._y = y;
   }
 
-  isShiftOutOfBounds(direction: "right" | "left" | "down") {
+  isShiftable(direction: "right" | "left" | "down") {
     if (direction === "right") {
       return this._x + 1 >= boardSizeX;
     } else if (direction === "left") {
@@ -21,7 +21,7 @@ export class coordinate {
   }
 
   shiftRight() {
-    if (this.isShiftOutOfBounds("right")) {
+    if (this.isShiftable("right")) {
       return false;
     }
     this._x += 1;
@@ -29,7 +29,7 @@ export class coordinate {
   }
 
   shiftLeft() {
-    if (this.isShiftOutOfBounds("left")) {
+    if (this.isShiftable("left")) {
       return false;
     }
     this._x -= 1;
@@ -37,7 +37,7 @@ export class coordinate {
   }
 
   shiftDown() {
-    if (this.isShiftOutOfBounds("down")) {
+    if (this.isShiftable("down")) {
       return false;
     }
     this._y += 1;
@@ -110,8 +110,8 @@ export class Piece {
           [0, 0, 0, 0]];
       break;
     }
-    this._coord.x = Math.floor((boardSizeX - this._shape.length) / 2);
-    this._coord.y = 0;
+    const coordX = Math.floor((boardSizeX - this._shape.length) / 2);
+    this._coord = new coordinate(coordX, 0);
   }
 
   private turnRight() {
@@ -149,6 +149,7 @@ export class Piece {
     return newPiece;
   }
 
+  // rien fait si le déplacement est impossible
   shift(direction: "right" | "left" | "down") {
     if (direction === "right") {
       return this.coord.shiftRight();
@@ -157,6 +158,16 @@ export class Piece {
     } else {
       return this.coord.shiftDown();
     }
+  }
+
+  predictShift(direction: "right" | "left" | "down") {
+    if (!this.coord.isShiftable(direction))
+      return undefined;
+    const newPiece = new Piece(this._pieceType);
+    newPiece._coord = this.coord;
+    newPiece._shape = this._shape;
+    newPiece.shift(direction);
+    return newPiece;
   }
 
   get pieceType() {
@@ -186,6 +197,6 @@ export class Piece {
     const randomIndex = Math.floor(Math.random() * this.pieces.length);
     const randomType = this.pieces[randomIndex];
     this.pieces.splice(randomIndex, 1);
-    return randomType;
+    return new Piece(randomType);
   }
 }

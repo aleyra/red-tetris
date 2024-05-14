@@ -60,12 +60,22 @@ export class BoardClass {
     }
   }
 
-  movePiece() {
-    const isShifted = this.current.shift("down");
-    if (isShifted) {
-      return;
+  moveDownPiece() {
+    const shiftedPiece = this.current.predictShift("down");
+    if (shiftedPiece && this.isNoCollision(shiftedPiece)) {
+      this.current.shift("down");
+      return ;
     }
+
     this.addPieceToGrid();
+    if (this.pieces.length > 0) {
+      this.current = this.pieces[0];
+      this.pieces.shift();
+    } else {
+      const newPiece = Piece.generateNewPiece();
+      this.current = newPiece;
+      // send new piece to all players
+    }
   }
 
   updateBoard() {
