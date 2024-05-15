@@ -6,20 +6,7 @@ export interface Game {
   state: "waiting" | "playing" | "finished";
 }
 
-interface Player {
-  user: User;
-  board: number[][];
-}
 
-class PlayerClass {
-  user: User;
-  board: number[][];
-
-  constructor(user: User) {
-    this.user = user;
-    this.board = Array(10).fill(0);
-  }
-}
 
 export class GameClass {
   players: User[];
