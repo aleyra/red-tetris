@@ -1,13 +1,7 @@
 import { v4 as uuid } from "uuid";
 import { Socket } from "socket.io";
 
-export interface User {
-	name: string;
-	id: string;
-	socket: Socket;
-}
-
-export class UserAccount {
+export class User {
   name: string;
   readonly id: string;
   readonly socket;
@@ -20,7 +14,7 @@ export class UserAccount {
 }
 
 export class UserController {
-  private users: UserAccount[];
+  private users: User[];
 
   constructor() {
     this.users = [];
@@ -35,7 +29,7 @@ export class UserController {
     while (this.users.find((u) => u.name === username)) {
       username = `${username}(${Math.floor(Math.random() * 1000)})`;
     }
-    const user = new UserAccount(username, socket);
+    const user = new User(username, socket);
     this.users.push(user);
     return user;
   }
@@ -48,7 +42,7 @@ export class UserController {
     return user;
   }
 
- 
+
 }
 
-export default UserAccount;
+export default User;

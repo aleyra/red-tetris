@@ -2,14 +2,7 @@ import { Game, GameClass } from "./game";
 import { User } from "./user";
 import { v4 as uuid } from "uuid";
 
-export interface Room {
-  id: string;
-  name: string;
-  members: User[];
-  game: Game;
-}
-
-export class RoomClass {
+export class Room {
   id: string;
   name: string;
   owner: User;
@@ -26,7 +19,7 @@ export class RoomClass {
 }
 
 export class RoomController {
-  private rooms: RoomClass[];
+  private rooms: Room[];
 
   constructor() {
     this.rooms = [];
@@ -36,7 +29,7 @@ export class RoomController {
     while (this.rooms.find((room) => room.name === roomName)) {
       roomName = `${roomName}(${Math.floor(Math.random() * 1000)})`;
     }
-    const room = new RoomClass(roomName, user);
+    const room = new Room(roomName, user);
     this.rooms.push(room);
     return room;
   }
@@ -59,4 +52,4 @@ export class RoomController {
   }
 }
 
-export default RoomClass;
+export default Room;

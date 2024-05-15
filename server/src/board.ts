@@ -1,13 +1,6 @@
-import { Piece, coordinate, types } from "./piece";
+import { Piece, Coordinate, types } from "./piece";
 
-export interface Board {
-  pieces: Piece[];
-  current: Piece;
-
-  grid: types[][];
-}
-
-export class BoardClass {
+export class Board {
   private pieces: Piece[];
   private current: Piece;
   private grid: types[][];
@@ -17,10 +10,10 @@ export class BoardClass {
   constructor(piece: Piece) {
     this.pieces = [piece];
     this.current = piece;
-    this.grid = new Array(BoardClass.boardSizeY).fill(new Array(BoardClass.boardSizeX).fill("-"));
+    this.grid = new Array(Board.boardSizeY).fill(new Array(Board.boardSizeX).fill("-"));
   }
 
-  isEmpty(coord: coordinate) {
+  isEmpty(coord: Coordinate) {
     return this.grid[coord.x][coord.y] === "-";
   }
 
@@ -30,7 +23,7 @@ export class BoardClass {
     for (let y = 0; y < shapeSize; y++) {
       for (let x = 0; x < shapeSize; x++) {
         if (shape[y][x]) {
-          if (!this.isEmpty(new coordinate(coord.x + x, coord.y + y))) {
+          if (!this.isEmpty(new Coordinate(coord.x + x, coord.y + y))) {
             return false;
           }
         }

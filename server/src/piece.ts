@@ -1,14 +1,14 @@
-import { BoardClass } from "./board";
+import { Board } from "./board";
 
 export type types = "O" | "S" | "Z" | "T" | "J" | "L" | "I" | "-";
 
-export class coordinate {
+export class Coordinate {
   private _x: number;
   private _y: number;
   private readonly _maxX: number;
   private readonly _maxY: number;
 
-  constructor(x: number, y: number, maxX = BoardClass.boardSizeX, maxY = BoardClass.boardSizeY) {
+  constructor(x: number, y: number, maxX = Board.boardSizeX, maxY = Board.boardSizeY) {
     this._x = x;
     this._y = y;
     this._maxX = maxX;
@@ -62,7 +62,7 @@ export class coordinate {
 
 export class Piece {
   private readonly _pieceType: types;
-  private _coord: coordinate;
+  private _coord: Coordinate;
   private _shape: number[][];
 
   static pieces: types[] = ["O", "S", "Z", "T", "J", "L", "I"];
@@ -113,8 +113,8 @@ export class Piece {
           [0, 0, 0, 0]];
       break;
     }
-    const coordX = Math.floor((BoardClass.boardSizeX - this._shape.length) / 2);
-    this._coord = new coordinate(coordX, 0);
+    const coordX = Math.floor((Board.boardSizeX - this._shape.length) / 2);
+    this._coord = new Coordinate(coordX, 0);
   }
 
   private turnRight() {
@@ -194,7 +194,7 @@ export class Piece {
   //   this._shape = shape;
   // }
 
-  // private set coord(newCoord: coordinate) {
+  // private set coord(newCoord: Coordinate) {
   //   this._coord = newCoord;
   // }
 
