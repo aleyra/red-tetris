@@ -1,4 +1,4 @@
-import { Piece, Coordinate, types } from "./piece";
+import { Piece, Coordinate, types } from "./piece/piece";
 
 export class Board {
   private pieces: Piece[];

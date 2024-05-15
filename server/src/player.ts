@@ -1,6 +1,6 @@
 import { Board } from "./board";
 import { User } from "./user";
-import { Piece } from "./piece";
+import { Piece } from "./piece/piece";
 
 export class Player {
   private readonly _user: User;
