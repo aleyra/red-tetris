@@ -1,21 +1,27 @@
+import { BoardClass } from "./board";
+
 export type types = "O" | "S" | "Z" | "T" | "J" | "L" | "I" | "-";
 
 export class coordinate {
   private _x: number;
   private _y: number;
+  private readonly _maxX: number;
+  private readonly _maxY: number;
 
-  constructor(x: number, y: number) {
+  constructor(x: number, y: number, maxX = BoardClass.boardSizeX, maxY = BoardClass.boardSizeY) {
     this._x = x;
     this._y = y;
+    this._maxX = maxX;
+    this._maxY = maxY;
   }
 
   isShiftable(direction: "right" | "left" | "down") {
     if (direction === "right") {
-      return this._x + 1 >= boardSizeX;
+      return this._x + 1 >= this._maxX;
     } else if (direction === "left") {
       return this._x - 1 < 0;
     } else if (direction === "down") {
-      return this._y + 1 >= boardSizeY;
+      return this._y + 1 >= this._maxY;
     }
     return true;
   }
@@ -53,9 +59,6 @@ export class coordinate {
     return this._y;
   }
 }
-
-const boardSizeX = 10;
-const boardSizeY = 20;
 
 export class Piece {
   private readonly _pieceType: types;
@@ -110,7 +113,7 @@ export class Piece {
           [0, 0, 0, 0]];
       break;
     }
-    const coordX = Math.floor((boardSizeX - this._shape.length) / 2);
+    const coordX = Math.floor((BoardClass.boardSizeX - this._shape.length) / 2);
     this._coord = new coordinate(coordX, 0);
   }
 
