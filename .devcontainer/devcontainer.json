@@ -1,32 +1,41 @@
-// devcontainer.json
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/typescript-node
 {
-	"name": "Node.js",
-
+	"name": "Node.js & TypeScript",
 	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
 	"image": "node:latest",
+	"features": {
+		"ghcr.io/devcontainers/features/github-cli:1": {}
+	},
 
-	// Features to add to the dev container. More info: https://containers.dev/features.
-	// "features": {},
+
 	"shutdownAction": "none",
 
 	"customizations": {
 	  "vscode": {
 		"settings": {},
 		"terminal.integrated.defaultProfile.linux": "zsh",
-		"extensions": ["streetsidesoftware.code-spell-checker"]
+		"extensions": [
+			"streetsidesoftware.code-spell-checker",
+			"WakaTime.vscode-wakatime",
+			"stackbreak.comment-divider",
+		]
 	  }
 	},
 
-// 	"forwardPorts": [3000, 8000],
 
-// 	// "portsAttributes": {
-// 	//   "3000": {
-// 	// 	"label": "Hello Remote World",
-// 	// 	"onAutoForward": "notify"
-// 	//   }
-// 	// },
+	// Features to add to the dev container. More info: https://containers.dev/features.
+	// "features": {},
 
-// 	// "postCreateCommand": "npm install",
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	// "forwardPorts": [],
 
-// 	// "remoteUser": "root"
-  }
+	// Use 'postCreateCommand' to run commands after the container is created.
+	// "postCreateCommand": "yarn install",
+
+	// Configure tool-specific properties.
+	// "customizations": {},
+
+	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
+	// "remoteUser": "root"
+}
