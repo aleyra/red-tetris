@@ -1,6 +1,7 @@
-import { Piece, Coordinate, types } from "./piece/piece";
+import Piece, { types } from "./piece/piece";
+import Coordinate from "./piece/coordinate";
 
-export class Board {
+class Board {
   private pieces: Piece[];
   private current: Piece;
   private grid: types[][];
@@ -44,6 +45,10 @@ export class Board {
     }
   }
 
+  addNewPieceToList(newPiece: Piece) {
+    this.pieces.push(newPiece);
+  }
+
   moveDownPiece() {
     const shiftedPiece = this.current.predictShift("down");
     if (shiftedPiece && this.isNoCollision(shiftedPiece)) {
@@ -78,3 +83,5 @@ export class Board {
   }
 
 }
+
+export default Board;

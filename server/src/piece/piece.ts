@@ -1,4 +1,4 @@
-import { Board } from "../board";
+import Board from "../board";
 import Coordinate from "./coordinate";
 
 export type types = "O" | "S" | "Z" | "T" | "J" | "L" | "I" | "-";
@@ -132,14 +132,6 @@ class Piece {
   get coord() {
     return this._coord;
   }
-
-  // private set shape(shape: number[][]) {
-  //   this._shape = shape;
-  // }
-
-  // private set coord(newCoord: Coordinate) {
-  //   this._coord = newCoord;
-  // }
 
   static generateNewPiece() {
     if (this.pieces.length === 0) {
