@@ -70,6 +70,14 @@ export class BoardClass {
     }
   }
 
+  turnPiece() {
+    const direction = "right"; //get key input
+    const turnedPiece = this.current.predictTurn(direction);
+    if (this.isNoCollision(turnedPiece)) {
+      this.current.turn(direction);
+    }
+  }
+
   screenShot() {
     const currentGrid = this.grid;
     this.addPieceToGrid(currentGrid);

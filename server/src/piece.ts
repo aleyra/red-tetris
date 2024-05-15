@@ -126,7 +126,7 @@ export class Piece {
         newShape[i][j] = this._shape[size - 1 - j][i];
       }
     }
-    return newShape;
+    this._shape = newShape;
   }
 
   private turnLeft() {
@@ -138,28 +138,33 @@ export class Piece {
         newShape[i][j] = this._shape[i][size - 1 - i];
       }
     }
-    return newShape;
+    this._shape = newShape;
   }
 
   turn(direction: "right" | "left") {
-    const newPiece = new Piece(this._pieceType);
-    newPiece._coord = this._coord;
     if (direction === "left") {
-      newPiece._shape = this.turnLeft();
+      this.turnLeft();
     } else {
-      newPiece._shape = this.turnRight();
+      this.turnRight();
     }
+  }
+
+  predictTurn(direction: "right" | "left") {
+    const newPiece = new Piece(this._pieceType);
+    newPiece._coord = this.coord;
+    newPiece._shape = this._shape;
+    newPiece.turn(direction);
     return newPiece;
   }
 
   // rien fait si le déplacement est impossible
   shift(direction: "right" | "left" | "down") {
     if (direction === "right") {
-      return this.coord.shiftRight();
+      this.coord.shiftRight();
     } else if (direction === "left") {
-      return this.coord.shiftLeft();
+      this.coord.shiftLeft();
     } else {
-      return this.coord.shiftDown();
+      this.coord.shiftDown();
     }
   }
 
