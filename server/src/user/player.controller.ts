@@ -3,9 +3,11 @@ import  AUserController  from "./user.controller.abstract";
 import User from "./user";
 
 class PlayerController extends AUserController {
+  protected users: Player[];
 
   constructor(users: User[] = []) {
-    super(users.map((user) => new Player(user)));
+    super();
+    this.users = users.map((user) => new Player(user));
   }
 
   addPlayer(user: User) {

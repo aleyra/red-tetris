@@ -2,10 +2,9 @@ import Player from "./player";
 import User from "./user";
 
 abstract class AUserController {
-  protected users: (User | Player)[];
+  protected abstract users: (User | Player)[];
 
-  constructor(users: User[] | Player[] = []) {
-    this.users = users;
+  constructor() {
   }
 
   createUniqueUsername(username: string) {

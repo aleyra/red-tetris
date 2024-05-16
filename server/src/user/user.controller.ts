@@ -3,9 +3,11 @@ import User from "./user";
 import AUserController from "./user.controller.abstract";
 
 class UserController extends AUserController {
+  protected users: User[];
 
   constructor(users: User[] = []) {
-    super(users);
+    super();
+    this.users = users;
   }
 
   addUser(user: User) {
