@@ -58,14 +58,12 @@ class Board {
 
     this.addPieceToGrid(this.grid);
 
-    if (this.pieces.length > 0) {
-      this.current = this.pieces[0];
-      this.pieces.shift();
-    } else {
-      const newPiece = Piece.generateNewPiece();
-      this.current = newPiece;
-      // send new piece to all players
-    }
+    if (this.pieces.length == 0)
+      throw new Error("Logic error: No more pieces 4 you!");
+
+    this.current = this.pieces[0];
+    this.pieces.shift();
+
   }
 
   turnPiece() {
@@ -80,6 +78,10 @@ class Board {
     const currentGrid = this.grid;
     this.addPieceToGrid(currentGrid);
     return currentGrid;
+  }
+
+  get numOfPieces() {
+    return this.pieces.length;
   }
 
 }

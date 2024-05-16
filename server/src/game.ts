@@ -2,6 +2,7 @@ import Player from "./user/player";
 import User from "./user/user";
 import PlayerController from "./user/player.controller";
 import UserController from "./user/user.controller";
+import Piece from "./piece/piece";
 
 class Game {
   private players: PlayerController;
@@ -34,6 +35,13 @@ class Game {
 
   runGame() {
 
+  }
+
+  checkPiece() {
+    if(!this.players.isNewPieceNeeded())
+      return;
+    const newPiece = Piece.generateNewPiece();
+    this.players.distributeNewPiece(newPiece);
   }
 }
 

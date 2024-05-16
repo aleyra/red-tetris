@@ -1,6 +1,7 @@
 import Player  from "./player";
 import  AUserController  from "./user.controller.abstract";
 import User from "./user";
+import Piece from "src/piece/piece";
 
 class PlayerController extends AUserController {
   protected users: Player[];
@@ -18,6 +19,14 @@ class PlayerController extends AUserController {
 
   notifyAllPlayers(event: string, data: any) {
     this.users.forEach((player) => player.socket.emit(event, data));
+  }
+
+  isNewPieceNeeded() {
+    return this.users.some((player) => {return player.isNewPieceNeeded();});
+  }
+
+  distributeNewPiece(piece: Piece) {
+    this.users.forEach((player) => player.addNewPieceToList(piece));
   }
 }
 

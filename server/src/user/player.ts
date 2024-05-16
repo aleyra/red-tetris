@@ -16,6 +16,10 @@ class Player extends User {
   addNewPieceToList(piece: Piece) {
     this._board.addNewPieceToList(piece);
   }
+
+  isNewPieceNeeded() {
+    return this._board.numOfPieces === 0;
+  }
 }
 
 export default Player;
