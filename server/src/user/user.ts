@@ -1,7 +1,7 @@
 import { Socket } from "socket.io";
 import { v4 as uuid } from "uuid";
 
-abstract class User {
+class User {
   name: string;
   readonly id: string;
   readonly socket: Socket;

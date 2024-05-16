@@ -1,36 +1,26 @@
-import { User } from "./user";
+import Player from "./user/player";
+import User from "./user/user";
+import PlayerController from "./user/player.controller";
+import UserController from "./user/user.controller";
 
-export interface Game {
-  viewers: User[];
-  players: User[];
-  state: "waiting" | "playing" | "finished";
-}
+class Game {
+  private players: PlayerController;
+  private viewers: UserController;
+  private state: "waiting" | "playing" | "finished";
 
-
-
-export class GameClass {
-  players: User[];
-  viewers: User[];
-  state: "waiting" | "playing" | "finished";
-
-  constructor(user: User[]) {
-    this.viewers = user;
-    this.players = user;
+  constructor(users: User[]) {
+    this.viewers = new UserController(users);
+    this.players = new PlayerController(users);
     this.state = "waiting";
   }
 
   addUser(user: User) {
+    if (this.players.findUser(user))
+      return ;
     if (this.state !== "playing") {
-      if (this.players.find((u) => u.name === user.name)) {
-        return ;
-      }
-      this.players.push(user);
+      this.players.addPlayer(user);
     } else {
-      if (this.players.find((u) => u.name === user.name) ||
-       this.viewers.find((u) => u.name === user.name)) {
-        return ;
-      }
-      this.viewers.push(user);
+      this.viewers.addUser(user);
     }
   }
 
@@ -39,10 +29,12 @@ export class GameClass {
     console.log(this.players);
     //initMap
     this.runGame();
-    this.players.forEach((player) => { player.socket.emit("gameData", this.players); });
+    this.players.notifyAllPlayers("game-start", null);
   }
 
   runGame() {
 
   }
 }
+
+export default Game;
