@@ -1,13 +1,12 @@
-import Board from "./board";
-import { User } from "./user";
-import Piece from "./piece/piece";
+import Board from "../board";
+import  User from "./user";
+import Piece from "../piece/piece";
 
-export class Player {
-  private readonly _user: User;
+class Player extends User {
   private _board: Board;
 
   constructor(user: User) {
-    this._user = user;
+    super(user.name, user.socket, user.id);
   }
 
   initBoard(piece: Piece) {
@@ -18,3 +17,5 @@ export class Player {
     this._board.addNewPieceToList(piece);
   }
 }
+
+export default Player;

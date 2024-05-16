@@ -1,5 +1,5 @@
-import { Game, GameClass } from "./game";
-import { User } from "./user";
+import Game from "./game";
+import RoomUser from "./user/room-user";
 import { v4 as uuid } from "uuid";
 
 export class Room {
