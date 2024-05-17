@@ -30,13 +30,8 @@ class Game {
 
     const newPiece = Piece.generateNewPiece();
     this.players.initPlayersBoards(newPiece);
-  
-    this.runGame();
-    this.players.notifyAllPlayers("game-start", null);
-  }
 
-  runGame() {
-
+    this.players.startPlayersGame();
   }
 
   checkPiece() {
