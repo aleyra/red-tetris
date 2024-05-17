@@ -36,13 +36,13 @@ class Player extends User {
     setTimeout(() => this.loopCheck(), this._board.timeLeft() / 2);
   }
 
-  movePiece(movement: "shift" | "rotation", direction: "left" | "right" | "down") {
+  movePiece(movement: "shift" | "rotate", direction: "left" | "right" | "down") {
     let isMoved = false;
 
     if (movement === "shift") {
       isMoved = this._board.shiftPiece(direction);
-    } else if (movement === "rotation" && direction !== "down") {
-      isMoved = this._board.turnPiece(direction);
+    } else if (movement === "rotate" && direction !== "down") {
+      isMoved = this._board.rotatePiece(direction);
     } else {
       throw new Error("Invalid movement"); // rotation down is not allowed
     }

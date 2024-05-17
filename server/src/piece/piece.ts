@@ -60,7 +60,7 @@ class Piece {
     this._coord = new Coordinate(coordX, 0);
   }
 
-  private turnRight() {
+  private rotateRight() {
     const newShape: number[][] = [];
     const size: number = this._shape.length;
     for (let i = 0; i < size; i++) {
@@ -72,7 +72,7 @@ class Piece {
     this._shape = newShape;
   }
 
-  private turnLeft() {
+  private rotateLeft() {
     const newShape: number[][] = [];
     const size: number = this._shape.length;
     for (let i = 0; i < size; i++) {
@@ -84,19 +84,19 @@ class Piece {
     this._shape = newShape;
   }
 
-  turn(direction: "right" | "left") {
+  rotate(direction: "right" | "left") {
     if (direction === "left") {
-      this.turnLeft();
+      this.rotateLeft();
     } else {
-      this.turnRight();
+      this.rotateRight();
     }
   }
 
-  predictTurn(direction: "right" | "left") {
+  predictRotate(direction: "right" | "left") {
     const newPiece = new Piece(this._pieceType);
     newPiece._coord = this.coord;
     newPiece._shape = this._shape;
-    newPiece.turn(direction);
+    newPiece.rotate(direction);
     return newPiece;
   }
 

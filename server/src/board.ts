@@ -95,10 +95,10 @@ class Board {
     return false;
   }
 
-  turnPiece(direction: "left" | "right"): boolean {
-    const turnedPiece = this.current.predictTurn(direction);
-    if (this.isNoCollision(turnedPiece)) {
-      this.current.turn(direction);
+  rotatePiece(direction: "left" | "right"): boolean {
+    const rotatedPiece = this.current.predictRotate(direction);
+    if (this.isNoCollision(rotatedPiece)) {
+      this.current.rotate(direction);
       return true;
     }
     return false;
