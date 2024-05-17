@@ -3,6 +3,7 @@ import Board from "../board";
 class Coordinate {
   private _x: number;
   private _y: number;
+
   private readonly _maxX: number;
   private readonly _maxY: number;
 

@@ -1,5 +1,7 @@
 import { Server as SocketIoServer } from "socket.io";
 import { Server as HttpServer } from "node:http";
+import RoomController from "./room/room.controller";
+import UserController from "./user/user.controller";
 
 export class SocketServer {
   private readonly socketIoServer: SocketIoServer;

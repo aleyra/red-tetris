@@ -3,17 +3,17 @@ import User from "./user";
 import AUserController from "./user.controller.abstract";
 
 class UserController extends AUserController {
-  protected users: User[];
+  protected _users: User[];
 
-  constructor(users: User[] = []) {
+  constructor(_users: User[] = []) {
     super();
-    this.users = users;
+    this._users = _users;
   }
 
   addUser(user: User) {
     if (this.findUser(user))
       return;
-    this.users.push(user);
+    this._users.push(user);
   }
 
 }

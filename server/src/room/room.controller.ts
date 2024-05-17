@@ -2,32 +2,32 @@ import Room from "./room";
 import User from "src/user/user";
 
 class RoomController {
-  private rooms: Room[];
+  private _rooms: Room[];
 
   constructor() {
-    this.rooms = [];
+    this._rooms = [];
   }
 
-  createUniqueRoomName(roomName: string): string{
-    while (this.rooms.find((room) => room.name === roomName)) {
+  private createUniqueRoomName(roomName: string): string{
+    while (this._rooms.find((room) => room.name === roomName)) {
       roomName = `${roomName}(${Math.floor(Math.random() * 1000)})`;
     }
     return roomName;
   }
 
-  createRoom(roomName: string, user: User): Room {
+  private createRoom(roomName: string, user: User): Room {
     this.createUniqueRoomName(roomName);
     const room = new Room(roomName, user);
-    this.rooms.push(room);
+    this._rooms.push(room);
     return room;
   }
 
   findRoom(room: Room): Room | undefined {
-    return this.rooms.find((r) => r.id === room.id);
+    return this._rooms.find((r) => r.id === room.id);
   }
 
   findRoomByName(roomName: string) : Room | undefined {
-    return this.rooms.find((room) => room.name === roomName);
+    return this._rooms.find((room) => room.name === roomName);
   }
 
   joinRoom(roomName: string, user: User): Room {
@@ -41,11 +41,11 @@ class RoomController {
   }
 
   removeRoom(id: string) {
-    this.rooms = this.rooms.filter((room) => room.id !== id);
+    this._rooms = this._rooms.filter((room) => room.id !== id);
   }
 
   getRoom(id: string) {
-    return this.rooms.find((room) => room.id === id);
+    return this._rooms.find((room) => room.id === id);
   }
 }
 

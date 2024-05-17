@@ -2,26 +2,26 @@ import Piece, { types } from "./piece/piece";
 import Coordinate from "./piece/coordinate";
 
 class Board {
-  private pieces: Piece[];
-  private current: Piece;
-  private grid: types[][];
-  private lastTimestamp: Date;
+  private _pieces: Piece[];
+  private _current: Piece;
+  private _grid: types[][];
+  private _lastTimeStamp: Date;
 
   static readonly boardSizeX = 10;
   static readonly boardSizeY = 20;
   static readonly timeoutMs = 1000; //ms
 
   constructor(piece: Piece) {
-    this.pieces = [piece];
-    this.current = piece;
-    this.grid = new Array(Board.boardSizeY).fill(new Array(Board.boardSizeX).fill("-"));
+    this._pieces = [piece];
+    this._current = piece;
+    this._grid = new Array(Board.boardSizeY).fill(new Array(Board.boardSizeX).fill("-"));
   }
 
-  isEmpty(coord: Coordinate) {
-    return this.grid[coord.x][coord.y] === "-";
+  isEmpty(coord: Coordinate): boolean {
+    return this._grid[coord.x][coord.y] === "-";
   }
 
-  isNoCollision(newPiece: Piece) {
+  isNoCollision(newPiece: Piece): boolean {
     const { coord, shape } = newPiece;
     const shapeSize = shape.length;
     for (let y = 0; y < shapeSize; y++) {
@@ -36,55 +36,55 @@ class Board {
     return true;
   }
 
-  addPieceToGrid(grid: types[][]) {
-    const { coord, shape, pieceType } = this.current;
+  addPieceToGrid(_grid: types[][]) {
+    const { coord, shape, pieceType } = this._current;
     const shapeSize = shape.length;
     for (let y = 0; y < shapeSize; y++) {
       for (let x = 0; x < shapeSize; x++) {
         if (shape[y][x]) {
-          grid[coord.x + x][coord.y + y] = pieceType;
+          _grid[coord.x + x][coord.y + y] = pieceType;
         }
       }
     }
   }
 
-  isTimeout() {
+  isTimeout(): boolean{
     const now = new Date();
-    return (now.getTime() - this.lastTimestamp.getTime()) > (Board.timeoutMs - 10);
+    return (now.getTime() - this._lastTimeStamp.getTime()) > (Board.timeoutMs - 10);
   }
 
   timeLeft() : number {
     const now = new Date();
-    const timeLeft = Board.timeoutMs - (now.getTime() - this.lastTimestamp.getTime());
+    const timeLeft = Board.timeoutMs - (now.getTime() - this._lastTimeStamp.getTime());
     return timeLeft > 0 ? timeLeft : 0;
   }
 
-  updateLastTimestamp() {
-    this.lastTimestamp = new Date();
+  updateLastTimeStamp() {
+    this._lastTimeStamp = new Date();
   }
 
   addNewPieceToList(newPiece: Piece) {
-    this.pieces.push(newPiece);
+    this._pieces.push(newPiece);
   }
 
   onPieceLanding() {
-    this.addPieceToGrid(this.grid);
+    this.addPieceToGrid(this._grid);
 
-    if (this.pieces.length == 0)
-      throw new Error("Logic error: No more pieces 4 you!");
+    if (this._pieces.length == 0)
+      throw new Error("Logic error: No more _pieces 4 you!");
 
-    this.current = this.pieces[0];
-    this.pieces.shift();
+    this._current = this._pieces[0];
+    this._pieces.shift();
 
-    this.updateLastTimestamp();
+    this.updateLastTimeStamp();
   }
 
   shiftPiece(direction: "left" | "right" | "down"): boolean {
-    const shiftedPiece = this.current.predictShift(direction);
+    const shiftedPiece = this._current.predictShift(direction);
     if (shiftedPiece && this.isNoCollision(shiftedPiece)) {
-      this.current.shift(direction);
+      this._current.shift(direction);
       if (direction === "down") {
-        this.updateLastTimestamp();
+        this.updateLastTimeStamp();
       }
       return true;
     }
@@ -96,22 +96,22 @@ class Board {
   }
 
   rotatePiece(direction: "left" | "right"): boolean {
-    const rotatedPiece = this.current.predictRotate(direction);
+    const rotatedPiece = this._current.predictRotate(direction);
     if (this.isNoCollision(rotatedPiece)) {
-      this.current.rotate(direction);
+      this._current.rotate(direction);
       return true;
     }
     return false;
   }
 
-  screenShot() {
-    const currentGrid = this.grid;
-    this.addPieceToGrid(currentGrid);
-    return currentGrid;
+  screenShot(): types[][] {
+    const _current_grid = this._grid;
+    this.addPieceToGrid(_current_grid);
+    return _current_grid;
   }
 
-  get numOfPieces() {
-    return this.pieces.length;
+  get numOf_Pieces() : number {
+    return this._pieces.length;
   }
 
 }

@@ -5,40 +5,40 @@ import UserController from "./user/user.controller";
 import Piece from "./piece/piece";
 
 class Game {
-  private players: PlayerController;
-  private viewers: UserController;
-  private state: "waiting" | "playing" | "finished";
+  private _players: PlayerController;
+  private _viewers: UserController;
+  private _state: "waiting" | "playing" | "finished";
 
   constructor(users: User[]) {
-    this.viewers = new UserController(users);
-    this.players = new PlayerController(users);
-    this.state = "waiting";
+    this._viewers = new UserController(users);
+    this._players = new PlayerController(users);
+    this._state = "waiting";
   }
 
   addUser(user: User) {
-    if (this.players.findUser(user))
+    if (this._players.findUser(user))
       return ;
-    if (this.state !== "playing") {
-      this.players.addPlayer(user);
+    if (this._state !== "playing") {
+      this._players.addPlayer(user);
     } else {
-      this.viewers.addUser(user);
+      this._viewers.addUser(user);
     }
   }
 
   startGame() {
-    this.state = "playing";
+    this._state = "playing";
 
     const newPiece = Piece.generateNewPiece();
-    this.players.initPlayersBoards(newPiece);
+    this._players.initPlayersBoards(newPiece);
 
-    this.players.startPlayersGame();
+    this._players.startPlayersGame();
   }
 
   checkPiece() {
-    if(!this.players.isNewPieceNeeded())
+    if(!this._players.isNewPieceNeeded())
       return;
     const newPiece = Piece.generateNewPiece();
-    this.players.distributeNewPiece(newPiece);
+    this._players.distributeNewPiece(newPiece);
   }
 }
 
