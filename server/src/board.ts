@@ -67,14 +67,7 @@ class Board {
     this.pieces.push(newPiece);
   }
 
-  movePieceDown() {
-    const shiftedPiece = this.current.predictShift("down");
-    if (shiftedPiece && this.isNoCollision(shiftedPiece)) {
-      this.current.shift("down");
-      this.updateLastTimestamp();
-      return ;
-    }
-
+  onPieceLanding() {
     this.addPieceToGrid(this.grid);
 
     if (this.pieces.length == 0)
@@ -82,15 +75,33 @@ class Board {
 
     this.current = this.pieces[0];
     this.pieces.shift();
+
     this.updateLastTimestamp();
   }
 
-  turnPiece() {
-    const direction = "right"; //get key input
+  shiftPiece(direction: "left" | "right" | "down"): boolean {
+    const shiftedPiece = this.current.predictShift(direction);
+    if (shiftedPiece && this.isNoCollision(shiftedPiece)) {
+      this.current.shift(direction);
+      if (direction === "down") {
+        this.updateLastTimestamp();
+      }
+      return true;
+    }
+
+    if (direction === "down") {
+      this.onPieceLanding();
+    }
+    return false;
+  }
+
+  turnPiece(direction: "left" | "right"): boolean {
     const turnedPiece = this.current.predictTurn(direction);
     if (this.isNoCollision(turnedPiece)) {
       this.current.turn(direction);
+      return true;
     }
+    return false;
   }
 
   screenShot() {
