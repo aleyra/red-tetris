@@ -5,8 +5,11 @@ class Board {
   private pieces: Piece[];
   private current: Piece;
   private grid: types[][];
+  private lastTimestamp: Date;
+
   static readonly boardSizeX = 10;
   static readonly boardSizeY = 20;
+  static readonly timeoutMs = 1000; //ms
 
   constructor(piece: Piece) {
     this.pieces = [piece];
@@ -45,14 +48,30 @@ class Board {
     }
   }
 
+  isTimeout() {
+    const now = new Date();
+    return (now.getTime() - this.lastTimestamp.getTime()) > (Board.timeoutMs - 10);
+  }
+
+  timeLeft() : number {
+    const now = new Date();
+    const timeLeft = Board.timeoutMs - (now.getTime() - this.lastTimestamp.getTime());
+    return timeLeft > 0 ? timeLeft : 0;
+  }
+
+  updateLastTimestamp() {
+    this.lastTimestamp = new Date();
+  }
+
   addNewPieceToList(newPiece: Piece) {
     this.pieces.push(newPiece);
   }
 
-  moveDownPiece() {
+  movePieceDown() {
     const shiftedPiece = this.current.predictShift("down");
     if (shiftedPiece && this.isNoCollision(shiftedPiece)) {
       this.current.shift("down");
+      this.updateLastTimestamp();
       return ;
     }
 
@@ -63,7 +82,7 @@ class Board {
 
     this.current = this.pieces[0];
     this.pieces.shift();
-
+    this.updateLastTimestamp();
   }
 
   turnPiece() {
