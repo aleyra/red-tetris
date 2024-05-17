@@ -17,6 +17,10 @@ class PlayerController extends AUserController {
     this.users.push(new Player(user));
   }
 
+  initPlayersBoards(piece: Piece) {
+    this.users.forEach((player) => player.initBoard(piece));
+  }
+
   notifyAllPlayers(event: string, data: any) {
     this.users.forEach((player) => player.socket.emit(event, data));
   }

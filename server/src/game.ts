@@ -27,8 +27,10 @@ class Game {
 
   startGame() {
     this.state = "playing";
-    console.log(this.players);
-    //initMap
+
+    const newPiece = Piece.generateNewPiece();
+    this.players.initPlayersBoards(newPiece);
+  
     this.runGame();
     this.players.notifyAllPlayers("game-start", null);
   }

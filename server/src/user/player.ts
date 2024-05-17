@@ -18,7 +18,7 @@ class Player extends User {
   }
 
   isNewPieceNeeded() {
-    return this._board.numOfPieces === 0;
+    return this._board.numOfPieces <= 1;
   }
 }
 
