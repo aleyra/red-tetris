@@ -16,6 +16,11 @@ class UserController extends AUserController {
     this._users.push(user);
   }
 
+  createAndAddUser(username: string, socket: Socket): User {
+    const user = new User(username, socket);
+    this.addUser(user);
+    return user;
+  }
 }
 
 export default UserController;

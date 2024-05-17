@@ -1,6 +1,6 @@
-import UserController from "src/user/user.controller";
+import UserController from "../user/user.controller";
 import Game from "../game";
-import User from "src/user/user";
+import User from "../user/user";
 import { v4 as uuid } from "uuid";
 
 class Room {
@@ -28,6 +28,10 @@ class Room {
 
   get id() {
     return this._id;
+  }
+
+  get game() {
+    return this._game;
   }
 }
 

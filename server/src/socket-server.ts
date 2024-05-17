@@ -33,21 +33,21 @@ export class SocketServer {
 
       socket.on("createRoom", (roomName: string, username: string) => {
         console.log("createRoom", roomName);
-        const user = this.userController.findOrCreateUser(username, socket);
-        const room = this.roomController.createRoom(roomName, user);
+        const user = this.userController.createAndAddUser(username, socket);
+        const room = this.roomController.joinRoom(roomName, user);
         console.log("room", room);
       });
 
       socket.on("joinRoom", (roomName: string, username: string) => {
         console.log("joinRoom", roomName);
-        const user = this.userController.findOrCreateUser(username, socket);
+        const user = this.userController.createAndAddUser(username, socket);
         const room = this.roomController.joinRoom(roomName, user);
         console.log("room", room);
       });
 
       socket.on("startGame", (roomName: string) => {
         console.log("startGame", roomName);
-        const room = this.roomController.getRoom(roomName);
+        const room = this.roomController.findRoomByName(roomName);
         if (!room) {
           throw new Error("Room not found");
         }

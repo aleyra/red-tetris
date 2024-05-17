@@ -110,7 +110,7 @@ class Board {
     return _current_grid;
   }
 
-  get numOf_Pieces() : number {
+  get numOfPieces() : number {
     return this._pieces.length;
   }
 
