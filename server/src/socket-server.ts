@@ -31,13 +31,7 @@ export class SocketServer {
         console.log("user disconnected");
       });
 
-      socket.on("createRoom", (roomName: string, username: string) => {
-        console.log("createRoom", roomName);
-        const user = this.userController.createAndAddUser(username, socket);
-        const room = this.roomController.joinRoom(roomName, user);
-        console.log("room", room);
-      });
-
+      // create room if does not exist
       socket.on("joinRoom", (roomName: string, username: string) => {
         console.log("joinRoom", roomName);
         const user = this.userController.createAndAddUser(username, socket);
@@ -45,6 +39,7 @@ export class SocketServer {
         console.log("room", room);
       });
 
+      // emit "boardInfo" to each player, after, receive "boardInfo" each 1 sec
       socket.on("startGame", (roomName: string) => {
         console.log("startGame", roomName);
         const room = this.roomController.findRoomByName(roomName);

@@ -54,7 +54,7 @@ class Player extends User {
 
   emitCurrentBoard() {
     const boardCurrentState = this._board.screenShot();
-    this.socket.emit("board", boardCurrentState);
+    this.socket.emit("boardInfo", boardCurrentState);
   }
 }
 
