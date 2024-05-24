@@ -4,15 +4,9 @@ import { connect } from "react-redux";
 //redux actions
 import { selectMode } from "../../redux/mode/modeActions";
 import { rankMulti } from "../../redux/ranking/multi_mode/rankingMultiActions";
-import {
-	rankSoloEasy 
-} from "../../redux/ranking/solo_easy_mode/rankingSoloEasyActions";
-import {
-	rankSoloHard
-} from "../../redux/ranking/solo_hard_mode/rankingSoloHardActions";
-import {
-	rankSoloNormal
-} from "../../redux/ranking/solo_normal_mode/rankingSoloNormalActions";
+import { rankSoloEasy } from "../../redux/ranking/solo_easy_mode/rankingSoloEasyActions";
+import { rankSoloHard } from "../../redux/ranking/solo_hard_mode/rankingSoloHardActions";
+import { rankSoloNormal } from "../../redux/ranking/solo_normal_mode/rankingSoloNormalActions";
 
 //css
 import '../../css/Ranking.css'
