@@ -7,7 +7,7 @@ const initialState = {
 const modeReducer = (state = initialState, action) => {
 	switch(action.type) {
 		case SELECT_MODE: return {
-			... state,
+			...state,
 			modeSelected: action.payload
 		}
 		default: return state;

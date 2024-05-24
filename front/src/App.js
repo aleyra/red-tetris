@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Route, Routes, HashRouter } from 'react-router-dom';
+
 import socketIOClient from "socket.io-client";
 
 //css
@@ -8,7 +9,7 @@ import './css/App.css'
 //functions
 import { HomeContainer } from './containers/home/HomeContainer';
 import { NotFoundContainer } from './containers/tools_containers/NotFoundContainer';
-// import { RankingContainer } from './containers/ranking/RankingContainer';
+import { RankingContainer } from './containers/ranking/RankingContainer';
 import SelectModeToPlayContainer from './containers/play/SelectModeToPlayContainer';
 import SelectModeOfRanking from './containers/ranking/SelectModeOfRanking';
 import PlayContainer from './containers/play/PlayContainer';
@@ -18,7 +19,7 @@ import { Provider } from 'react-redux';
 // import TutoShop from './tuto_shop';
 // import store from './redux/tuto/store';
 // import store from './redux/store'
-import { setupStore } from './redux/store';
+import store from './redux/store';
 
 /* from ex-teammate block begin */
 // const ENDPOINT = "http://localhost:4001";
@@ -65,14 +66,14 @@ export default function App() {
 	return(
 		<React.Fragment>
 			{/* <Provider store={store}> */}
-			<Provider store={setupStore()}>
+			<Provider store={store}>
 				<HashRouter>
 					<div className='Main-div'>
 						<Routes>
 							<Route exact path="/" element={<HomeContainer />} />
 							<Route path="/SelectModeToPlayContainer" element={<SelectModeToPlayContainer />} />
-							{/* <Route path='/Ranking' element={<RankingContainer />} /> */}
-							<Route path='/Ranking' element={<SelectModeOfRanking />} />
+							<Route path='/Ranking' element={<RankingContainer />} />
+							{/* <Route path='/Ranking' element={<SelectModeOfRanking />} /> */}
 							<Route path=':gid' element={<PlayContainer />} />
 							<Route element={<NotFoundContainer />} />
 							{/* React Redux Tutorial block begin */}

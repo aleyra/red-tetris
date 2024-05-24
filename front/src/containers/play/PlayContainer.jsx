@@ -62,9 +62,9 @@ function PlayContainer(props){
 }
 
 const mapStateToProps = state => {
-	console.log(state.selectMode.modeSelected)
+	console.log(state.mode.modeSelected)
     return {
-        modeSelected: state.selectMode.modeSelected
+        modeSelected: state.mode.modeSelected
     }
 }
 

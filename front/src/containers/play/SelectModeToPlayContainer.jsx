@@ -29,17 +29,17 @@ import {
 // import { Notification } from "../../components/Notifications";
 
 function SelectModeToPlayContainer(props){
-	const [mode, setMode] = useState('none')
-	// const [alias, setAlias] = useState("Anonymous");
-	// const [password, setPassword] = useState("");
+	// const [mode, setMode] = useState('none')
+	const [alias, setAlias] = useState("Anonymous");
+	const [password, setPassword] = useState("");
 
-	// const handleInputAlias = (e) => {
-	// 	setAlias(e.target.value);
-	// };
+	const handleInputAlias = (e) => {
+		setAlias(e.target.value);
+	};
 
-	// const handleInputPassword = (e) => {
-	// 	setPassword(e.target.value);
-	// };
+	const handleInputPassword = (e) => {
+		setPassword(e.target.value);
+	};
 
 	return(
 		<React.Fragment>
@@ -59,7 +59,7 @@ function SelectModeToPlayContainer(props){
 						variant="outlined"
 						sx={{ input: { color: 'black' } }}
 						id="outlined-basic"
-						// onChange={handleInputAlias}
+						onChange={handleInputAlias}
 					/>
 				</div>
 			</div>
@@ -143,7 +143,7 @@ function SelectModeToPlayContainer(props){
 						variant="outlined"
 						sx={{ input: { color: 'black' } }}
 						id="outlined-basic"
-						// onChange={handleInputPassword}
+						onChange={handleInputPassword}
 					/>
 				</div>
 			</div>
@@ -154,7 +154,7 @@ function SelectModeToPlayContainer(props){
 
 const mapStateToProps = state => {
     return {
-        modeSelected: state.selectMode.modeSelected
+        modeSelected: state.mode.modeSelected
     }
 }
 

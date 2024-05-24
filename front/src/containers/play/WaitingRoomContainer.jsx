@@ -1,5 +1,5 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+// import { useParams } from "react-router-dom";
 
 //css
 import '../../css/Waiting_Room.css'
@@ -9,7 +9,7 @@ import { AliasTextField, PassWordTextField } from "../../components/TextFields";
 import { GreenColoredButton } from "../../components/Buttons";
 
 export function WaitingRoomContainer(mode){
-	let { wrid } = useParams();
+	// let { wrid } = useParams();
 
 	const [alias, setAlias] = React.useState("");
 	const [password, setPassword] = React.useState("");

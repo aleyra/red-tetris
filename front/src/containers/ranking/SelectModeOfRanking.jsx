@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
 
 //redux actions
@@ -22,7 +22,6 @@ import {
 } from '../../components/ConstString';
 
 function SelectModeOfRanking(props) {
-    const [mode, setMode] = useState('none')
     return (
         <React.Fragment>
             {/* <h1>Ranking - {props.modeSelected}</h1> */}
@@ -81,7 +80,7 @@ function SelectModeOfRanking(props) {
 
 const mapStateToProps = state => {
     return {
-        modeSelected: state.selectMode.modeSelected
+        modeSelected: state.mode.modeSelected
     }
 }
 

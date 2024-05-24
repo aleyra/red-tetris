@@ -1,0 +1,1 @@
+export const RANK_SOLO_EASY = 'RANK_SOLO_EASY'

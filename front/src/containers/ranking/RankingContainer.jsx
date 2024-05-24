@@ -1,63 +1,82 @@
 import React from "react";
+import { connect } from "react-redux";
 
-//const
-import { CyanColoredButton } from "../../components/Buttons";
-import { BlueColoredButton } from "../../components/Buttons";
-import { OrangeColoredButton } from "../../components/Buttons";
-import { YellowColoredButton } from "../../components/Buttons";
-// import { GreenColoredButton } from "../../components/Buttons";
-// import { PurpleColoredButton } from "../../components/buttons";
-// import { RedColoredButton } from "../../components/buttons";
-
-//functions
-import OneRawRanking from "../../components/ranking/OneRawRanking";
+//redux actions
+import { selectMode } from "../../redux/mode/modeActions";
+import { rankMulti } from "../../redux/ranking/multi_mode/rankingMultiActions";
+import { rankSoloEasy } from "../../redux/ranking/solo_easy_mode/rankingSoloEasyActions";
+import { rankSoloHard } from "../../redux/ranking/solo_hard_mode/rankingSoloHardActions";
+import { rankSoloNormal } from "../../redux/ranking/solo_normal_mode/rankingSoloNormalActions";
 
 //css
 import '../../css/Ranking.css'
 
-function RankingDisplayDemoContainer(){
-	return(
-		<React.Fragment>
-			<div className="Ranking_list">
-				{OneRawRanking("1", "Aleyra", "12345678")}
-				{OneRawRanking("2", "mfunyu", "1234567")}
-				{OneRawRanking("3", "Léto", "123456")}
-				{OneRawRanking("4", "Lucille", "12345")}
-			</div>
-		</React.Fragment>
-	);
-}
+//const
+import { 
+    CyanColoredButton,
+    BlueColoredButton,
+    OrangeColoredButton,
+    YellowColoredButton
+} from "../../components/Buttons";
+import { 
+    SOLO_EASY,
+    SOLO_HARD,
+    SOLO_NORMAL,
+    MULTI,
+} from '../../components/ConstString';
 
-export function RankingContainer(){
-	const [newMode, setNewMode] = React.useState("");
+// //functions
+import OneRawRanking from "../../components/ranking/OneRawRanking";
 
+// function RankingDisplayDemoContainer(){
+// 	return(
+// 		<React.Fragment>
+// 			<div className="Ranking_list">
+// 				{OneRawRanking("1", "Aleyra", "12345678")}
+// 				{OneRawRanking("2", "Yuu", "1234567")}
+// 				{OneRawRanking("3", "Benjamin", "123456")}
+// 				{OneRawRanking("4", "Lucille", "12345")}
+// 			</div>
+// 		</React.Fragment>
+// 	);
+// }
+
+export function RankingContainer(props){
 	//on display le ranking avec le bon mode
-	function RankingDisplay(mode){
-		return(
-			<React.Fragment>
-				
-			</React.Fragment>
-		);
+	console.log("zut")
+	function RankingDisplay(props){
+		let ranking = [];
+		switch(props.modeSelected){
+			case SOLO_NORMAL:
+				ranking = props.rankingSoloNormal;
+				break;
+			case SOLO_HARD:
+				ranking = props.rankingSoloHard;
+				break;
+			case SOLO_EASY:
+				ranking = props.rankingSoloEasy;
+				break;
+			case MULTI:
+				ranking = props.rankingMulti;
+				break;
+			default:
+				ranking = [];
+			return(
+				<React.Fragment>
+					<div className="Ranking_list">
+						{/* for each player in rankingSoloNormal in store display its name and its score */
+						ranking.map((player, i) => (
+							OneRawRanking(i+1, player.name, player.score)
+						))
+						}
+					</div>
+				</React.Fragment>
+			);
+		}
 	}
-
-	const handleClickSoloNormal = () => {
-		setNewMode("SoloNormal");
-	};
-
-	const handleClickSoloEasy = () => {
-		setNewMode("SoloEasy");
-	};
-
-	const handleClickSoloHard = () => {
-		setNewMode("SoloHard");
-	};
-
-	const handleClickMulti = () => {
-		setNewMode("Multi");
-	};
-
 	
 	function RankingSelectModeToPlayContainer(){
+		// const [mode, setMode] = React.useState("");
 		return(
 			<React.Fragment>
 				<h1>Ranking</h1>
@@ -68,7 +87,7 @@ export function RankingContainer(){
 								variant="contained"
 								disableRipple
 								sx={{ color: 'black'}}
-								onClick={handleClickSoloNormal}
+								onClick={() => props.selectMode(SOLO_NORMAL)}
 							>
 								Solo Normal Mode
 							</CyanColoredButton>
@@ -79,7 +98,7 @@ export function RankingContainer(){
 							<OrangeColoredButton
 								variant="contained"
 								disableRipple
-								onClick={handleClickSoloEasy}
+								onClick={() => props.selectMode(SOLO_EASY)}
 							>
 								Solo Easy Mode
 							</OrangeColoredButton>
@@ -91,7 +110,7 @@ export function RankingContainer(){
 								variant="contained"
 								disableRipple
 								sx={{ color: 'black'}}
-								onClick={handleClickSoloHard}
+								onClick={() => props.selectMode(SOLO_HARD)}
 							>
 								Solo Hard Mode
 							</YellowColoredButton>
@@ -102,7 +121,7 @@ export function RankingContainer(){
 							<BlueColoredButton
 								variant="contained"
 								disableRipple
-								onClick={handleClickMulti}
+								onClick={() => props.selectMode(MULTI)}
 							>
 								Multiplayer Mode
 							</BlueColoredButton>
@@ -117,8 +136,32 @@ export function RankingContainer(){
 	return(
 		<React.Fragment>
 			<RankingSelectModeToPlayContainer />
-			<RankingDisplayDemoContainer />
-			{/* {RankingDisplay(newMode)} */}
+			<RankingDisplay />
 		</React.Fragment>
 	);
 }
+
+const mapStateToProps = state => {
+	return {
+		modeSelected: state.mode.modeSelected,
+		rankingSoloNormal: state.rankingSoloNormal,
+		rankingSoloHard: state.rankingSoloHard,
+		rankingSoloEasy: state.rankingSoloEasy,
+		rankingMulti: state.rankingMulti,
+	}
+}
+
+const mapDispatchToProps = dispatch => {
+	return {
+		selectMode: mode => dispatch(selectMode(mode)),
+		rankMulti: score => dispatch(rankMulti(score)),
+		rankSoloEasy: score => dispatch(rankSoloEasy(score)),
+		rankSoloHard: score => dispatch(rankSoloHard(score)),
+		rankSoloNormal: score => dispatch(rankSoloNormal(score)),
+	}
+}
+
+export default connect(
+	mapStateToProps,
+	mapDispatchToProps
+)(RankingContainer);
