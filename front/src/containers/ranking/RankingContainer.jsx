@@ -4,9 +4,15 @@ import { connect } from "react-redux";
 //redux actions
 import { selectMode } from "../../redux/mode/modeActions";
 import { rankMulti } from "../../redux/ranking/multi_mode/rankingMultiActions";
-import { rankSoloEasy } from "../../redux/ranking/solo_easy_mode/rankingSoloEasyActions";
-import { rankSoloHard } from "../../redux/ranking/solo_hard_mode/rankingSoloHardActions";
-import { rankSoloNormal } from "../../redux/ranking/solo_normal_mode/rankingSoloNormalActions";
+import {
+	rankSoloEasy 
+} from "../../redux/ranking/solo_easy_mode/rankingSoloEasyActions";
+import {
+	rankSoloHard
+} from "../../redux/ranking/solo_hard_mode/rankingSoloHardActions";
+import {
+	rankSoloNormal
+} from "../../redux/ranking/solo_normal_mode/rankingSoloNormalActions";
 
 //css
 import '../../css/Ranking.css'
@@ -64,11 +70,9 @@ export function RankingContainer(props){
 			return(
 				<React.Fragment>
 					<div className="Ranking_list">
-						{/* for each player in rankingSoloNormal in store display its name and its score */
-						ranking.map((player, i) => (
+						{ranking.map((player, i) => (
 							OneRawRanking(i+1, player.name, player.score)
-						))
-						}
+						))}
 					</div>
 				</React.Fragment>
 			);
