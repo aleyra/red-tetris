@@ -1,8 +1,8 @@
 import { RANK_MULTI } from "./rankingMultiTypes";
 
-export const rankMulti = (score) => {
+export const rankMulti = (name, score) => {
 	return {
 		type: RANK_MULTI,
-		payload: score
+		payload: [name, score]
 	}
 }

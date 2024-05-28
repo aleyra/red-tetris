@@ -1,12 +1,21 @@
-import React from "react";
-import { connect } from "react-redux";
+import React, {useState} from "react";
+import { connect, useDispatch, useSelector } from "react-redux";
 
 //redux actions
 import { selectMode } from "../../redux/mode/modeActions";
-import { rankMulti } from "../../redux/ranking/multi_mode/rankingMultiActions";
-import { rankSoloEasy } from "../../redux/ranking/solo_easy_mode/rankingSoloEasyActions";
-import { rankSoloHard } from "../../redux/ranking/solo_hard_mode/rankingSoloHardActions";
-import { rankSoloNormal } from "../../redux/ranking/solo_normal_mode/rankingSoloNormalActions";
+// import { rankMulti } from "../../redux/ranking/multi_mode/rankingMultiActions";
+// import { rankSoloEasy } from "../../redux/ranking/solo_easy_mode/rankingSoloEasyActions";
+// import { rankSoloHard } from "../../redux/ranking/solo_hard_mode/rankingSoloHardActions";
+// import { rankSoloNormal } from "../../redux/ranking/solo_normal_mode/rankingSoloNormalActions";
+
+import { orderNormal } from "../../redux/ranking/rankingSoloNormal"
+import { orderEasy } from "../../redux/ranking/rankingSoloEasy"
+import { orderHard } from "../../redux/ranking/rankingSoloHard"
+import { orderMulti } from "../../redux/ranking/rankingMulti"
+
+import { update } from "../../redux/mode/mode"
+
+// import { addRank } from "../../redux/ranking/ranking"
 
 //css
 import '../../css/Ranking.css'
@@ -44,33 +53,92 @@ import OneRawRanking from "../../components/ranking/OneRawRanking";
 export function RankingContainer(props){
 	//on display le ranking avec le bon mode
 	console.log("zut")
+	const dispatch = useDispatch()
+	// const ranking = useSelector((state) => state.rankingSoloNormal.ranking)
+	// dispatch(orderNormal())
 	function RankingDisplay(props){
-		let ranking = [];
-		switch(props.modeSelected){
-			case SOLO_NORMAL:
-				ranking = props.rankingSoloNormal;
-				break;
-			case SOLO_HARD:
-				ranking = props.rankingSoloHard;
-				break;
-			case SOLO_EASY:
-				ranking = props.rankingSoloEasy;
-				break;
-			case MULTI:
-				ranking = props.rankingMulti;
-				break;
-			default:
-				ranking = [];
-			return(
-				<React.Fragment>
-					<div className="Ranking_list">
-						{ranking.map((player, i) => (
-							OneRawRanking(i+1, player.name, player.score)
-						))}
-					</div>
-				</React.Fragment>
-			);
-		}
+		// let ranking = [];
+		// ranking = 
+		// switch(props.modeSelected){
+		// 	case SOLO_NORMAL:
+		// 		ranking = props.rankingSoloNormal;
+		// 		break;
+		// 	case SOLO_HARD:
+		// 		ranking = props.rankingSoloHard;
+		// 		break;
+		// 	case SOLO_EASY:
+		// 		ranking = props.rankingSoloEasy;
+		// 		break;
+		// 	case MULTI:
+		// 		ranking = props.rankingMulti;
+		// 		break;
+		// 	default:
+		// 		ranking = [];
+		// }
+		const modeSelected = useSelector((state) => state.mode.modeSelected)
+		const [currentRanking, setCurrentRanking] = useState([]);
+		const rankingEasy = useSelector((state) => state.rankingSoloEasy.ranking)
+		const rankingNormal = useSelector((state) => state.rankingSoloNormal.ranking)
+		const rankingHard = useSelector((state) => state.rankingSoloHard.ranking)
+		const rankingMulti = useSelector((state) => state.rankingMulti.ranking)
+
+		React.useEffect(() => {
+			switch(modeSelected) {
+				case SOLO_EASY:
+					dispatch(orderEasy())
+					setCurrentRanking(rankingEasy)
+					break;
+				case SOLO_NORMAL:
+					dispatch(orderNormal())
+					setCurrentRanking(rankingNormal)
+					break;
+				case SOLO_HARD:
+					dispatch(orderHard())
+					setCurrentRanking(rankingHard)
+					break;
+				case MULTI:
+					dispatch(orderMulti())
+					setCurrentRanking(rankingMulti)
+					break;
+				default:
+					setCurrentRanking([])
+			}
+		}, [modeSelected])
+		
+		// switch(modeSelected) {
+		// 	case SOLO_EASY:
+		// 		ranking = useSelector((state) => state.rankingSoloEasy.ranking)
+		// 		dispatch(orderEasy())
+		// 		break;
+		// 	case SOLO_NORMAL:
+		// 		ranking = useSelector((state) => state.rankingSoloNormal.ranking)
+		// 		dispatch(orderNormal())
+		// 		break;
+		// 	case SOLO_HARD:
+		// 		ranking = useSelector((state) => state.rankingSoloHard.ranking)
+		// 		dispatch(orderHard())
+		// 		break;
+		// 	case MULTI:
+		// 		ranking = useSelector((state) => state.rankingMulti.ranking)
+		// 		dispatch(orderMulti())
+		// 		break;
+		// 	default:
+		// 		ranking = []
+		// }
+		console.log("modeSelected " + modeSelected)
+		return(
+			<React.Fragment>
+				<div className="Ranking_list">
+					{/* {ranking.map((player, i) => (
+						OneRawRanking(i+1, player.name, player.score)
+					))} */}
+					{modeSelected}
+					{currentRanking.map((ranking) => (<div>
+						{`${ranking.name} ${ranking.score}`}
+					</div>))}
+				</div>
+			</React.Fragment>
+		);
 	}
 	
 	function RankingSelectModeToPlayContainer(){
@@ -85,7 +153,11 @@ export function RankingContainer(props){
 								variant="contained"
 								disableRipple
 								sx={{ color: 'black'}}
-								onClick={() => props.selectMode(SOLO_NORMAL)}
+								// onClick={() => props.selectMode(SOLO_NORMAL)}
+								onClick={() => {
+									console.log("click0")
+									dispatch(update(SOLO_NORMAL))
+								}}
 							>
 								Solo Normal Mode
 							</CyanColoredButton>
@@ -96,7 +168,10 @@ export function RankingContainer(props){
 							<OrangeColoredButton
 								variant="contained"
 								disableRipple
-								onClick={() => props.selectMode(SOLO_EASY)}
+								// onClick={() => props.selectMode(SOLO_EASY)}
+								onClick={() => {
+									console.log("click1")
+									dispatch(update(SOLO_EASY))}}
 							>
 								Solo Easy Mode
 							</OrangeColoredButton>
@@ -108,7 +183,11 @@ export function RankingContainer(props){
 								variant="contained"
 								disableRipple
 								sx={{ color: 'black'}}
-								onClick={() => props.selectMode(SOLO_HARD)}
+								// onClick={() => props.selectMode(SOLO_HARD)}
+								onClick={() => {
+									console.log("click2")
+									dispatch(update(SOLO_HARD))
+								}}
 							>
 								Solo Hard Mode
 							</YellowColoredButton>
@@ -119,7 +198,11 @@ export function RankingContainer(props){
 							<BlueColoredButton
 								variant="contained"
 								disableRipple
-								onClick={() => props.selectMode(MULTI)}
+								// onClick={() => props.selectMode(MULTI)}
+								onClick={() => {
+									console.log("click3")
+									dispatch(update(MULTI))
+								}}
 							>
 								Multiplayer Mode
 							</BlueColoredButton>
@@ -142,20 +225,20 @@ export function RankingContainer(props){
 const mapStateToProps = state => {
 	return {
 		modeSelected: state.mode.modeSelected,
-		rankingSoloNormal: state.rankingSoloNormal,
-		rankingSoloHard: state.rankingSoloHard,
-		rankingSoloEasy: state.rankingSoloEasy,
-		rankingMulti: state.rankingMulti,
+		// rankingSoloNormal: state.rankingSoloNormal,
+		// rankingSoloHard: state.rankingSoloHard,
+		// rankingSoloEasy: state.rankingSoloEasy,
+		// rankingMulti: state.rankingMulti,
 	}
 }
 
 const mapDispatchToProps = dispatch => {
 	return {
 		selectMode: mode => dispatch(selectMode(mode)),
-		rankMulti: score => dispatch(rankMulti(score)),
-		rankSoloEasy: score => dispatch(rankSoloEasy(score)),
-		rankSoloHard: score => dispatch(rankSoloHard(score)),
-		rankSoloNormal: score => dispatch(rankSoloNormal(score)),
+		// rankMulti: (name, score) => dispatch(rankMulti(name, score)),
+		// rankSoloEasy: (name, score) => dispatch(rankSoloEasy(name, score)),
+		// rankSoloHard: (name, score) => dispatch(rankSoloHard(name, score)),
+		// rankSoloNormal: (name, score) => dispatch(rankSoloNormal(name, score)),
 	}
 }
 
