@@ -7,7 +7,7 @@ import PositionRanking from "./PositionRanking";
 import '../../css/Ranking.css'
 
 function OneRawRanking(position, name, score){
-	if (position === "1" || position === "2" || position === "3")
+	if (position == 1 || position == 2 || position == 3)
 		return(
 			<div className="Ranking_raw">
 				<div className="Ranking_position">

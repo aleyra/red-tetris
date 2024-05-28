@@ -10,7 +10,7 @@ import BronzeMedal from '../../images/bronze.png'
 
 function PositionRanking(position){
 	switch(position){
-		case '1':
+		case 1:
 			return(
 				<img
 					src={GoldMedal}
@@ -18,7 +18,7 @@ function PositionRanking(position){
 					className="Ranking_Medal"
 				></img>
 			);
-		case '2':
+		case 2:
 			return(
 				<img
 					src={SilverMedal}
@@ -26,7 +26,7 @@ function PositionRanking(position){
 					className="Ranking_Medal"
 				></img>
 			);
-		case '3':
+		case 3:
 			return(
 				<img
 					src={BronzeMedal}
