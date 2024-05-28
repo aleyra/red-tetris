@@ -151,7 +151,7 @@ function SelectModeToPlayContainer(props){
 					/>
 				</div>
 			</div>
-			{/* <p>Mode selected - {modeSelected}</p> */}
+			<p>Mode selected - {modeSelected}</p>
 		</React.Fragment>
 	);
 }

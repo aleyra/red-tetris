@@ -67,14 +67,11 @@ export function RankingContainer(){
 		}, [modeSelected, rankingEasy, rankingHard, rankingMulti, rankingNormal])
 		
 		return(
-			<React.Fragment>
-				<div className="Ranking_list">
-					{currentRanking.map((player, i = 1) => (
-						OneRawRanking(i + 1, player.name, player.score)
-					))}
-
-				</div>
-			</React.Fragment>
+			<div className="Ranking_list" key="Ranking_list">
+				{currentRanking.map((player, i = 1) => (
+					OneRawRanking(i + 1, player.name, player.score)
+				))}
+			</div>
 		);
 	}
 	
@@ -82,8 +79,8 @@ export function RankingContainer(){
 		return(
 			<React.Fragment>
 				<h1>Ranking</h1>
-				<div className="Ranking_select_mode">
-					<div className="Ranking_button">
+				<div className="Ranking_select_mode" key="Ranking_select_mode">
+					<div className="Ranking_button" key={SOLO_NORMAL}>
 							<CyanColoredButton
 								variant="contained"
 								disableRipple
@@ -95,7 +92,7 @@ export function RankingContainer(){
 								Solo Normal Mode
 							</CyanColoredButton>
 					</div>
-					<div className="Ranking_button">
+					<div className="Ranking_button" key={SOLO_EASY}>
 							<OrangeColoredButton
 								variant="contained"
 								disableRipple
@@ -106,7 +103,7 @@ export function RankingContainer(){
 								Solo Easy Mode
 							</OrangeColoredButton>
 					</div>
-					<div className="Ranking_button">
+					<div className="Ranking_button" key={SOLO_HARD}>
 							<YellowColoredButton
 								variant="contained"
 								disableRipple
@@ -118,7 +115,7 @@ export function RankingContainer(){
 								Solo Hard Mode
 							</YellowColoredButton>
 					</div>
-					<div className="Ranking_button">
+					<div className="Ranking_button" key={MULTI}>
 							<BlueColoredButton
 								variant="contained"
 								disableRipple
@@ -129,7 +126,6 @@ export function RankingContainer(){
 								Multiplayer Mode
 							</BlueColoredButton>
 					</div>
-
 				</div>
 			</React.Fragment>
 		);
