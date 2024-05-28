@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 //redux actions
-import { selectMode } from '../../redux/mode/modeActions'
+import { selectMode } from '../src/redux/mode/modeActions'
 
 //css
 import '../../css/Ranking.css'
@@ -13,13 +13,13 @@ import {
     BlueColoredButton,
     OrangeColoredButton,
     YellowColoredButton
-} from "../../components/Buttons";
+} from "../src/components/Buttons";
 import { 
     SOLO_EASY,
     SOLO_HARD,
     SOLO_NORMAL,
     MULTI
-} from '../../components/ConstString';
+} from '../src/components/ConstString';
 
 function SelectModeOfRanking(props) {
     return (

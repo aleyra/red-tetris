@@ -11,7 +11,6 @@ import { HomeContainer } from './containers/home/HomeContainer';
 import { NotFoundContainer } from './containers/tools_containers/NotFoundContainer';
 import { RankingContainer } from './containers/ranking/RankingContainer';
 import SelectModeToPlayContainer from './containers/play/SelectModeToPlayContainer';
-import SelectModeOfRanking from './containers/ranking/SelectModeOfRanking';
 import PlayContainer from './containers/play/PlayContainer';
 
 //React Redux Tutorial
@@ -73,7 +72,6 @@ export default function App() {
 							<Route exact path="/" element={<HomeContainer />} />
 							<Route path="/SelectModeToPlayContainer" element={<SelectModeToPlayContainer />} />
 							<Route path='/Ranking' element={<RankingContainer />} />
-							{/* <Route path='/Ranking' element={<SelectModeOfRanking />} /> */}
 							<Route path=':gid' element={<PlayContainer />} />
 							<Route element={<NotFoundContainer />} />
 							{/* React Redux Tutorial block begin */}
