@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { connect } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 
 //redux actions
-import { selectMode } from "../../redux/mode/modeActions";
+import { update } from "../../redux/mode/mode";
 
 //css
 import './../../css/Select_mode.css';
@@ -29,7 +29,11 @@ import {
 // import { Notification } from "../../components/Notifications";
 
 function SelectModeToPlayContainer(props){
+
+	const dispatch = useDispatch()
+
 	// const [mode, setMode] = useState('none')
+	const modeSelected = useSelector((state) => state.mode.modeSelected) 
 	const [alias, setAlias] = useState("Anonymous");
 	const [password, setPassword] = useState("");
 
@@ -70,7 +74,7 @@ function SelectModeToPlayContainer(props){
 							variant="contained"
 							disableRipple
 							sx={{ color: 'black'}}
-							onClick={() => props.selectMode(SOLO_NORMAL)}
+							onClick={() => dispatch(update(SOLO_NORMAL))}
 						>
 							PLAY<br></br>
 							Solo Normal Mode
@@ -82,7 +86,7 @@ function SelectModeToPlayContainer(props){
 						<SoloEasyModeButton
 							variant="contained"
 							disableRipple
-							onClick={() => props.selectMode(SOLO_EASY)}
+							onClick={() => dispatch(update(SOLO_EASY))}
 						>
 							PLAY<br></br>
 							Solo Easy Mode
@@ -95,7 +99,7 @@ function SelectModeToPlayContainer(props){
 							variant="contained"
 							disableRipple
 							sx={{ color: 'black'}}
-							onClick={() => props.selectMode(SOLO_HARD)}
+							onClick={() => dispatch(update(SOLO_HARD))}
 						>
 							PLAY<br></br>
 							Solo Hard Mode
@@ -107,7 +111,7 @@ function SelectModeToPlayContainer(props){
 						<MultiModeButton
 							variant="contained"
 							disableRipple
-							onClick={() => props.selectMode(MULTI)}
+							onClick={() => dispatch(update(MULTI))}
 						>
 							PLAY<br></br>
 							Multiplayer Mode<br></br>
@@ -120,7 +124,7 @@ function SelectModeToPlayContainer(props){
 							variant="contained"
 							disableRipple
 							sx={{ color: 'black'}}
-							onClick={() => props.selectMode(FRIEND)}
+							onClick={() => dispatch(update(FRIEND))}
 						>
 							PLAY<br></br>
 							Multiplayer Mode with a Friend
@@ -147,24 +151,9 @@ function SelectModeToPlayContainer(props){
 					/>
 				</div>
 			</div>
-			{/* <p>Mode selected - {props.modeSelected}</p> */}
+			{/* <p>Mode selected - {modeSelected}</p> */}
 		</React.Fragment>
 	);
 }
 
-const mapStateToProps = state => {
-    return {
-        modeSelected: state.mode.modeSelected
-    }
-}
-
-const mapDispatchToProps = dispatch => {
-    return {
-        selectMode: mode => dispatch(selectMode(mode))
-    }
-}
-
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(SelectModeToPlayContainer)
+export default SelectModeToPlayContainer

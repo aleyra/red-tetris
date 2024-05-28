@@ -100,7 +100,8 @@ export function RankingContainer(){
 								variant="contained"
 								disableRipple
 								onClick={() => {
-									dispatch(update(SOLO_EASY))}}
+									dispatch(update(SOLO_EASY))
+								}}
 							>
 								Solo Easy Mode
 							</OrangeColoredButton>
