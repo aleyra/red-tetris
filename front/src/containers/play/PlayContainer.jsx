@@ -1,12 +1,17 @@
-import React from "react";
-// import { useParams } from "react-router-dom";
-import { connect } from 'react-redux'
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+
+//redux actions
+// import { updateMode } from "../../redux/mode/mode";
 
 //functions
 import { PlaySoloNormalDemoContainer } from "./demo/PlaySoloNormalDemoContainer";
+// import { PlaySoloNormalContainer } from "./PlaySoloNormalContainer";
 import { PlaySoloHardDemoContainer } from "./demo/PlaySoloHardDemoContainer";
+// import { PlaySoloHardContainer } from "./PlaySoloHardContainer";
 import { PlaySoloEasyDemoContainer } from "./demo/PlaySoloEasyDemoContainer";
-import { PlayMultiDemoContainer } from "./demo/PlayMultiDemoContainer";
+// import { PlaySoloEasyContainer } from "./PlaySoloEasyContainer";
+// import { PlayMultiDemoContainer } from "./demo/PlayMultiDemoContainer";
 import SelectModeToPlayContainer from "./SelectModeToPlayContainer";
 import { WaitingRoomContainer } from "./WaitingRoomContainer";
 
@@ -20,38 +25,38 @@ import {
 } from '../../components/ConstString';
 
 
-function PlayContainer(props){
-	// let { gid } = useParams();
+function PlayContainer(){
 
-	// const [mode, setMode] = React.useState("");
-	// on recup le mode à partir du gid dans le back
+	// const dispatch = useDispatch();
+	const modeSelected = useSelector((state) => state.mode.modeSelected);
 
-	switch(props.modeSelected){
+	switch(modeSelected){
 		case SOLO_NORMAL:
 			return(
 				<PlaySoloNormalDemoContainer />
+				// <PlaySoloNormalContainer />
 			);
 		case SOLO_HARD:
 			return(
 				<PlaySoloHardDemoContainer />
+				// <PlaySoloHardContainer />
 			);
 		case SOLO_EASY:
 			return(
 				<PlaySoloEasyDemoContainer />
+				// <PlaySoloEasyContainer />
 			);
 		case MULTI:
-			// return(
-			// 	<React.Fragment>
-			// 		{WaitingRoomContainer("Multi")}
-			// 	</React.Fragment>
-			// );
 			return(
-				<PlayMultiDemoContainer />
+				<React.Fragment>
+					<WaitingRoomContainer />
+					{/* <PlayMultiDemoContainer /> */}
+				</React.Fragment>
 			);
 		case FRIEND:
 			return(
 				<React.Fragment>
-					{WaitingRoomContainer("Friend")}
+					<WaitingRoomContainer />
 				</React.Fragment>
 			);
 		default:
@@ -61,13 +66,4 @@ function PlayContainer(props){
 	}
 }
 
-const mapStateToProps = state => {
-	console.log(state.mode.modeSelected)
-    return {
-        modeSelected: state.mode.modeSelected
-    }
-}
-
-export default connect (
-	mapStateToProps
-)(PlayContainer)
+export default PlayContainer

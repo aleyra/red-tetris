@@ -1,14 +1,12 @@
 import React from "react";
 
 //css
-import './../../../css/Play.css';
+import './../../css/Play.css';
 
 //functions
-import { PlayerGridContainer } from "./../PlayerGridContainer";
-import { NextTetrimino } from "../../../components/game/NextTetrimino";
+import { PlayerGridContainer } from "./PlayerGridContainer";
 
-export function PlaySoloNormalDemoContainer(){
-	const next = 'T' //tmp
+export function PlaySoloHardContainer(){
 	const score = 40000 //tmp
 	return(
 		<React.Fragment>
@@ -16,12 +14,6 @@ export function PlaySoloNormalDemoContainer(){
 				<PlayerGridContainer />
 				<div className="flex-column-space"></div>
 				<div className="info-game-column">
-					<div className="info-game-row">
-						<b>Next tetrimino</b> :
-					</div>
-					<div className="info-game-row">
-						{NextTetrimino(next)}
-					</div>
 					<div className="info-game-row">
 						<b>Your Score</b> :
 					</div>

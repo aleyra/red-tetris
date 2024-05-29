@@ -1,15 +1,16 @@
 import React from "react";
 
 //css
-import './../../../css/Play.css';
+import './../../css/Play.css';
 
 //functions
-import { PlayerGridContainer } from "./../PlayerGridContainer";
-import { NextTetrimino } from "../../../components/game/NextTetrimino";
+import { PlayerGridContainer } from "./PlayerGridContainer";
+import { NextTetrimino } from "../../components/game/NextTetrimino";
 
-export function PlaySoloNormalDemoContainer(){
+export function PlaySoloNormalContainer(){
 	const next = 'T' //tmp
 	const score = 40000 //tmp
+
 	return(
 		<React.Fragment>
 			<div className="flex-container">

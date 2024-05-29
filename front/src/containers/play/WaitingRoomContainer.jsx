@@ -1,75 +1,75 @@
-import React from "react";
+import React, { useState } from "react";
 // import { useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+
+//redux actions
+import { getPlayerById, updatePlayer } from "../../redux/slicers/player";
 
 //css
 import '../../css/Waiting_Room.css'
 
 //const
-import { AliasTextField, PassWordTextField } from "../../components/TextFields";
+import { AliasTextField } from "../../components/TextFields";
 import { GreenColoredButton } from "../../components/Buttons";
+import {
+    MULTI,
+	FRIEND
+} from '../../components/ConstString';
 
-export function WaitingRoomContainer(mode){
-	// let { wrid } = useParams();
+export function WaitingRoomContainer(){
+	//get player's id from socket
+	const id = 1;//tmp
+	const waiting_nb = 0;//tmp
+	const player = useSelector((state) => getPlayerById(state, id));
+	console.log(player);
+
+
+	const dispatch = useDispatch();
+	const mode = useSelector((state) => state.mode.modeSelected);
 
 	const [alias, setAlias] = React.useState("");
-	const [password, setPassword] = React.useState("");
 
 	const handleInputAlias = (e) => {
 		setAlias(e.target.value);
+		dispatch(updatePlayer({ id: id, name: alias, score: 0 }));
 	};
 
-	const handleInputPassword = (e) => {
-		setPassword(e.target.value);
-	};
+	const handleClickJoin = () => {
+		//dispatch(updateMode(MULTI));
+		//dispatch(addPlayer(alias));
+		dispatch(updatePlayer({ id: id, name: alias, score: 0 }));
+		console.log(alias);
+		console.log(player);
+	}
 
 	//recup le nom du user qui a cree la room
 
-	const handleClickJoin = async (event) => {
-		//changer l'adresse du fetch
-		// await fetch(`${process.env.REACT_APP_NESTJS_HOSTNAME}/api/channels/${props?.channel.id}/users`, {
-		// 	headers: {
-		// 		'Accept': 'application/json',
-		// 		'Content-Type': 'application/json'
-		// 	},
-		// 	method: 'POST',
-		// 	credentials: 'include',
-		// 	body: JSON.stringify({password: password})
-		// })
-		// .then(response => {
-		// 	if (!response.ok)
-		// 		return response;
-		// 	else
-		// 		//envoyer sur la page http://address_host/#pid
-		// })
-		// .then(data => {if (data !== undefined) Notification(data);});
-	}
-
-	if (mode === "Multi")
+	if (mode === MULTI && waiting_nb !== 0)
 		return(
 			<React.Fragment>
 				<h1>Welcome to the waiting room</h1>
-				<div>You have to wait for x player(s) on 4 to connect...</div>
+				<div>You have to wait for {waiting_nb} player(s) on 4 to connect...</div>
 			</React.Fragment>
 		);
-	// else if (mode === "Friend" /* &&& user === celui qui a creer a room */)
-	// 	return(
-	// 		<React.Fragment>
-	// 			<h1>
-	// 				Waiting for your friend to connect...
-	// 			</h1>
-	// 			<div>
-	// 				Please send this address to your friend so they can connect to your room...
-	// 			</div>
-	// 			<h2>
-	// 				http://address_host/#/{wrid}
-	// 			</h2>
-	// 		</React.Fragment>
-	// 	);
+	else if (mode === FRIEND  && waiting_nb !== 0)
+		return(
+			<React.Fragment>
+				<h1>
+					Waiting for your friend to connect...
+				</h1>
+				<div>
+					Please send this address to your friend so they can connect to your room...
+				</div>
+				<h2>
+					http://address_host/#/id-of-the-game
+				</h2>
+			</React.Fragment>
+		);
 	else
 		return(
 			<React.Fragment>
 				<h1>
-					Welcome in name's waiting room
+					Welcome in {player.name}'s waiting room
 				</h1>
 				<div>
 					Please choose an alias, enter the password and the game will start
@@ -88,21 +88,6 @@ export function WaitingRoomContainer(mode){
 							sx={{ input: { color: 'black' } }}
 							id="outlined-basic"
 							onChange={handleInputAlias}
-						/>
-					</div>
-					<div className="WR_TF">
-						<PassWordTextField
-							label="Password"
-							InputLabelProps={{
-								sx:{
-									color:"black",
-									justifyContent:"center"
-								}
-							}}
-							variant="outlined"
-							sx={{ input: { color: 'black' } }}
-							id="outlined-basic"
-							onChange={handleInputPassword}
 						/>
 					</div>
 				</div>

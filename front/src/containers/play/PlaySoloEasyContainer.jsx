@@ -2,15 +2,15 @@ import React from "react";
 
 //css
 import './../../../css/Play.css';
-import { PlayerGridContainer } from "./../PlayerGridContainer";
-import { OpponentGridContainer } from "./opponent_grid_demo";
-import { NextTetrimino } from "./next_tetrimino";
 
-//à la place de "Your opponent" mettre le pseudo du joueur adverse
-export function PlayFriendDemoContainer(){
-	const opponent = "toi" //tmp
+//functions
+import { PlayerGridContainer } from "./PlayerGridContainer";
+import { NextTetrimino } from "../../components/game/NextTetrimino";
+
+export function PlaySoloEasyContainer(){
 	const next = 'S' //tmp
 	const score = 40000 //tmp
+
 	return(
 		<React.Fragment>
 			<div className="flex-container">
@@ -21,6 +21,9 @@ export function PlayFriendDemoContainer(){
 						<b>Next tetrimino</b> :
 					</div>
 					<div className="info-game-row">
+						You can swap this one with the current by pressing SPACE
+					</div>
+					<div className="info-game-row">
 						{NextTetrimino(next)}
 					</div>
 					<div className="info-game-row">
@@ -28,15 +31,6 @@ export function PlayFriendDemoContainer(){
 					</div>
 					<div className="info-game-row">
 						<h1>{score}</h1>
-					</div>
-					<div className="flex-row-space"></div>
-					<div className="info-game-column">
-						<div className="info-game-row">
-							<b>{opponent} game</b> :
-						</div>
-						<div className="info-game-row">
-							<OpponentGridContainer />
-						</div>
 					</div>
 				</div>
 			</div>

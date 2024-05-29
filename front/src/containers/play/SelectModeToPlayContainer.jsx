@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from 'react-redux'
+import { Link } from 'react-router-dom';
 
 //redux actions
-import { update } from "../../redux/mode/mode";
+import { updateMode } from "../../redux/slicers/mode";
+import { addPlayer } from "../../redux/slicers/player";
 
 //css
 import './../../css/Select_mode.css';
@@ -24,7 +26,6 @@ import {
 } from '../../components/ConstString';
 import {
 	AliasTextField,
-	PassWordTextField 
 } from "../../components/TextFields";
 // import { Notification } from "../../components/Notifications";
 
@@ -33,16 +34,12 @@ function SelectModeToPlayContainer(props){
 	const dispatch = useDispatch()
 
 	// const [mode, setMode] = useState('none')
-	const modeSelected = useSelector((state) => state.mode.modeSelected) 
+	const mode = useSelector((state) => state.mode.modeSelected) 
 	const [alias, setAlias] = useState("Anonymous");
-	const [password, setPassword] = useState("");
 
 	const handleInputAlias = (e) => {
 		setAlias(e.target.value);
-	};
-
-	const handleInputPassword = (e) => {
-		setPassword(e.target.value);
+		dispatch(addPlayer(alias));
 	};
 
 	return(
@@ -69,89 +66,71 @@ function SelectModeToPlayContainer(props){
 			</div>
 			<div className="Select-mode-menu">
 				<div className="Select-mode-button">
-					{/* <Link to="/Demo-SoloN"> */}
+					<Link to="/PlayContainer">
 						<SoloNormalModeButton
 							variant="contained"
 							disableRipple
 							sx={{ color: 'black'}}
-							onClick={() => dispatch(update(SOLO_NORMAL))}
+							onClick={() => dispatch(updateMode(SOLO_NORMAL))}
 						>
 							PLAY<br></br>
 							Solo Normal Mode
 						</SoloNormalModeButton>
-					{/* </Link> */}
+					</Link>
 				</div>
 				<div className="Select-mode-button">
-					{/* <Link to="/Demo-SoloE"> */}
+					<Link to="/PlayContainer">
 						<SoloEasyModeButton
 							variant="contained"
 							disableRipple
-							onClick={() => dispatch(update(SOLO_EASY))}
+							onClick={() => dispatch(updateMode(SOLO_EASY))}
 						>
 							PLAY<br></br>
 							Solo Easy Mode
 						</SoloEasyModeButton>
-					{/* </Link> */}
+					</Link>
 				</div>
 				<div className="Select-mode-button">
-					{/* <Link to="/Demo-SoloH"> */}
+					<Link to="/PlayContainer">
 						<SoloHardModeButton
 							variant="contained"
 							disableRipple
 							sx={{ color: 'black'}}
-							onClick={() => dispatch(update(SOLO_HARD))}
+							onClick={() => dispatch(updateMode(SOLO_HARD))}
 						>
 							PLAY<br></br>
 							Solo Hard Mode
 						</SoloHardModeButton>
-					{/* </Link> */}
+					</Link>
 				</div>
 				<div className="Select-mode-button">
-					{/* <Link to="/Demo-Multi"> */}
+					<Link to="/PlayContainer">
 						<MultiModeButton
 							variant="contained"
 							disableRipple
-							onClick={() => dispatch(update(MULTI))}
+							onClick={() => dispatch(updateMode(MULTI))}
 						>
 							PLAY<br></br>
 							Multiplayer Mode<br></br>
 							2 Players
 						</MultiModeButton>
-					{/* </Link> */}
+					</Link>
 				</div>
 				<div className="Select-mode-button">
+					<Link to="/PlayContainer">
 						<FriendModeButton
 							variant="contained"
 							disableRipple
 							sx={{ color: 'black'}}
-							onClick={() => dispatch(update(FRIEND))}
+							onClick={() => dispatch(updateMode(FRIEND))}
 						>
 							PLAY<br></br>
 							Multiplayer Mode with a Friend
 						</FriendModeButton>
+					</Link>
 				</div>
 			</div>
-			<div className="Select-mode-tf-lvl0">
-				<div className="Select-mode-tf-lvl1">
-					Please enter a Password for Multiplayer Mode with a Friend :
-				</div>
-				<div className="Select-mode-tf-lvl1">
-					<PassWordTextField
-						label="Password"
-						InputLabelProps={{
-							sx:{
-								color:"black",
-								justifyContent:"center"
-							}
-						}}
-						variant="outlined"
-						sx={{ input: { color: 'black' } }}
-						id="outlined-basic"
-						onChange={handleInputPassword}
-					/>
-				</div>
-			</div>
-			<p>Mode selected - {modeSelected}</p>
+			<p>Mode selected - {mode}</p>
 		</React.Fragment>
 	);
 }

@@ -2,11 +2,11 @@ import React, {useState} from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 //redux actions
-import { orderNormal } from "../../redux/ranking/rankingSoloNormal"
-import { orderEasy } from "../../redux/ranking/rankingSoloEasy"
-import { orderHard } from "../../redux/ranking/rankingSoloHard"
-import { orderMulti } from "../../redux/ranking/rankingMulti"
-import { update } from "../../redux/mode/mode"
+import { orderNormal } from "../../redux/slicers/ranking/rankingSoloNormal"
+import { orderEasy } from "../../redux/slicers/ranking/rankingSoloEasy"
+import { orderHard } from "../../redux/slicers/ranking/rankingSoloHard"
+import { orderMulti } from "../../redux/slicers/ranking/rankingMulti"
+import { updateMode } from "../../redux/slicers/mode"
 // import { addRank } from "../../redux/ranking/ranking"
 
 //css
@@ -86,7 +86,7 @@ export function RankingContainer(){
 								disableRipple
 								sx={{ color: 'black'}}
 								onClick={() => {
-									dispatch(update(SOLO_NORMAL))
+									dispatch(updateMode(SOLO_NORMAL))
 								}}
 							>
 								Solo Normal Mode
@@ -97,7 +97,7 @@ export function RankingContainer(){
 								variant="contained"
 								disableRipple
 								onClick={() => {
-									dispatch(update(SOLO_EASY))
+									dispatch(updateMode(SOLO_EASY))
 								}}
 							>
 								Solo Easy Mode
@@ -109,7 +109,7 @@ export function RankingContainer(){
 								disableRipple
 								sx={{ color: 'black'}}
 								onClick={() => {
-									dispatch(update(SOLO_HARD))
+									dispatch(updateMode(SOLO_HARD))
 								}}
 							>
 								Solo Hard Mode
@@ -120,7 +120,7 @@ export function RankingContainer(){
 								variant="contained"
 								disableRipple
 								onClick={() => {
-									dispatch(update(MULTI))
+									dispatch(updateMode(MULTI))
 								}}
 							>
 								Multiplayer Mode

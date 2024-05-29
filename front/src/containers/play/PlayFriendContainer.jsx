@@ -2,12 +2,11 @@ import React from "react";
 
 //css
 import './../../../css/Play.css';
-import { PlayerGridContainer } from "./../PlayerGridContainer";
+import { PlayerGridContainer } from "./PlayerGridContainer";
 import { OpponentGridContainer } from "./opponent_grid_demo";
 import { NextTetrimino } from "./next_tetrimino";
 
-//à la place de "Your opponent" mettre le pseudo du joueur adverse
-export function PlayFriendDemoContainer(){
+export function PlayFriendContainer(){
 	const opponent = "toi" //tmp
 	const next = 'S' //tmp
 	const score = 40000 //tmp

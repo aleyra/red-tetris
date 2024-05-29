@@ -4,20 +4,21 @@ import React from "react";
 import './../../../css/Play.css';
 
 //functions
-import { PlayerGridDemoContainer } from "./PlayerGridDemoContainer";
+import { PlayerGridContainer } from "./../PlayerGridContainer";
 
 export function PlaySoloHardDemoContainer(){
+	const score = 40000 //tmp
 	return(
 		<React.Fragment>
 			<div className="flex-container">
-				<PlayerGridDemoContainer />
+				<PlayerGridContainer />
 				<div className="flex-column-space"></div>
 				<div className="info-game-column">
 					<div className="info-game-row">
 						<b>Your Score</b> :
 					</div>
 					<div className="info-game-row">
-						<h1>40000</h1>
+						<h1>{score}</h1>
 					</div>
 				</div>
 			</div>

@@ -13,11 +13,8 @@ import { RankingContainer } from './containers/ranking/RankingContainer';
 import SelectModeToPlayContainer from './containers/play/SelectModeToPlayContainer';
 import PlayContainer from './containers/play/PlayContainer';
 
-//React Redux Tutorial
+//React Redux
 import { Provider } from 'react-redux';
-// import TutoShop from './tuto_shop';
-// import store from './redux/tuto/store';
-// import store from './redux/store'
 import store from './redux/store';
 
 /* from ex-teammate block begin */
@@ -64,7 +61,6 @@ export default function App() {
 
 	return(
 		<React.Fragment>
-			{/* <Provider store={store}> */}
 			<Provider store={store}>
 				<HashRouter>
 					<div className='Main-div'>
@@ -72,11 +68,8 @@ export default function App() {
 							<Route exact path="/" element={<HomeContainer />} />
 							<Route path="/SelectModeToPlayContainer" element={<SelectModeToPlayContainer />} />
 							<Route path='/Ranking' element={<RankingContainer />} />
-							<Route path=':gid' element={<PlayContainer />} />
+							<Route path='/PlayContainer' element={<PlayContainer />} />{/* to change */}
 							<Route element={<NotFoundContainer />} />
-							{/* React Redux Tutorial block begin */}
-							{/* <Route path='/CakeShop' element={<TutoShop />} /> */}
-							{/* React Redux Tutorial block end */}
 						</Routes>
 					</div>
 				</HashRouter>

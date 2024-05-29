@@ -4,9 +4,9 @@ import React from "react";
 import './../../../css/Play.css'
 
 //function
-import { ColoringPlayerCell } from "../../../components/game/ColoringCell";
+import { ColoringPlayerCell } from "../src/components/game/ColoringCell";
 
-export function PlayerGridDemoContainer(){
+export function PlayerGridContainer(){
 	return(
 		<React.Fragment>
 			<div className="player-game-grid">

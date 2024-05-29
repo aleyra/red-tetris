@@ -2,12 +2,11 @@ import React from "react";
 
 //css
 import './../../../css/Play.css';
-import { PlayerGridContainer } from "./../PlayerGridContainer";
-import { OpponentGridContainer } from "./../OpponentGridContainer";
-import { NextTetrimino } from "../../../components/game/NextTetrimino";
+import { PlayerGridContainer } from "./PlayerGridContainer";
+import { OpponentGridContainer } from "./OpponentGridContainer";
+import { NextTetrimino } from "../../components/game/NextTetrimino";
 
-//à la place de "Your opponentX" mettre le pseudo du joueur adverse
-export function PlayMultiDemoContainer(){
+export function PlayMultiContainer(){
 	const opponent0 = "toi" //tmp
 	const opponent1 = "lui" //tmp
 	const opponent2 = "elle" //tmp

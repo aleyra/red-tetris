@@ -15,12 +15,12 @@ const modeSlice = createSlice({
         // display: (state) => {
         //     state.modeSelected
         // },
-        update: (state, action) => {
+        updateMode: (state, action) => {
             state.modeSelected = action.payload
         }
     }
 })
 
-export const { update} = modeSlice.actions;
+export const { updateMode} = modeSlice.actions;
 
 export default modeSlice.reducer
