@@ -1,13 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 interface list_players {
-    players: [
+    player: [
         {id:number, name: string, score: number}
     ]
 }
 
 const initialState: list_players ={
-    players: [
+    player: [
         { id: 1, name: 'Aleyra', score: 12345678 },
         { id: 2, name: 'Benjamin', score: 123456 },
         { id: 3, name: 'Yuu', score: 1234567 },
@@ -20,21 +20,21 @@ const playerSlice = createSlice({
     initialState,
     reducers: {
         addPlayer: (state, action) => {
-            state.players.push({ id: state.players.length + 1, name: action.payload, score: 0 })
+            state.player.push({ id: state.player.length + 1, name: action.payload, score: 0 })
         },
         removePlayer: (state, action) => {
-            state.players = state.players.filter(player => player.id !== action.payload)
+            state.player = state.player.filter(player => player.id !== action.payload)
         },
         updatePlayer: (state, action) => {
             const { id, name, score } = action.payload
-            const existingPlayer = state.players.find(player => player.id === id)
+            const existingPlayer = state.player.find(player => player.id === id)
             if (existingPlayer) {
                 existingPlayer.name = name
                 existingPlayer.score = score
             }
         },
         getPlayerById: (state, action) => {
-            const player = state.players.find(player => player.id === action.payload)
+            const player = state.player.find(player => player.id === action.payload)
             return player
         }
     }
